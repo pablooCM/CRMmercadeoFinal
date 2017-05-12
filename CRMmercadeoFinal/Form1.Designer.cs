@@ -62,10 +62,7 @@
             this.textBoxIdServicio = new System.Windows.Forms.TextBox();
             this.textBoxDescripcionServicio = new System.Windows.Forms.TextBox();
             this.comboBoxFormaPago = new System.Windows.Forms.ComboBox();
-            this.textBoxCoberturaServicio = new System.Windows.Forms.TextBox();
-            this.comboBoxPaises = new System.Windows.Forms.ComboBox();
             this.comboBoxEstadoServicio = new System.Windows.Forms.ComboBox();
-            this.buttonAgregarPais = new System.Windows.Forms.Button();
             this.buttonBorrarServicio = new System.Windows.Forms.Button();
             this.buttonActualizarServicio = new System.Windows.Forms.Button();
             this.buttonConsultarServicio = new System.Windows.Forms.Button();
@@ -85,10 +82,28 @@
             this.comboBoxRRSSempresa = new System.Windows.Forms.ComboBox();
             this.textBoxNombreUsuarioRS = new System.Windows.Forms.TextBox();
             this.textBoxClaveRS = new System.Windows.Forms.TextBox();
+            this.buttonRegistrarRS = new System.Windows.Forms.Button();
+            this.labelIdCampanna = new System.Windows.Forms.Label();
+            this.labelNombreCampanna = new System.Windows.Forms.Label();
+            this.labelFechaInicio = new System.Windows.Forms.Label();
+            this.labelFechaFinalizacion = new System.Windows.Forms.Label();
+            this.labelPaisesCampanna = new System.Windows.Forms.Label();
+            this.labelCostoCampanna = new System.Windows.Forms.Label();
+            this.textBoxIdCampanna = new System.Windows.Forms.TextBox();
+            this.textBoxNombreCampanna = new System.Windows.Forms.TextBox();
+            this.textBoxCostoCampanna = new System.Windows.Forms.TextBox();
+            this.dateTimePickerFechaInicioCampanna = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerfFechaFinalizacionCampanna = new System.Windows.Forms.DateTimePicker();
+            this.dataGridViewPaisesCobertura = new System.Windows.Forms.DataGridView();
+            this.dataGridViewPaisesCampanna = new System.Windows.Forms.DataGridView();
+            this.buttonCrearCampanna = new System.Windows.Forms.Button();
             this.CRMmktTab.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabServicios.SuspendLayout();
             this.tabRRSS.SuspendLayout();
+            this.tabCampanasMercadeo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCobertura)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCampanna)).BeginInit();
             this.SuspendLayout();
             // 
             // CRMmktTab
@@ -320,14 +335,12 @@
             // 
             // tabServicios
             // 
+            this.tabServicios.Controls.Add(this.dataGridViewPaisesCobertura);
             this.tabServicios.Controls.Add(this.buttonCrearServicio);
             this.tabServicios.Controls.Add(this.buttonConsultarServicio);
             this.tabServicios.Controls.Add(this.buttonActualizarServicio);
             this.tabServicios.Controls.Add(this.buttonBorrarServicio);
-            this.tabServicios.Controls.Add(this.buttonAgregarPais);
             this.tabServicios.Controls.Add(this.comboBoxEstadoServicio);
-            this.tabServicios.Controls.Add(this.comboBoxPaises);
-            this.tabServicios.Controls.Add(this.textBoxCoberturaServicio);
             this.tabServicios.Controls.Add(this.comboBoxFormaPago);
             this.tabServicios.Controls.Add(this.textBoxDescripcionServicio);
             this.tabServicios.Controls.Add(this.textBoxIdServicio);
@@ -346,6 +359,7 @@
             // 
             // tabRRSS
             // 
+            this.tabRRSS.Controls.Add(this.buttonRegistrarRS);
             this.tabRRSS.Controls.Add(this.textBoxClaveRS);
             this.tabRRSS.Controls.Add(this.textBoxNombreUsuarioRS);
             this.tabRRSS.Controls.Add(this.comboBoxRRSSempresa);
@@ -361,6 +375,19 @@
             // 
             // tabCampanasMercadeo
             // 
+            this.tabCampanasMercadeo.Controls.Add(this.buttonCrearCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.dataGridViewPaisesCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.dateTimePickerfFechaFinalizacionCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.dateTimePickerFechaInicioCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.textBoxCostoCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.textBoxNombreCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.textBoxIdCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.labelCostoCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.labelPaisesCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.labelFechaFinalizacion);
+            this.tabCampanasMercadeo.Controls.Add(this.labelFechaInicio);
+            this.tabCampanasMercadeo.Controls.Add(this.labelNombreCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.labelIdCampanna);
             this.tabCampanasMercadeo.Location = new System.Drawing.Point(4, 22);
             this.tabCampanasMercadeo.Name = "tabCampanasMercadeo";
             this.tabCampanasMercadeo.Size = new System.Drawing.Size(711, 402);
@@ -439,21 +466,6 @@
             this.comboBoxFormaPago.Size = new System.Drawing.Size(254, 21);
             this.comboBoxFormaPago.TabIndex = 10;
             // 
-            // textBoxCoberturaServicio
-            // 
-            this.textBoxCoberturaServicio.Location = new System.Drawing.Point(213, 144);
-            this.textBoxCoberturaServicio.Name = "textBoxCoberturaServicio";
-            this.textBoxCoberturaServicio.Size = new System.Drawing.Size(254, 20);
-            this.textBoxCoberturaServicio.TabIndex = 11;
-            // 
-            // comboBoxPaises
-            // 
-            this.comboBoxPaises.FormattingEnabled = true;
-            this.comboBoxPaises.Location = new System.Drawing.Point(213, 181);
-            this.comboBoxPaises.Name = "comboBoxPaises";
-            this.comboBoxPaises.Size = new System.Drawing.Size(254, 21);
-            this.comboBoxPaises.TabIndex = 12;
-            // 
             // comboBoxEstadoServicio
             // 
             this.comboBoxEstadoServicio.FormattingEnabled = true;
@@ -465,15 +477,6 @@
             this.comboBoxEstadoServicio.Name = "comboBoxEstadoServicio";
             this.comboBoxEstadoServicio.Size = new System.Drawing.Size(254, 21);
             this.comboBoxEstadoServicio.TabIndex = 13;
-            // 
-            // buttonAgregarPais
-            // 
-            this.buttonAgregarPais.Location = new System.Drawing.Point(30, 181);
-            this.buttonAgregarPais.Name = "buttonAgregarPais";
-            this.buttonAgregarPais.Size = new System.Drawing.Size(110, 23);
-            this.buttonAgregarPais.TabIndex = 14;
-            this.buttonAgregarPais.Text = "Agregar País";
-            this.buttonAgregarPais.UseVisualStyleBackColor = true;
             // 
             // buttonBorrarServicio
             // 
@@ -653,6 +656,130 @@
             this.textBoxClaveRS.Size = new System.Drawing.Size(254, 20);
             this.textBoxClaveRS.TabIndex = 28;
             // 
+            // buttonRegistrarRS
+            // 
+            this.buttonRegistrarRS.Location = new System.Drawing.Point(377, 234);
+            this.buttonRegistrarRS.Name = "buttonRegistrarRS";
+            this.buttonRegistrarRS.Size = new System.Drawing.Size(173, 23);
+            this.buttonRegistrarRS.TabIndex = 29;
+            this.buttonRegistrarRS.Text = "Registrar Red Social";
+            this.buttonRegistrarRS.UseVisualStyleBackColor = true;
+            // 
+            // labelIdCampanna
+            // 
+            this.labelIdCampanna.AutoSize = true;
+            this.labelIdCampanna.Location = new System.Drawing.Point(55, 75);
+            this.labelIdCampanna.Name = "labelIdCampanna";
+            this.labelIdCampanna.Size = new System.Drawing.Size(130, 13);
+            this.labelIdCampanna.TabIndex = 2;
+            this.labelIdCampanna.Text = "Identificador de campaña:";
+            this.labelIdCampanna.Click += new System.EventHandler(this.labelIdCampanna_Click);
+            // 
+            // labelNombreCampanna
+            // 
+            this.labelNombreCampanna.AutoSize = true;
+            this.labelNombreCampanna.Location = new System.Drawing.Point(55, 111);
+            this.labelNombreCampanna.Name = "labelNombreCampanna";
+            this.labelNombreCampanna.Size = new System.Drawing.Size(109, 13);
+            this.labelNombreCampanna.TabIndex = 3;
+            this.labelNombreCampanna.Text = "Nombre de campaña:";
+            // 
+            // labelFechaInicio
+            // 
+            this.labelFechaInicio.AutoSize = true;
+            this.labelFechaInicio.Location = new System.Drawing.Point(55, 148);
+            this.labelFechaInicio.Name = "labelFechaInicio";
+            this.labelFechaInicio.Size = new System.Drawing.Size(82, 13);
+            this.labelFechaInicio.TabIndex = 4;
+            this.labelFechaInicio.Text = "Fecha de inicio:";
+            // 
+            // labelFechaFinalizacion
+            // 
+            this.labelFechaFinalizacion.AutoSize = true;
+            this.labelFechaFinalizacion.Location = new System.Drawing.Point(55, 186);
+            this.labelFechaFinalizacion.Name = "labelFechaFinalizacion";
+            this.labelFechaFinalizacion.Size = new System.Drawing.Size(110, 13);
+            this.labelFechaFinalizacion.TabIndex = 5;
+            this.labelFechaFinalizacion.Text = "Fecha de finalización:";
+            // 
+            // labelPaisesCampanna
+            // 
+            this.labelPaisesCampanna.AutoSize = true;
+            this.labelPaisesCampanna.Location = new System.Drawing.Point(55, 226);
+            this.labelPaisesCampanna.Name = "labelPaisesCampanna";
+            this.labelPaisesCampanna.Size = new System.Drawing.Size(109, 13);
+            this.labelPaisesCampanna.TabIndex = 6;
+            this.labelPaisesCampanna.Text = "Países de aplicación:";
+            // 
+            // labelCostoCampanna
+            // 
+            this.labelCostoCampanna.AutoSize = true;
+            this.labelCostoCampanna.Location = new System.Drawing.Point(55, 297);
+            this.labelCostoCampanna.Name = "labelCostoCampanna";
+            this.labelCostoCampanna.Size = new System.Drawing.Size(99, 13);
+            this.labelCostoCampanna.TabIndex = 7;
+            this.labelCostoCampanna.Text = "Costo de campaña:";
+            // 
+            // textBoxIdCampanna
+            // 
+            this.textBoxIdCampanna.Location = new System.Drawing.Point(207, 68);
+            this.textBoxIdCampanna.Name = "textBoxIdCampanna";
+            this.textBoxIdCampanna.Size = new System.Drawing.Size(254, 20);
+            this.textBoxIdCampanna.TabIndex = 28;
+            // 
+            // textBoxNombreCampanna
+            // 
+            this.textBoxNombreCampanna.Location = new System.Drawing.Point(207, 104);
+            this.textBoxNombreCampanna.Name = "textBoxNombreCampanna";
+            this.textBoxNombreCampanna.Size = new System.Drawing.Size(254, 20);
+            this.textBoxNombreCampanna.TabIndex = 29;
+            // 
+            // textBoxCostoCampanna
+            // 
+            this.textBoxCostoCampanna.Location = new System.Drawing.Point(207, 290);
+            this.textBoxCostoCampanna.Name = "textBoxCostoCampanna";
+            this.textBoxCostoCampanna.Size = new System.Drawing.Size(254, 20);
+            this.textBoxCostoCampanna.TabIndex = 30;
+            // 
+            // dateTimePickerFechaInicioCampanna
+            // 
+            this.dateTimePickerFechaInicioCampanna.Location = new System.Drawing.Point(207, 141);
+            this.dateTimePickerFechaInicioCampanna.Name = "dateTimePickerFechaInicioCampanna";
+            this.dateTimePickerFechaInicioCampanna.Size = new System.Drawing.Size(254, 20);
+            this.dateTimePickerFechaInicioCampanna.TabIndex = 31;
+            // 
+            // dateTimePickerfFechaFinalizacionCampanna
+            // 
+            this.dateTimePickerfFechaFinalizacionCampanna.Location = new System.Drawing.Point(207, 179);
+            this.dateTimePickerfFechaFinalizacionCampanna.Name = "dateTimePickerfFechaFinalizacionCampanna";
+            this.dateTimePickerfFechaFinalizacionCampanna.Size = new System.Drawing.Size(254, 20);
+            this.dateTimePickerfFechaFinalizacionCampanna.TabIndex = 32;
+            // 
+            // dataGridViewPaisesCobertura
+            // 
+            this.dataGridViewPaisesCobertura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPaisesCobertura.Location = new System.Drawing.Point(213, 151);
+            this.dataGridViewPaisesCobertura.Name = "dataGridViewPaisesCobertura";
+            this.dataGridViewPaisesCobertura.Size = new System.Drawing.Size(254, 53);
+            this.dataGridViewPaisesCobertura.TabIndex = 19;
+            // 
+            // dataGridViewPaisesCampanna
+            // 
+            this.dataGridViewPaisesCampanna.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPaisesCampanna.Location = new System.Drawing.Point(207, 226);
+            this.dataGridViewPaisesCampanna.Name = "dataGridViewPaisesCampanna";
+            this.dataGridViewPaisesCampanna.Size = new System.Drawing.Size(254, 50);
+            this.dataGridViewPaisesCampanna.TabIndex = 33;
+            // 
+            // buttonCrearCampanna
+            // 
+            this.buttonCrearCampanna.Location = new System.Drawing.Point(511, 101);
+            this.buttonCrearCampanna.Name = "buttonCrearCampanna";
+            this.buttonCrearCampanna.Size = new System.Drawing.Size(153, 23);
+            this.buttonCrearCampanna.TabIndex = 34;
+            this.buttonCrearCampanna.Text = "Crear Campaña";
+            this.buttonCrearCampanna.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -668,6 +795,10 @@
             this.tabServicios.PerformLayout();
             this.tabRRSS.ResumeLayout(false);
             this.tabRRSS.PerformLayout();
+            this.tabCampanasMercadeo.ResumeLayout(false);
+            this.tabCampanasMercadeo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCobertura)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCampanna)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -700,10 +831,7 @@
         private System.Windows.Forms.Button buttonActualizarCliente;
         private System.Windows.Forms.Button buttonConsultaCliente;
         private System.Windows.Forms.Button buttonCrearCliente;
-        private System.Windows.Forms.Button buttonAgregarPais;
         private System.Windows.Forms.ComboBox comboBoxEstadoServicio;
-        private System.Windows.Forms.ComboBox comboBoxPaises;
-        private System.Windows.Forms.TextBox textBoxCoberturaServicio;
         private System.Windows.Forms.ComboBox comboBoxFormaPago;
         private System.Windows.Forms.TextBox textBoxDescripcionServicio;
         private System.Windows.Forms.TextBox textBoxIdServicio;
@@ -731,6 +859,21 @@
         private System.Windows.Forms.TextBox textBoxClaveRS;
         private System.Windows.Forms.TextBox textBoxNombreUsuarioRS;
         private System.Windows.Forms.ComboBox comboBoxRRSSempresa;
+        private System.Windows.Forms.DataGridView dataGridViewPaisesCobertura;
+        private System.Windows.Forms.Button buttonRegistrarRS;
+        private System.Windows.Forms.DataGridView dataGridViewPaisesCampanna;
+        private System.Windows.Forms.DateTimePicker dateTimePickerfFechaFinalizacionCampanna;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFechaInicioCampanna;
+        private System.Windows.Forms.TextBox textBoxCostoCampanna;
+        private System.Windows.Forms.TextBox textBoxNombreCampanna;
+        private System.Windows.Forms.TextBox textBoxIdCampanna;
+        private System.Windows.Forms.Label labelCostoCampanna;
+        private System.Windows.Forms.Label labelPaisesCampanna;
+        private System.Windows.Forms.Label labelFechaFinalizacion;
+        private System.Windows.Forms.Label labelFechaInicio;
+        private System.Windows.Forms.Label labelNombreCampanna;
+        private System.Windows.Forms.Label labelIdCampanna;
+        private System.Windows.Forms.Button buttonCrearCampanna;
     }
 }
 
