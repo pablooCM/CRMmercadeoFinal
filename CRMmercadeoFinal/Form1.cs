@@ -21,5 +21,10 @@ namespace CRMmercadeoFinal
         {
 
         }
+
+        private void labelIdCampanna_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

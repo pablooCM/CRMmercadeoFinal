@@ -97,11 +97,19 @@
             this.dataGridViewPaisesCobertura = new System.Windows.Forms.DataGridView();
             this.dataGridViewPaisesCampanna = new System.Windows.Forms.DataGridView();
             this.buttonCrearCampanna = new System.Windows.Forms.Button();
+            this.buttonConsultarCampanna = new System.Windows.Forms.Button();
+            this.buttonActualizarCampanna = new System.Windows.Forms.Button();
+            this.buttonBorrarCampanna = new System.Windows.Forms.Button();
+            this.buttonReporteCampanna = new System.Windows.Forms.Button();
+            this.buttonReporteClientesyServicios = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.CRMmktTab.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabServicios.SuspendLayout();
             this.tabRRSS.SuspendLayout();
             this.tabCampanasMercadeo.SuspendLayout();
+            this.tabReportesMkt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCobertura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCampanna)).BeginInit();
             this.SuspendLayout();
@@ -375,6 +383,9 @@
             // 
             // tabCampanasMercadeo
             // 
+            this.tabCampanasMercadeo.Controls.Add(this.buttonBorrarCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.buttonActualizarCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.buttonConsultarCampanna);
             this.tabCampanasMercadeo.Controls.Add(this.buttonCrearCampanna);
             this.tabCampanasMercadeo.Controls.Add(this.dataGridViewPaisesCampanna);
             this.tabCampanasMercadeo.Controls.Add(this.dateTimePickerfFechaFinalizacionCampanna);
@@ -532,6 +543,10 @@
             // 
             // tabReportesMkt
             // 
+            this.tabReportesMkt.Controls.Add(this.button2);
+            this.tabReportesMkt.Controls.Add(this.button1);
+            this.tabReportesMkt.Controls.Add(this.buttonReporteClientesyServicios);
+            this.tabReportesMkt.Controls.Add(this.buttonReporteCampanna);
             this.tabReportesMkt.Location = new System.Drawing.Point(4, 22);
             this.tabReportesMkt.Name = "tabReportesMkt";
             this.tabReportesMkt.Size = new System.Drawing.Size(711, 402);
@@ -780,6 +795,69 @@
             this.buttonCrearCampanna.Text = "Crear Campaña";
             this.buttonCrearCampanna.UseVisualStyleBackColor = true;
             // 
+            // buttonConsultarCampanna
+            // 
+            this.buttonConsultarCampanna.Location = new System.Drawing.Point(511, 143);
+            this.buttonConsultarCampanna.Name = "buttonConsultarCampanna";
+            this.buttonConsultarCampanna.Size = new System.Drawing.Size(153, 23);
+            this.buttonConsultarCampanna.TabIndex = 35;
+            this.buttonConsultarCampanna.Text = "Consultar Campaña";
+            this.buttonConsultarCampanna.UseVisualStyleBackColor = true;
+            // 
+            // buttonActualizarCampanna
+            // 
+            this.buttonActualizarCampanna.Location = new System.Drawing.Point(511, 186);
+            this.buttonActualizarCampanna.Name = "buttonActualizarCampanna";
+            this.buttonActualizarCampanna.Size = new System.Drawing.Size(153, 23);
+            this.buttonActualizarCampanna.TabIndex = 36;
+            this.buttonActualizarCampanna.Text = "Actualizar Campaña";
+            this.buttonActualizarCampanna.UseVisualStyleBackColor = true;
+            // 
+            // buttonBorrarCampanna
+            // 
+            this.buttonBorrarCampanna.Location = new System.Drawing.Point(511, 228);
+            this.buttonBorrarCampanna.Name = "buttonBorrarCampanna";
+            this.buttonBorrarCampanna.Size = new System.Drawing.Size(153, 23);
+            this.buttonBorrarCampanna.TabIndex = 37;
+            this.buttonBorrarCampanna.Text = "Borrar Campaña";
+            this.buttonBorrarCampanna.UseVisualStyleBackColor = true;
+            // 
+            // buttonReporteCampanna
+            // 
+            this.buttonReporteCampanna.Location = new System.Drawing.Point(3, 28);
+            this.buttonReporteCampanna.Name = "buttonReporteCampanna";
+            this.buttonReporteCampanna.Size = new System.Drawing.Size(172, 23);
+            this.buttonReporteCampanna.TabIndex = 35;
+            this.buttonReporteCampanna.Text = "Reporte de Campañas";
+            this.buttonReporteCampanna.UseVisualStyleBackColor = true;
+            // 
+            // buttonReporteClientesyServicios
+            // 
+            this.buttonReporteClientesyServicios.Location = new System.Drawing.Point(181, 28);
+            this.buttonReporteClientesyServicios.Name = "buttonReporteClientesyServicios";
+            this.buttonReporteClientesyServicios.Size = new System.Drawing.Size(172, 23);
+            this.buttonReporteClientesyServicios.TabIndex = 36;
+            this.buttonReporteClientesyServicios.Text = "Reporte de Clientes y Servicios";
+            this.buttonReporteClientesyServicios.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(359, 28);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(172, 23);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "Reporte de Redes Sociales";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(537, 28);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(172, 23);
+            this.button2.TabIndex = 38;
+            this.button2.Text = "Reporte de Clientes";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -797,6 +875,7 @@
             this.tabRRSS.PerformLayout();
             this.tabCampanasMercadeo.ResumeLayout(false);
             this.tabCampanasMercadeo.PerformLayout();
+            this.tabReportesMkt.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCobertura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCampanna)).EndInit();
             this.ResumeLayout(false);
@@ -874,6 +953,13 @@
         private System.Windows.Forms.Label labelNombreCampanna;
         private System.Windows.Forms.Label labelIdCampanna;
         private System.Windows.Forms.Button buttonCrearCampanna;
+        private System.Windows.Forms.Button buttonBorrarCampanna;
+        private System.Windows.Forms.Button buttonActualizarCampanna;
+        private System.Windows.Forms.Button buttonConsultarCampanna;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonReporteClientesyServicios;
+        private System.Windows.Forms.Button buttonReporteCampanna;
     }
 }
 
