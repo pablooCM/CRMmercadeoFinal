@@ -30,6 +30,13 @@
         {
             this.CRMmktTab = new System.Windows.Forms.TabControl();
             this.tabClientes = new System.Windows.Forms.TabPage();
+            this.buttonAsignarRS = new System.Windows.Forms.Button();
+            this.labelRS = new System.Windows.Forms.Label();
+            this.comboBoxRRSS = new System.Windows.Forms.ComboBox();
+            this.textBoxRRSScliente = new System.Windows.Forms.TextBox();
+            this.labelRRSS = new System.Windows.Forms.Label();
+            this.labelServiciosCliente = new System.Windows.Forms.Label();
+            this.textBoxServiciosCliente = new System.Windows.Forms.TextBox();
             this.buttonAsignarServicioCliente = new System.Windows.Forms.Button();
             this.labelAsignarServiciosCliente = new System.Windows.Forms.Label();
             this.comboBoxServiciosCliente = new System.Windows.Forms.ComboBox();
@@ -37,13 +44,13 @@
             this.buttonActualizarCliente = new System.Windows.Forms.Button();
             this.buttonConsultaCliente = new System.Windows.Forms.Button();
             this.buttonCrearCliente = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxNombreCliente = new System.Windows.Forms.TextBox();
+            this.textBoxPrimerApellidoCliente = new System.Windows.Forms.TextBox();
+            this.textBoxSegundoApellidoCliente = new System.Windows.Forms.TextBox();
+            this.textBoxCiudadCliente = new System.Windows.Forms.TextBox();
+            this.textBoxCorreoElectronicoCliente = new System.Windows.Forms.TextBox();
+            this.textBoxPaisCliente = new System.Windows.Forms.TextBox();
+            this.textBoxCedulaCliente = new System.Windows.Forms.TextBox();
             this.labelMailCliente = new System.Windows.Forms.Label();
             this.labelPaisCliente = new System.Windows.Forms.Label();
             this.labelCiudadCliente = new System.Windows.Forms.Label();
@@ -52,66 +59,59 @@
             this.labelNombreCliente = new System.Windows.Forms.Label();
             this.labelCedulaCliente = new System.Windows.Forms.Label();
             this.tabServicios = new System.Windows.Forms.TabPage();
-            this.tabRRSS = new System.Windows.Forms.TabPage();
-            this.tabCampanasMercadeo = new System.Windows.Forms.TabPage();
-            this.labelIdServicio = new System.Windows.Forms.Label();
-            this.labelDescripciónServicio = new System.Windows.Forms.Label();
-            this.labelFormaPago = new System.Windows.Forms.Label();
-            this.labelCoberturaServicio = new System.Windows.Forms.Label();
-            this.labelEstadoDelServicio = new System.Windows.Forms.Label();
-            this.textBoxIdServicio = new System.Windows.Forms.TextBox();
-            this.textBoxDescripcionServicio = new System.Windows.Forms.TextBox();
-            this.comboBoxFormaPago = new System.Windows.Forms.ComboBox();
-            this.comboBoxEstadoServicio = new System.Windows.Forms.ComboBox();
-            this.buttonBorrarServicio = new System.Windows.Forms.Button();
-            this.buttonActualizarServicio = new System.Windows.Forms.Button();
-            this.buttonConsultarServicio = new System.Windows.Forms.Button();
-            this.buttonCrearServicio = new System.Windows.Forms.Button();
-            this.textBoxServiciosCliente = new System.Windows.Forms.TextBox();
-            this.labelServiciosCliente = new System.Windows.Forms.Label();
-            this.tabReportesMkt = new System.Windows.Forms.TabPage();
-            this.tabIntegracionVentas = new System.Windows.Forms.TabPage();
-            this.labelRedSocial = new System.Windows.Forms.Label();
-            this.labelNombreUsuario = new System.Windows.Forms.Label();
-            this.labelClaveRS = new System.Windows.Forms.Label();
-            this.labelRRSS = new System.Windows.Forms.Label();
-            this.textBoxRRSScliente = new System.Windows.Forms.TextBox();
-            this.comboBoxRRSS = new System.Windows.Forms.ComboBox();
-            this.labelRS = new System.Windows.Forms.Label();
-            this.buttonAsignarRS = new System.Windows.Forms.Button();
-            this.comboBoxRRSSempresa = new System.Windows.Forms.ComboBox();
-            this.textBoxNombreUsuarioRS = new System.Windows.Forms.TextBox();
-            this.textBoxClaveRS = new System.Windows.Forms.TextBox();
-            this.buttonRegistrarRS = new System.Windows.Forms.Button();
-            this.labelIdCampanna = new System.Windows.Forms.Label();
-            this.labelNombreCampanna = new System.Windows.Forms.Label();
-            this.labelFechaInicio = new System.Windows.Forms.Label();
-            this.labelFechaFinalizacion = new System.Windows.Forms.Label();
-            this.labelPaisesCampanna = new System.Windows.Forms.Label();
-            this.labelCostoCampanna = new System.Windows.Forms.Label();
-            this.textBoxIdCampanna = new System.Windows.Forms.TextBox();
-            this.textBoxNombreCampanna = new System.Windows.Forms.TextBox();
-            this.textBoxCostoCampanna = new System.Windows.Forms.TextBox();
-            this.dateTimePickerFechaInicioCampanna = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerfFechaFinalizacionCampanna = new System.Windows.Forms.DateTimePicker();
             this.dataGridViewPaisesCobertura = new System.Windows.Forms.DataGridView();
-            this.dataGridViewPaisesCampanna = new System.Windows.Forms.DataGridView();
-            this.buttonCrearCampanna = new System.Windows.Forms.Button();
-            this.buttonConsultarCampanna = new System.Windows.Forms.Button();
-            this.buttonActualizarCampanna = new System.Windows.Forms.Button();
+            this.buttonCrearServicio = new System.Windows.Forms.Button();
+            this.buttonConsultarServicio = new System.Windows.Forms.Button();
+            this.buttonActualizarServicio = new System.Windows.Forms.Button();
+            this.buttonBorrarServicio = new System.Windows.Forms.Button();
+            this.comboBoxEstadoServicio = new System.Windows.Forms.ComboBox();
+            this.comboBoxFormaPago = new System.Windows.Forms.ComboBox();
+            this.textBoxDescripcionServicio = new System.Windows.Forms.TextBox();
+            this.textBoxIdServicio = new System.Windows.Forms.TextBox();
+            this.labelEstadoDelServicio = new System.Windows.Forms.Label();
+            this.labelCoberturaServicio = new System.Windows.Forms.Label();
+            this.labelFormaPago = new System.Windows.Forms.Label();
+            this.labelDescripciónServicio = new System.Windows.Forms.Label();
+            this.labelIdServicio = new System.Windows.Forms.Label();
+            this.tabRRSS = new System.Windows.Forms.TabPage();
+            this.buttonRegistrarRS = new System.Windows.Forms.Button();
+            this.textBoxClaveRS = new System.Windows.Forms.TextBox();
+            this.textBoxNombreUsuarioRS = new System.Windows.Forms.TextBox();
+            this.comboBoxRRSSempresa = new System.Windows.Forms.ComboBox();
+            this.labelClaveRS = new System.Windows.Forms.Label();
+            this.labelNombreUsuario = new System.Windows.Forms.Label();
+            this.labelRedSocial = new System.Windows.Forms.Label();
+            this.tabCampanasMercadeo = new System.Windows.Forms.TabPage();
             this.buttonBorrarCampanna = new System.Windows.Forms.Button();
-            this.buttonReporteCampanna = new System.Windows.Forms.Button();
-            this.buttonReporteClientesyServicios = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonActualizarCampanna = new System.Windows.Forms.Button();
+            this.buttonConsultarCampanna = new System.Windows.Forms.Button();
+            this.buttonCrearCampanna = new System.Windows.Forms.Button();
+            this.dataGridViewPaisesCampanna = new System.Windows.Forms.DataGridView();
+            this.dateTimePickerfFechaFinalizacionCampanna = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerFechaInicioCampanna = new System.Windows.Forms.DateTimePicker();
+            this.textBoxCostoCampanna = new System.Windows.Forms.TextBox();
+            this.textBoxNombreCampanna = new System.Windows.Forms.TextBox();
+            this.textBoxIdCampanna = new System.Windows.Forms.TextBox();
+            this.labelCostoCampanna = new System.Windows.Forms.Label();
+            this.labelPaisesCampanna = new System.Windows.Forms.Label();
+            this.labelFechaFinalizacion = new System.Windows.Forms.Label();
+            this.labelFechaInicio = new System.Windows.Forms.Label();
+            this.labelNombreCampanna = new System.Windows.Forms.Label();
+            this.labelIdCampanna = new System.Windows.Forms.Label();
+            this.tabReportesMkt = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.buttonReporteClientesyServicios = new System.Windows.Forms.Button();
+            this.buttonReporteCampanna = new System.Windows.Forms.Button();
+            this.tabIntegracionVentas = new System.Windows.Forms.TabPage();
             this.CRMmktTab.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabServicios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCobertura)).BeginInit();
             this.tabRRSS.SuspendLayout();
             this.tabCampanasMercadeo.SuspendLayout();
-            this.tabReportesMkt.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCobertura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCampanna)).BeginInit();
+            this.tabReportesMkt.SuspendLayout();
             this.SuspendLayout();
             // 
             // CRMmktTab
@@ -144,13 +144,13 @@
             this.tabClientes.Controls.Add(this.buttonActualizarCliente);
             this.tabClientes.Controls.Add(this.buttonConsultaCliente);
             this.tabClientes.Controls.Add(this.buttonCrearCliente);
-            this.tabClientes.Controls.Add(this.textBox7);
-            this.tabClientes.Controls.Add(this.textBox6);
-            this.tabClientes.Controls.Add(this.textBox5);
-            this.tabClientes.Controls.Add(this.textBox4);
-            this.tabClientes.Controls.Add(this.textBox3);
-            this.tabClientes.Controls.Add(this.textBox2);
-            this.tabClientes.Controls.Add(this.textBox1);
+            this.tabClientes.Controls.Add(this.textBoxNombreCliente);
+            this.tabClientes.Controls.Add(this.textBoxPrimerApellidoCliente);
+            this.tabClientes.Controls.Add(this.textBoxSegundoApellidoCliente);
+            this.tabClientes.Controls.Add(this.textBoxCiudadCliente);
+            this.tabClientes.Controls.Add(this.textBoxCorreoElectronicoCliente);
+            this.tabClientes.Controls.Add(this.textBoxPaisCliente);
+            this.tabClientes.Controls.Add(this.textBoxCedulaCliente);
             this.tabClientes.Controls.Add(this.labelMailCliente);
             this.tabClientes.Controls.Add(this.labelPaisCliente);
             this.tabClientes.Controls.Add(this.labelCiudadCliente);
@@ -165,6 +165,72 @@
             this.tabClientes.TabIndex = 0;
             this.tabClientes.Text = "Clientes";
             this.tabClientes.UseVisualStyleBackColor = true;
+            // 
+            // buttonAsignarRS
+            // 
+            this.buttonAsignarRS.Location = new System.Drawing.Point(511, 354);
+            this.buttonAsignarRS.Name = "buttonAsignarRS";
+            this.buttonAsignarRS.Size = new System.Drawing.Size(153, 23);
+            this.buttonAsignarRS.TabIndex = 27;
+            this.buttonAsignarRS.Text = "Asignar Red Social";
+            this.buttonAsignarRS.UseVisualStyleBackColor = true;
+            // 
+            // labelRS
+            // 
+            this.labelRS.AutoSize = true;
+            this.labelRS.Location = new System.Drawing.Point(8, 381);
+            this.labelRS.Name = "labelRS";
+            this.labelRS.Size = new System.Drawing.Size(111, 13);
+            this.labelRS.TabIndex = 26;
+            this.labelRS.Text = "Seleccione red social:";
+            // 
+            // comboBoxRRSS
+            // 
+            this.comboBoxRRSS.FormattingEnabled = true;
+            this.comboBoxRRSS.Items.AddRange(new object[] {
+            "Twitter",
+            "Facebook",
+            "Google+",
+            "LinkedIn",
+            "Hi5",
+            "Snapchat",
+            "Instagram"});
+            this.comboBoxRRSS.Location = new System.Drawing.Point(192, 373);
+            this.comboBoxRRSS.Name = "comboBoxRRSS";
+            this.comboBoxRRSS.Size = new System.Drawing.Size(254, 21);
+            this.comboBoxRRSS.TabIndex = 25;
+            // 
+            // textBoxRRSScliente
+            // 
+            this.textBoxRRSScliente.Location = new System.Drawing.Point(192, 347);
+            this.textBoxRRSScliente.Name = "textBoxRRSScliente";
+            this.textBoxRRSScliente.Size = new System.Drawing.Size(254, 20);
+            this.textBoxRRSScliente.TabIndex = 24;
+            // 
+            // labelRRSS
+            // 
+            this.labelRRSS.AutoSize = true;
+            this.labelRRSS.Location = new System.Drawing.Point(8, 354);
+            this.labelRRSS.Name = "labelRRSS";
+            this.labelRRSS.Size = new System.Drawing.Size(133, 13);
+            this.labelRRSS.TabIndex = 23;
+            this.labelRRSS.Text = "Redes sociales del cliente:";
+            // 
+            // labelServiciosCliente
+            // 
+            this.labelServiciosCliente.AutoSize = true;
+            this.labelServiciosCliente.Location = new System.Drawing.Point(8, 284);
+            this.labelServiciosCliente.Name = "labelServiciosCliente";
+            this.labelServiciosCliente.Size = new System.Drawing.Size(167, 13);
+            this.labelServiciosCliente.TabIndex = 22;
+            this.labelServiciosCliente.Text = "Servicios adquiridos por el cliente:";
+            // 
+            // textBoxServiciosCliente
+            // 
+            this.textBoxServiciosCliente.Location = new System.Drawing.Point(192, 277);
+            this.textBoxServiciosCliente.Name = "textBoxServiciosCliente";
+            this.textBoxServiciosCliente.Size = new System.Drawing.Size(254, 20);
+            this.textBoxServiciosCliente.TabIndex = 21;
             // 
             // buttonAsignarServicioCliente
             // 
@@ -227,55 +293,56 @@
             this.buttonCrearCliente.TabIndex = 14;
             this.buttonCrearCliente.Text = "Crear Cliente";
             this.buttonCrearCliente.UseVisualStyleBackColor = true;
+            this.buttonCrearCliente.Click += new System.EventHandler(this.buttonCrearCliente_Click);
             // 
-            // textBox7
+            // textBoxNombreCliente
             // 
-            this.textBox7.Location = new System.Drawing.Point(192, 63);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(254, 20);
-            this.textBox7.TabIndex = 13;
+            this.textBoxNombreCliente.Location = new System.Drawing.Point(192, 63);
+            this.textBoxNombreCliente.Name = "textBoxNombreCliente";
+            this.textBoxNombreCliente.Size = new System.Drawing.Size(254, 20);
+            this.textBoxNombreCliente.TabIndex = 13;
             // 
-            // textBox6
+            // textBoxPrimerApellidoCliente
             // 
-            this.textBox6.Location = new System.Drawing.Point(192, 98);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(254, 20);
-            this.textBox6.TabIndex = 12;
+            this.textBoxPrimerApellidoCliente.Location = new System.Drawing.Point(192, 98);
+            this.textBoxPrimerApellidoCliente.Name = "textBoxPrimerApellidoCliente";
+            this.textBoxPrimerApellidoCliente.Size = new System.Drawing.Size(254, 20);
+            this.textBoxPrimerApellidoCliente.TabIndex = 12;
             // 
-            // textBox5
+            // textBoxSegundoApellidoCliente
             // 
-            this.textBox5.Location = new System.Drawing.Point(192, 135);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(254, 20);
-            this.textBox5.TabIndex = 11;
+            this.textBoxSegundoApellidoCliente.Location = new System.Drawing.Point(192, 135);
+            this.textBoxSegundoApellidoCliente.Name = "textBoxSegundoApellidoCliente";
+            this.textBoxSegundoApellidoCliente.Size = new System.Drawing.Size(254, 20);
+            this.textBoxSegundoApellidoCliente.TabIndex = 11;
             // 
-            // textBox4
+            // textBoxCiudadCliente
             // 
-            this.textBox4.Location = new System.Drawing.Point(192, 170);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(254, 20);
-            this.textBox4.TabIndex = 10;
+            this.textBoxCiudadCliente.Location = new System.Drawing.Point(192, 170);
+            this.textBoxCiudadCliente.Name = "textBoxCiudadCliente";
+            this.textBoxCiudadCliente.Size = new System.Drawing.Size(254, 20);
+            this.textBoxCiudadCliente.TabIndex = 10;
             // 
-            // textBox3
+            // textBoxCorreoElectronicoCliente
             // 
-            this.textBox3.Location = new System.Drawing.Point(192, 241);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(254, 20);
-            this.textBox3.TabIndex = 9;
+            this.textBoxCorreoElectronicoCliente.Location = new System.Drawing.Point(192, 241);
+            this.textBoxCorreoElectronicoCliente.Name = "textBoxCorreoElectronicoCliente";
+            this.textBoxCorreoElectronicoCliente.Size = new System.Drawing.Size(254, 20);
+            this.textBoxCorreoElectronicoCliente.TabIndex = 9;
             // 
-            // textBox2
+            // textBoxPaisCliente
             // 
-            this.textBox2.Location = new System.Drawing.Point(192, 205);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(254, 20);
-            this.textBox2.TabIndex = 8;
+            this.textBoxPaisCliente.Location = new System.Drawing.Point(192, 205);
+            this.textBoxPaisCliente.Name = "textBoxPaisCliente";
+            this.textBoxPaisCliente.Size = new System.Drawing.Size(254, 20);
+            this.textBoxPaisCliente.TabIndex = 8;
             // 
-            // textBox1
+            // textBoxCedulaCliente
             // 
-            this.textBox1.Location = new System.Drawing.Point(192, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(254, 20);
-            this.textBox1.TabIndex = 7;
+            this.textBoxCedulaCliente.Location = new System.Drawing.Point(192, 29);
+            this.textBoxCedulaCliente.Name = "textBoxCedulaCliente";
+            this.textBoxCedulaCliente.Size = new System.Drawing.Size(254, 20);
+            this.textBoxCedulaCliente.TabIndex = 7;
             // 
             // labelMailCliente
             // 
@@ -365,6 +432,133 @@
             this.tabServicios.Text = "Servicios";
             this.tabServicios.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewPaisesCobertura
+            // 
+            this.dataGridViewPaisesCobertura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPaisesCobertura.Location = new System.Drawing.Point(213, 151);
+            this.dataGridViewPaisesCobertura.Name = "dataGridViewPaisesCobertura";
+            this.dataGridViewPaisesCobertura.Size = new System.Drawing.Size(254, 53);
+            this.dataGridViewPaisesCobertura.TabIndex = 19;
+            // 
+            // buttonCrearServicio
+            // 
+            this.buttonCrearServicio.Location = new System.Drawing.Point(532, 64);
+            this.buttonCrearServicio.Name = "buttonCrearServicio";
+            this.buttonCrearServicio.Size = new System.Drawing.Size(153, 23);
+            this.buttonCrearServicio.TabIndex = 18;
+            this.buttonCrearServicio.Text = "Crear Servicio";
+            this.buttonCrearServicio.UseVisualStyleBackColor = true;
+            // 
+            // buttonConsultarServicio
+            // 
+            this.buttonConsultarServicio.Location = new System.Drawing.Point(532, 104);
+            this.buttonConsultarServicio.Name = "buttonConsultarServicio";
+            this.buttonConsultarServicio.Size = new System.Drawing.Size(153, 23);
+            this.buttonConsultarServicio.TabIndex = 17;
+            this.buttonConsultarServicio.Text = "Consultar Servicio";
+            this.buttonConsultarServicio.UseVisualStyleBackColor = true;
+            // 
+            // buttonActualizarServicio
+            // 
+            this.buttonActualizarServicio.Location = new System.Drawing.Point(532, 141);
+            this.buttonActualizarServicio.Name = "buttonActualizarServicio";
+            this.buttonActualizarServicio.Size = new System.Drawing.Size(153, 23);
+            this.buttonActualizarServicio.TabIndex = 16;
+            this.buttonActualizarServicio.Text = "Actualizar Servicio";
+            this.buttonActualizarServicio.UseVisualStyleBackColor = true;
+            // 
+            // buttonBorrarServicio
+            // 
+            this.buttonBorrarServicio.Location = new System.Drawing.Point(532, 181);
+            this.buttonBorrarServicio.Name = "buttonBorrarServicio";
+            this.buttonBorrarServicio.Size = new System.Drawing.Size(153, 23);
+            this.buttonBorrarServicio.TabIndex = 15;
+            this.buttonBorrarServicio.Text = "Borrar Servicio";
+            this.buttonBorrarServicio.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxEstadoServicio
+            // 
+            this.comboBoxEstadoServicio.FormattingEnabled = true;
+            this.comboBoxEstadoServicio.Items.AddRange(new object[] {
+            "activo",
+            "inactivo",
+            "por implementar"});
+            this.comboBoxEstadoServicio.Location = new System.Drawing.Point(213, 220);
+            this.comboBoxEstadoServicio.Name = "comboBoxEstadoServicio";
+            this.comboBoxEstadoServicio.Size = new System.Drawing.Size(254, 21);
+            this.comboBoxEstadoServicio.TabIndex = 13;
+            // 
+            // comboBoxFormaPago
+            // 
+            this.comboBoxFormaPago.FormattingEnabled = true;
+            this.comboBoxFormaPago.Items.AddRange(new object[] {
+            "mensual",
+            "quincenal",
+            "anual"});
+            this.comboBoxFormaPago.Location = new System.Drawing.Point(213, 106);
+            this.comboBoxFormaPago.Name = "comboBoxFormaPago";
+            this.comboBoxFormaPago.Size = new System.Drawing.Size(254, 21);
+            this.comboBoxFormaPago.TabIndex = 10;
+            // 
+            // textBoxDescripcionServicio
+            // 
+            this.textBoxDescripcionServicio.Location = new System.Drawing.Point(213, 67);
+            this.textBoxDescripcionServicio.Name = "textBoxDescripcionServicio";
+            this.textBoxDescripcionServicio.Size = new System.Drawing.Size(254, 20);
+            this.textBoxDescripcionServicio.TabIndex = 9;
+            // 
+            // textBoxIdServicio
+            // 
+            this.textBoxIdServicio.Location = new System.Drawing.Point(213, 28);
+            this.textBoxIdServicio.Name = "textBoxIdServicio";
+            this.textBoxIdServicio.Size = new System.Drawing.Size(254, 20);
+            this.textBoxIdServicio.TabIndex = 8;
+            // 
+            // labelEstadoDelServicio
+            // 
+            this.labelEstadoDelServicio.AutoSize = true;
+            this.labelEstadoDelServicio.Location = new System.Drawing.Point(27, 228);
+            this.labelEstadoDelServicio.Name = "labelEstadoDelServicio";
+            this.labelEstadoDelServicio.Size = new System.Drawing.Size(99, 13);
+            this.labelEstadoDelServicio.TabIndex = 4;
+            this.labelEstadoDelServicio.Text = "Estado del servicio:";
+            // 
+            // labelCoberturaServicio
+            // 
+            this.labelCoberturaServicio.AutoSize = true;
+            this.labelCoberturaServicio.Location = new System.Drawing.Point(27, 151);
+            this.labelCoberturaServicio.Name = "labelCoberturaServicio";
+            this.labelCoberturaServicio.Size = new System.Drawing.Size(112, 13);
+            this.labelCoberturaServicio.TabIndex = 3;
+            this.labelCoberturaServicio.Text = "Cobertura del servicio:";
+            // 
+            // labelFormaPago
+            // 
+            this.labelFormaPago.AutoSize = true;
+            this.labelFormaPago.Location = new System.Drawing.Point(27, 114);
+            this.labelFormaPago.Name = "labelFormaPago";
+            this.labelFormaPago.Size = new System.Drawing.Size(81, 13);
+            this.labelFormaPago.TabIndex = 2;
+            this.labelFormaPago.Text = "Forma de pago:";
+            // 
+            // labelDescripciónServicio
+            // 
+            this.labelDescripciónServicio.AutoSize = true;
+            this.labelDescripciónServicio.Location = new System.Drawing.Point(27, 74);
+            this.labelDescripciónServicio.Name = "labelDescripciónServicio";
+            this.labelDescripciónServicio.Size = new System.Drawing.Size(122, 13);
+            this.labelDescripciónServicio.TabIndex = 1;
+            this.labelDescripciónServicio.Text = "Descripción del servicio:";
+            // 
+            // labelIdServicio
+            // 
+            this.labelIdServicio.AutoSize = true;
+            this.labelIdServicio.Location = new System.Drawing.Point(27, 35);
+            this.labelIdServicio.Name = "labelIdServicio";
+            this.labelIdServicio.Size = new System.Drawing.Size(77, 13);
+            this.labelIdServicio.TabIndex = 0;
+            this.labelIdServicio.Text = "ID del servicio:";
+            // 
             // tabRRSS
             // 
             this.tabRRSS.Controls.Add(this.buttonRegistrarRS);
@@ -380,6 +574,73 @@
             this.tabRRSS.TabIndex = 2;
             this.tabRRSS.Text = "Redes Sociales";
             this.tabRRSS.UseVisualStyleBackColor = true;
+            // 
+            // buttonRegistrarRS
+            // 
+            this.buttonRegistrarRS.Location = new System.Drawing.Point(377, 234);
+            this.buttonRegistrarRS.Name = "buttonRegistrarRS";
+            this.buttonRegistrarRS.Size = new System.Drawing.Size(173, 23);
+            this.buttonRegistrarRS.TabIndex = 29;
+            this.buttonRegistrarRS.Text = "Registrar Red Social";
+            this.buttonRegistrarRS.UseVisualStyleBackColor = true;
+            // 
+            // textBoxClaveRS
+            // 
+            this.textBoxClaveRS.Location = new System.Drawing.Point(220, 147);
+            this.textBoxClaveRS.Name = "textBoxClaveRS";
+            this.textBoxClaveRS.PasswordChar = '*';
+            this.textBoxClaveRS.Size = new System.Drawing.Size(254, 20);
+            this.textBoxClaveRS.TabIndex = 28;
+            // 
+            // textBoxNombreUsuarioRS
+            // 
+            this.textBoxNombreUsuarioRS.Location = new System.Drawing.Point(220, 101);
+            this.textBoxNombreUsuarioRS.Name = "textBoxNombreUsuarioRS";
+            this.textBoxNombreUsuarioRS.Size = new System.Drawing.Size(254, 20);
+            this.textBoxNombreUsuarioRS.TabIndex = 27;
+            // 
+            // comboBoxRRSSempresa
+            // 
+            this.comboBoxRRSSempresa.FormattingEnabled = true;
+            this.comboBoxRRSSempresa.Items.AddRange(new object[] {
+            "Twitter",
+            "Facebook",
+            "Google+",
+            "LinkedIn",
+            "Hi5",
+            "Snapchat",
+            "Instagram"});
+            this.comboBoxRRSSempresa.Location = new System.Drawing.Point(220, 55);
+            this.comboBoxRRSSempresa.Name = "comboBoxRRSSempresa";
+            this.comboBoxRRSSempresa.Size = new System.Drawing.Size(254, 21);
+            this.comboBoxRRSSempresa.TabIndex = 26;
+            // 
+            // labelClaveRS
+            // 
+            this.labelClaveRS.AutoSize = true;
+            this.labelClaveRS.Location = new System.Drawing.Point(53, 154);
+            this.labelClaveRS.Name = "labelClaveRS";
+            this.labelClaveRS.Size = new System.Drawing.Size(100, 13);
+            this.labelClaveRS.TabIndex = 3;
+            this.labelClaveRS.Text = "Clave de red social:";
+            // 
+            // labelNombreUsuario
+            // 
+            this.labelNombreUsuario.AutoSize = true;
+            this.labelNombreUsuario.Location = new System.Drawing.Point(53, 108);
+            this.labelNombreUsuario.Name = "labelNombreUsuario";
+            this.labelNombreUsuario.Size = new System.Drawing.Size(99, 13);
+            this.labelNombreUsuario.TabIndex = 2;
+            this.labelNombreUsuario.Text = "Nombre de usuario:";
+            // 
+            // labelRedSocial
+            // 
+            this.labelRedSocial.AutoSize = true;
+            this.labelRedSocial.Location = new System.Drawing.Point(53, 63);
+            this.labelRedSocial.Name = "labelRedSocial";
+            this.labelRedSocial.Size = new System.Drawing.Size(60, 13);
+            this.labelRedSocial.TabIndex = 1;
+            this.labelRedSocial.Text = "Red social:";
             // 
             // tabCampanasMercadeo
             // 
@@ -406,140 +667,139 @@
             this.tabCampanasMercadeo.Text = "Campañas de Mercadeo";
             this.tabCampanasMercadeo.UseVisualStyleBackColor = true;
             // 
-            // labelIdServicio
+            // buttonBorrarCampanna
             // 
-            this.labelIdServicio.AutoSize = true;
-            this.labelIdServicio.Location = new System.Drawing.Point(27, 35);
-            this.labelIdServicio.Name = "labelIdServicio";
-            this.labelIdServicio.Size = new System.Drawing.Size(77, 13);
-            this.labelIdServicio.TabIndex = 0;
-            this.labelIdServicio.Text = "ID del servicio:";
+            this.buttonBorrarCampanna.Location = new System.Drawing.Point(511, 228);
+            this.buttonBorrarCampanna.Name = "buttonBorrarCampanna";
+            this.buttonBorrarCampanna.Size = new System.Drawing.Size(153, 23);
+            this.buttonBorrarCampanna.TabIndex = 37;
+            this.buttonBorrarCampanna.Text = "Borrar Campaña";
+            this.buttonBorrarCampanna.UseVisualStyleBackColor = true;
             // 
-            // labelDescripciónServicio
+            // buttonActualizarCampanna
             // 
-            this.labelDescripciónServicio.AutoSize = true;
-            this.labelDescripciónServicio.Location = new System.Drawing.Point(27, 74);
-            this.labelDescripciónServicio.Name = "labelDescripciónServicio";
-            this.labelDescripciónServicio.Size = new System.Drawing.Size(122, 13);
-            this.labelDescripciónServicio.TabIndex = 1;
-            this.labelDescripciónServicio.Text = "Descripción del servicio:";
+            this.buttonActualizarCampanna.Location = new System.Drawing.Point(511, 186);
+            this.buttonActualizarCampanna.Name = "buttonActualizarCampanna";
+            this.buttonActualizarCampanna.Size = new System.Drawing.Size(153, 23);
+            this.buttonActualizarCampanna.TabIndex = 36;
+            this.buttonActualizarCampanna.Text = "Actualizar Campaña";
+            this.buttonActualizarCampanna.UseVisualStyleBackColor = true;
             // 
-            // labelFormaPago
+            // buttonConsultarCampanna
             // 
-            this.labelFormaPago.AutoSize = true;
-            this.labelFormaPago.Location = new System.Drawing.Point(27, 114);
-            this.labelFormaPago.Name = "labelFormaPago";
-            this.labelFormaPago.Size = new System.Drawing.Size(81, 13);
-            this.labelFormaPago.TabIndex = 2;
-            this.labelFormaPago.Text = "Forma de pago:";
+            this.buttonConsultarCampanna.Location = new System.Drawing.Point(511, 143);
+            this.buttonConsultarCampanna.Name = "buttonConsultarCampanna";
+            this.buttonConsultarCampanna.Size = new System.Drawing.Size(153, 23);
+            this.buttonConsultarCampanna.TabIndex = 35;
+            this.buttonConsultarCampanna.Text = "Consultar Campaña";
+            this.buttonConsultarCampanna.UseVisualStyleBackColor = true;
             // 
-            // labelCoberturaServicio
+            // buttonCrearCampanna
             // 
-            this.labelCoberturaServicio.AutoSize = true;
-            this.labelCoberturaServicio.Location = new System.Drawing.Point(27, 151);
-            this.labelCoberturaServicio.Name = "labelCoberturaServicio";
-            this.labelCoberturaServicio.Size = new System.Drawing.Size(112, 13);
-            this.labelCoberturaServicio.TabIndex = 3;
-            this.labelCoberturaServicio.Text = "Cobertura del servicio:";
+            this.buttonCrearCampanna.Location = new System.Drawing.Point(511, 101);
+            this.buttonCrearCampanna.Name = "buttonCrearCampanna";
+            this.buttonCrearCampanna.Size = new System.Drawing.Size(153, 23);
+            this.buttonCrearCampanna.TabIndex = 34;
+            this.buttonCrearCampanna.Text = "Crear Campaña";
+            this.buttonCrearCampanna.UseVisualStyleBackColor = true;
             // 
-            // labelEstadoDelServicio
+            // dataGridViewPaisesCampanna
             // 
-            this.labelEstadoDelServicio.AutoSize = true;
-            this.labelEstadoDelServicio.Location = new System.Drawing.Point(27, 228);
-            this.labelEstadoDelServicio.Name = "labelEstadoDelServicio";
-            this.labelEstadoDelServicio.Size = new System.Drawing.Size(99, 13);
-            this.labelEstadoDelServicio.TabIndex = 4;
-            this.labelEstadoDelServicio.Text = "Estado del servicio:";
+            this.dataGridViewPaisesCampanna.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPaisesCampanna.Location = new System.Drawing.Point(207, 226);
+            this.dataGridViewPaisesCampanna.Name = "dataGridViewPaisesCampanna";
+            this.dataGridViewPaisesCampanna.Size = new System.Drawing.Size(254, 50);
+            this.dataGridViewPaisesCampanna.TabIndex = 33;
             // 
-            // textBoxIdServicio
+            // dateTimePickerfFechaFinalizacionCampanna
             // 
-            this.textBoxIdServicio.Location = new System.Drawing.Point(213, 28);
-            this.textBoxIdServicio.Name = "textBoxIdServicio";
-            this.textBoxIdServicio.Size = new System.Drawing.Size(254, 20);
-            this.textBoxIdServicio.TabIndex = 8;
+            this.dateTimePickerfFechaFinalizacionCampanna.Location = new System.Drawing.Point(207, 179);
+            this.dateTimePickerfFechaFinalizacionCampanna.Name = "dateTimePickerfFechaFinalizacionCampanna";
+            this.dateTimePickerfFechaFinalizacionCampanna.Size = new System.Drawing.Size(254, 20);
+            this.dateTimePickerfFechaFinalizacionCampanna.TabIndex = 32;
             // 
-            // textBoxDescripcionServicio
+            // dateTimePickerFechaInicioCampanna
             // 
-            this.textBoxDescripcionServicio.Location = new System.Drawing.Point(213, 67);
-            this.textBoxDescripcionServicio.Name = "textBoxDescripcionServicio";
-            this.textBoxDescripcionServicio.Size = new System.Drawing.Size(254, 20);
-            this.textBoxDescripcionServicio.TabIndex = 9;
+            this.dateTimePickerFechaInicioCampanna.Location = new System.Drawing.Point(207, 141);
+            this.dateTimePickerFechaInicioCampanna.Name = "dateTimePickerFechaInicioCampanna";
+            this.dateTimePickerFechaInicioCampanna.Size = new System.Drawing.Size(254, 20);
+            this.dateTimePickerFechaInicioCampanna.TabIndex = 31;
             // 
-            // comboBoxFormaPago
+            // textBoxCostoCampanna
             // 
-            this.comboBoxFormaPago.FormattingEnabled = true;
-            this.comboBoxFormaPago.Items.AddRange(new object[] {
-            "mensual",
-            "quincenal",
-            "anual"});
-            this.comboBoxFormaPago.Location = new System.Drawing.Point(213, 106);
-            this.comboBoxFormaPago.Name = "comboBoxFormaPago";
-            this.comboBoxFormaPago.Size = new System.Drawing.Size(254, 21);
-            this.comboBoxFormaPago.TabIndex = 10;
+            this.textBoxCostoCampanna.Location = new System.Drawing.Point(207, 290);
+            this.textBoxCostoCampanna.Name = "textBoxCostoCampanna";
+            this.textBoxCostoCampanna.Size = new System.Drawing.Size(254, 20);
+            this.textBoxCostoCampanna.TabIndex = 30;
             // 
-            // comboBoxEstadoServicio
+            // textBoxNombreCampanna
             // 
-            this.comboBoxEstadoServicio.FormattingEnabled = true;
-            this.comboBoxEstadoServicio.Items.AddRange(new object[] {
-            "activo",
-            "inactivo",
-            "por implementar"});
-            this.comboBoxEstadoServicio.Location = new System.Drawing.Point(213, 220);
-            this.comboBoxEstadoServicio.Name = "comboBoxEstadoServicio";
-            this.comboBoxEstadoServicio.Size = new System.Drawing.Size(254, 21);
-            this.comboBoxEstadoServicio.TabIndex = 13;
+            this.textBoxNombreCampanna.Location = new System.Drawing.Point(207, 104);
+            this.textBoxNombreCampanna.Name = "textBoxNombreCampanna";
+            this.textBoxNombreCampanna.Size = new System.Drawing.Size(254, 20);
+            this.textBoxNombreCampanna.TabIndex = 29;
             // 
-            // buttonBorrarServicio
+            // textBoxIdCampanna
             // 
-            this.buttonBorrarServicio.Location = new System.Drawing.Point(532, 181);
-            this.buttonBorrarServicio.Name = "buttonBorrarServicio";
-            this.buttonBorrarServicio.Size = new System.Drawing.Size(153, 23);
-            this.buttonBorrarServicio.TabIndex = 15;
-            this.buttonBorrarServicio.Text = "Borrar Servicio";
-            this.buttonBorrarServicio.UseVisualStyleBackColor = true;
+            this.textBoxIdCampanna.Location = new System.Drawing.Point(207, 68);
+            this.textBoxIdCampanna.Name = "textBoxIdCampanna";
+            this.textBoxIdCampanna.Size = new System.Drawing.Size(254, 20);
+            this.textBoxIdCampanna.TabIndex = 28;
             // 
-            // buttonActualizarServicio
+            // labelCostoCampanna
             // 
-            this.buttonActualizarServicio.Location = new System.Drawing.Point(532, 141);
-            this.buttonActualizarServicio.Name = "buttonActualizarServicio";
-            this.buttonActualizarServicio.Size = new System.Drawing.Size(153, 23);
-            this.buttonActualizarServicio.TabIndex = 16;
-            this.buttonActualizarServicio.Text = "Actualizar Servicio";
-            this.buttonActualizarServicio.UseVisualStyleBackColor = true;
+            this.labelCostoCampanna.AutoSize = true;
+            this.labelCostoCampanna.Location = new System.Drawing.Point(55, 297);
+            this.labelCostoCampanna.Name = "labelCostoCampanna";
+            this.labelCostoCampanna.Size = new System.Drawing.Size(99, 13);
+            this.labelCostoCampanna.TabIndex = 7;
+            this.labelCostoCampanna.Text = "Costo de campaña:";
             // 
-            // buttonConsultarServicio
+            // labelPaisesCampanna
             // 
-            this.buttonConsultarServicio.Location = new System.Drawing.Point(532, 104);
-            this.buttonConsultarServicio.Name = "buttonConsultarServicio";
-            this.buttonConsultarServicio.Size = new System.Drawing.Size(153, 23);
-            this.buttonConsultarServicio.TabIndex = 17;
-            this.buttonConsultarServicio.Text = "Consultar Servicio";
-            this.buttonConsultarServicio.UseVisualStyleBackColor = true;
+            this.labelPaisesCampanna.AutoSize = true;
+            this.labelPaisesCampanna.Location = new System.Drawing.Point(55, 226);
+            this.labelPaisesCampanna.Name = "labelPaisesCampanna";
+            this.labelPaisesCampanna.Size = new System.Drawing.Size(109, 13);
+            this.labelPaisesCampanna.TabIndex = 6;
+            this.labelPaisesCampanna.Text = "Países de aplicación:";
             // 
-            // buttonCrearServicio
+            // labelFechaFinalizacion
             // 
-            this.buttonCrearServicio.Location = new System.Drawing.Point(532, 64);
-            this.buttonCrearServicio.Name = "buttonCrearServicio";
-            this.buttonCrearServicio.Size = new System.Drawing.Size(153, 23);
-            this.buttonCrearServicio.TabIndex = 18;
-            this.buttonCrearServicio.Text = "Crear Servicio";
-            this.buttonCrearServicio.UseVisualStyleBackColor = true;
+            this.labelFechaFinalizacion.AutoSize = true;
+            this.labelFechaFinalizacion.Location = new System.Drawing.Point(55, 186);
+            this.labelFechaFinalizacion.Name = "labelFechaFinalizacion";
+            this.labelFechaFinalizacion.Size = new System.Drawing.Size(110, 13);
+            this.labelFechaFinalizacion.TabIndex = 5;
+            this.labelFechaFinalizacion.Text = "Fecha de finalización:";
             // 
-            // textBoxServiciosCliente
+            // labelFechaInicio
             // 
-            this.textBoxServiciosCliente.Location = new System.Drawing.Point(192, 277);
-            this.textBoxServiciosCliente.Name = "textBoxServiciosCliente";
-            this.textBoxServiciosCliente.Size = new System.Drawing.Size(254, 20);
-            this.textBoxServiciosCliente.TabIndex = 21;
+            this.labelFechaInicio.AutoSize = true;
+            this.labelFechaInicio.Location = new System.Drawing.Point(55, 148);
+            this.labelFechaInicio.Name = "labelFechaInicio";
+            this.labelFechaInicio.Size = new System.Drawing.Size(82, 13);
+            this.labelFechaInicio.TabIndex = 4;
+            this.labelFechaInicio.Text = "Fecha de inicio:";
             // 
-            // labelServiciosCliente
+            // labelNombreCampanna
             // 
-            this.labelServiciosCliente.AutoSize = true;
-            this.labelServiciosCliente.Location = new System.Drawing.Point(8, 284);
-            this.labelServiciosCliente.Name = "labelServiciosCliente";
-            this.labelServiciosCliente.Size = new System.Drawing.Size(167, 13);
-            this.labelServiciosCliente.TabIndex = 22;
-            this.labelServiciosCliente.Text = "Servicios adquiridos por el cliente:";
+            this.labelNombreCampanna.AutoSize = true;
+            this.labelNombreCampanna.Location = new System.Drawing.Point(55, 111);
+            this.labelNombreCampanna.Name = "labelNombreCampanna";
+            this.labelNombreCampanna.Size = new System.Drawing.Size(109, 13);
+            this.labelNombreCampanna.TabIndex = 3;
+            this.labelNombreCampanna.Text = "Nombre de campaña:";
+            // 
+            // labelIdCampanna
+            // 
+            this.labelIdCampanna.AutoSize = true;
+            this.labelIdCampanna.Location = new System.Drawing.Point(55, 75);
+            this.labelIdCampanna.Name = "labelIdCampanna";
+            this.labelIdCampanna.Size = new System.Drawing.Size(130, 13);
+            this.labelIdCampanna.TabIndex = 2;
+            this.labelIdCampanna.Text = "Identificador de campaña:";
+            this.labelIdCampanna.Click += new System.EventHandler(this.labelIdCampanna_Click);
             // 
             // tabReportesMkt
             // 
@@ -554,291 +814,14 @@
             this.tabReportesMkt.Text = "Reportes";
             this.tabReportesMkt.UseVisualStyleBackColor = true;
             // 
-            // tabIntegracionVentas
+            // button2
             // 
-            this.tabIntegracionVentas.Location = new System.Drawing.Point(4, 22);
-            this.tabIntegracionVentas.Name = "tabIntegracionVentas";
-            this.tabIntegracionVentas.Size = new System.Drawing.Size(711, 402);
-            this.tabIntegracionVentas.TabIndex = 5;
-            this.tabIntegracionVentas.Text = "Integración con Ventas";
-            this.tabIntegracionVentas.UseVisualStyleBackColor = true;
-            // 
-            // labelRedSocial
-            // 
-            this.labelRedSocial.AutoSize = true;
-            this.labelRedSocial.Location = new System.Drawing.Point(53, 63);
-            this.labelRedSocial.Name = "labelRedSocial";
-            this.labelRedSocial.Size = new System.Drawing.Size(60, 13);
-            this.labelRedSocial.TabIndex = 1;
-            this.labelRedSocial.Text = "Red social:";
-            // 
-            // labelNombreUsuario
-            // 
-            this.labelNombreUsuario.AutoSize = true;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(53, 108);
-            this.labelNombreUsuario.Name = "labelNombreUsuario";
-            this.labelNombreUsuario.Size = new System.Drawing.Size(99, 13);
-            this.labelNombreUsuario.TabIndex = 2;
-            this.labelNombreUsuario.Text = "Nombre de usuario:";
-            // 
-            // labelClaveRS
-            // 
-            this.labelClaveRS.AutoSize = true;
-            this.labelClaveRS.Location = new System.Drawing.Point(53, 154);
-            this.labelClaveRS.Name = "labelClaveRS";
-            this.labelClaveRS.Size = new System.Drawing.Size(100, 13);
-            this.labelClaveRS.TabIndex = 3;
-            this.labelClaveRS.Text = "Clave de red social:";
-            // 
-            // labelRRSS
-            // 
-            this.labelRRSS.AutoSize = true;
-            this.labelRRSS.Location = new System.Drawing.Point(8, 354);
-            this.labelRRSS.Name = "labelRRSS";
-            this.labelRRSS.Size = new System.Drawing.Size(133, 13);
-            this.labelRRSS.TabIndex = 23;
-            this.labelRRSS.Text = "Redes sociales del cliente:";
-            // 
-            // textBoxRRSScliente
-            // 
-            this.textBoxRRSScliente.Location = new System.Drawing.Point(192, 347);
-            this.textBoxRRSScliente.Name = "textBoxRRSScliente";
-            this.textBoxRRSScliente.Size = new System.Drawing.Size(254, 20);
-            this.textBoxRRSScliente.TabIndex = 24;
-            // 
-            // comboBoxRRSS
-            // 
-            this.comboBoxRRSS.FormattingEnabled = true;
-            this.comboBoxRRSS.Items.AddRange(new object[] {
-            "Twitter",
-            "Facebook",
-            "Google+",
-            "LinkedIn",
-            "Hi5",
-            "Snapchat",
-            "Instagram"});
-            this.comboBoxRRSS.Location = new System.Drawing.Point(192, 373);
-            this.comboBoxRRSS.Name = "comboBoxRRSS";
-            this.comboBoxRRSS.Size = new System.Drawing.Size(254, 21);
-            this.comboBoxRRSS.TabIndex = 25;
-            // 
-            // labelRS
-            // 
-            this.labelRS.AutoSize = true;
-            this.labelRS.Location = new System.Drawing.Point(8, 381);
-            this.labelRS.Name = "labelRS";
-            this.labelRS.Size = new System.Drawing.Size(111, 13);
-            this.labelRS.TabIndex = 26;
-            this.labelRS.Text = "Seleccione red social:";
-            // 
-            // buttonAsignarRS
-            // 
-            this.buttonAsignarRS.Location = new System.Drawing.Point(511, 354);
-            this.buttonAsignarRS.Name = "buttonAsignarRS";
-            this.buttonAsignarRS.Size = new System.Drawing.Size(153, 23);
-            this.buttonAsignarRS.TabIndex = 27;
-            this.buttonAsignarRS.Text = "Asignar Red Social";
-            this.buttonAsignarRS.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxRRSSempresa
-            // 
-            this.comboBoxRRSSempresa.FormattingEnabled = true;
-            this.comboBoxRRSSempresa.Items.AddRange(new object[] {
-            "Twitter",
-            "Facebook",
-            "Google+",
-            "LinkedIn",
-            "Hi5",
-            "Snapchat",
-            "Instagram"});
-            this.comboBoxRRSSempresa.Location = new System.Drawing.Point(220, 55);
-            this.comboBoxRRSSempresa.Name = "comboBoxRRSSempresa";
-            this.comboBoxRRSSempresa.Size = new System.Drawing.Size(254, 21);
-            this.comboBoxRRSSempresa.TabIndex = 26;
-            // 
-            // textBoxNombreUsuarioRS
-            // 
-            this.textBoxNombreUsuarioRS.Location = new System.Drawing.Point(220, 101);
-            this.textBoxNombreUsuarioRS.Name = "textBoxNombreUsuarioRS";
-            this.textBoxNombreUsuarioRS.Size = new System.Drawing.Size(254, 20);
-            this.textBoxNombreUsuarioRS.TabIndex = 27;
-            // 
-            // textBoxClaveRS
-            // 
-            this.textBoxClaveRS.Location = new System.Drawing.Point(220, 147);
-            this.textBoxClaveRS.Name = "textBoxClaveRS";
-            this.textBoxClaveRS.PasswordChar = '*';
-            this.textBoxClaveRS.Size = new System.Drawing.Size(254, 20);
-            this.textBoxClaveRS.TabIndex = 28;
-            // 
-            // buttonRegistrarRS
-            // 
-            this.buttonRegistrarRS.Location = new System.Drawing.Point(377, 234);
-            this.buttonRegistrarRS.Name = "buttonRegistrarRS";
-            this.buttonRegistrarRS.Size = new System.Drawing.Size(173, 23);
-            this.buttonRegistrarRS.TabIndex = 29;
-            this.buttonRegistrarRS.Text = "Registrar Red Social";
-            this.buttonRegistrarRS.UseVisualStyleBackColor = true;
-            // 
-            // labelIdCampanna
-            // 
-            this.labelIdCampanna.AutoSize = true;
-            this.labelIdCampanna.Location = new System.Drawing.Point(55, 75);
-            this.labelIdCampanna.Name = "labelIdCampanna";
-            this.labelIdCampanna.Size = new System.Drawing.Size(130, 13);
-            this.labelIdCampanna.TabIndex = 2;
-            this.labelIdCampanna.Text = "Identificador de campaña:";
-            this.labelIdCampanna.Click += new System.EventHandler(this.labelIdCampanna_Click);
-            // 
-            // labelNombreCampanna
-            // 
-            this.labelNombreCampanna.AutoSize = true;
-            this.labelNombreCampanna.Location = new System.Drawing.Point(55, 111);
-            this.labelNombreCampanna.Name = "labelNombreCampanna";
-            this.labelNombreCampanna.Size = new System.Drawing.Size(109, 13);
-            this.labelNombreCampanna.TabIndex = 3;
-            this.labelNombreCampanna.Text = "Nombre de campaña:";
-            // 
-            // labelFechaInicio
-            // 
-            this.labelFechaInicio.AutoSize = true;
-            this.labelFechaInicio.Location = new System.Drawing.Point(55, 148);
-            this.labelFechaInicio.Name = "labelFechaInicio";
-            this.labelFechaInicio.Size = new System.Drawing.Size(82, 13);
-            this.labelFechaInicio.TabIndex = 4;
-            this.labelFechaInicio.Text = "Fecha de inicio:";
-            // 
-            // labelFechaFinalizacion
-            // 
-            this.labelFechaFinalizacion.AutoSize = true;
-            this.labelFechaFinalizacion.Location = new System.Drawing.Point(55, 186);
-            this.labelFechaFinalizacion.Name = "labelFechaFinalizacion";
-            this.labelFechaFinalizacion.Size = new System.Drawing.Size(110, 13);
-            this.labelFechaFinalizacion.TabIndex = 5;
-            this.labelFechaFinalizacion.Text = "Fecha de finalización:";
-            // 
-            // labelPaisesCampanna
-            // 
-            this.labelPaisesCampanna.AutoSize = true;
-            this.labelPaisesCampanna.Location = new System.Drawing.Point(55, 226);
-            this.labelPaisesCampanna.Name = "labelPaisesCampanna";
-            this.labelPaisesCampanna.Size = new System.Drawing.Size(109, 13);
-            this.labelPaisesCampanna.TabIndex = 6;
-            this.labelPaisesCampanna.Text = "Países de aplicación:";
-            // 
-            // labelCostoCampanna
-            // 
-            this.labelCostoCampanna.AutoSize = true;
-            this.labelCostoCampanna.Location = new System.Drawing.Point(55, 297);
-            this.labelCostoCampanna.Name = "labelCostoCampanna";
-            this.labelCostoCampanna.Size = new System.Drawing.Size(99, 13);
-            this.labelCostoCampanna.TabIndex = 7;
-            this.labelCostoCampanna.Text = "Costo de campaña:";
-            // 
-            // textBoxIdCampanna
-            // 
-            this.textBoxIdCampanna.Location = new System.Drawing.Point(207, 68);
-            this.textBoxIdCampanna.Name = "textBoxIdCampanna";
-            this.textBoxIdCampanna.Size = new System.Drawing.Size(254, 20);
-            this.textBoxIdCampanna.TabIndex = 28;
-            // 
-            // textBoxNombreCampanna
-            // 
-            this.textBoxNombreCampanna.Location = new System.Drawing.Point(207, 104);
-            this.textBoxNombreCampanna.Name = "textBoxNombreCampanna";
-            this.textBoxNombreCampanna.Size = new System.Drawing.Size(254, 20);
-            this.textBoxNombreCampanna.TabIndex = 29;
-            // 
-            // textBoxCostoCampanna
-            // 
-            this.textBoxCostoCampanna.Location = new System.Drawing.Point(207, 290);
-            this.textBoxCostoCampanna.Name = "textBoxCostoCampanna";
-            this.textBoxCostoCampanna.Size = new System.Drawing.Size(254, 20);
-            this.textBoxCostoCampanna.TabIndex = 30;
-            // 
-            // dateTimePickerFechaInicioCampanna
-            // 
-            this.dateTimePickerFechaInicioCampanna.Location = new System.Drawing.Point(207, 141);
-            this.dateTimePickerFechaInicioCampanna.Name = "dateTimePickerFechaInicioCampanna";
-            this.dateTimePickerFechaInicioCampanna.Size = new System.Drawing.Size(254, 20);
-            this.dateTimePickerFechaInicioCampanna.TabIndex = 31;
-            // 
-            // dateTimePickerfFechaFinalizacionCampanna
-            // 
-            this.dateTimePickerfFechaFinalizacionCampanna.Location = new System.Drawing.Point(207, 179);
-            this.dateTimePickerfFechaFinalizacionCampanna.Name = "dateTimePickerfFechaFinalizacionCampanna";
-            this.dateTimePickerfFechaFinalizacionCampanna.Size = new System.Drawing.Size(254, 20);
-            this.dateTimePickerfFechaFinalizacionCampanna.TabIndex = 32;
-            // 
-            // dataGridViewPaisesCobertura
-            // 
-            this.dataGridViewPaisesCobertura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPaisesCobertura.Location = new System.Drawing.Point(213, 151);
-            this.dataGridViewPaisesCobertura.Name = "dataGridViewPaisesCobertura";
-            this.dataGridViewPaisesCobertura.Size = new System.Drawing.Size(254, 53);
-            this.dataGridViewPaisesCobertura.TabIndex = 19;
-            // 
-            // dataGridViewPaisesCampanna
-            // 
-            this.dataGridViewPaisesCampanna.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPaisesCampanna.Location = new System.Drawing.Point(207, 226);
-            this.dataGridViewPaisesCampanna.Name = "dataGridViewPaisesCampanna";
-            this.dataGridViewPaisesCampanna.Size = new System.Drawing.Size(254, 50);
-            this.dataGridViewPaisesCampanna.TabIndex = 33;
-            // 
-            // buttonCrearCampanna
-            // 
-            this.buttonCrearCampanna.Location = new System.Drawing.Point(511, 101);
-            this.buttonCrearCampanna.Name = "buttonCrearCampanna";
-            this.buttonCrearCampanna.Size = new System.Drawing.Size(153, 23);
-            this.buttonCrearCampanna.TabIndex = 34;
-            this.buttonCrearCampanna.Text = "Crear Campaña";
-            this.buttonCrearCampanna.UseVisualStyleBackColor = true;
-            // 
-            // buttonConsultarCampanna
-            // 
-            this.buttonConsultarCampanna.Location = new System.Drawing.Point(511, 143);
-            this.buttonConsultarCampanna.Name = "buttonConsultarCampanna";
-            this.buttonConsultarCampanna.Size = new System.Drawing.Size(153, 23);
-            this.buttonConsultarCampanna.TabIndex = 35;
-            this.buttonConsultarCampanna.Text = "Consultar Campaña";
-            this.buttonConsultarCampanna.UseVisualStyleBackColor = true;
-            // 
-            // buttonActualizarCampanna
-            // 
-            this.buttonActualizarCampanna.Location = new System.Drawing.Point(511, 186);
-            this.buttonActualizarCampanna.Name = "buttonActualizarCampanna";
-            this.buttonActualizarCampanna.Size = new System.Drawing.Size(153, 23);
-            this.buttonActualizarCampanna.TabIndex = 36;
-            this.buttonActualizarCampanna.Text = "Actualizar Campaña";
-            this.buttonActualizarCampanna.UseVisualStyleBackColor = true;
-            // 
-            // buttonBorrarCampanna
-            // 
-            this.buttonBorrarCampanna.Location = new System.Drawing.Point(511, 228);
-            this.buttonBorrarCampanna.Name = "buttonBorrarCampanna";
-            this.buttonBorrarCampanna.Size = new System.Drawing.Size(153, 23);
-            this.buttonBorrarCampanna.TabIndex = 37;
-            this.buttonBorrarCampanna.Text = "Borrar Campaña";
-            this.buttonBorrarCampanna.UseVisualStyleBackColor = true;
-            // 
-            // buttonReporteCampanna
-            // 
-            this.buttonReporteCampanna.Location = new System.Drawing.Point(3, 28);
-            this.buttonReporteCampanna.Name = "buttonReporteCampanna";
-            this.buttonReporteCampanna.Size = new System.Drawing.Size(172, 23);
-            this.buttonReporteCampanna.TabIndex = 35;
-            this.buttonReporteCampanna.Text = "Reporte de Campañas";
-            this.buttonReporteCampanna.UseVisualStyleBackColor = true;
-            // 
-            // buttonReporteClientesyServicios
-            // 
-            this.buttonReporteClientesyServicios.Location = new System.Drawing.Point(181, 28);
-            this.buttonReporteClientesyServicios.Name = "buttonReporteClientesyServicios";
-            this.buttonReporteClientesyServicios.Size = new System.Drawing.Size(172, 23);
-            this.buttonReporteClientesyServicios.TabIndex = 36;
-            this.buttonReporteClientesyServicios.Text = "Reporte de Clientes y Servicios";
-            this.buttonReporteClientesyServicios.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(537, 28);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(172, 23);
+            this.button2.TabIndex = 38;
+            this.button2.Text = "Reporte de Clientes";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -849,14 +832,32 @@
             this.button1.Text = "Reporte de Redes Sociales";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonReporteClientesyServicios
             // 
-            this.button2.Location = new System.Drawing.Point(537, 28);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(172, 23);
-            this.button2.TabIndex = 38;
-            this.button2.Text = "Reporte de Clientes";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonReporteClientesyServicios.Location = new System.Drawing.Point(181, 28);
+            this.buttonReporteClientesyServicios.Name = "buttonReporteClientesyServicios";
+            this.buttonReporteClientesyServicios.Size = new System.Drawing.Size(172, 23);
+            this.buttonReporteClientesyServicios.TabIndex = 36;
+            this.buttonReporteClientesyServicios.Text = "Reporte de Clientes y Servicios";
+            this.buttonReporteClientesyServicios.UseVisualStyleBackColor = true;
+            // 
+            // buttonReporteCampanna
+            // 
+            this.buttonReporteCampanna.Location = new System.Drawing.Point(3, 28);
+            this.buttonReporteCampanna.Name = "buttonReporteCampanna";
+            this.buttonReporteCampanna.Size = new System.Drawing.Size(172, 23);
+            this.buttonReporteCampanna.TabIndex = 35;
+            this.buttonReporteCampanna.Text = "Reporte de Campañas";
+            this.buttonReporteCampanna.UseVisualStyleBackColor = true;
+            // 
+            // tabIntegracionVentas
+            // 
+            this.tabIntegracionVentas.Location = new System.Drawing.Point(4, 22);
+            this.tabIntegracionVentas.Name = "tabIntegracionVentas";
+            this.tabIntegracionVentas.Size = new System.Drawing.Size(711, 402);
+            this.tabIntegracionVentas.TabIndex = 5;
+            this.tabIntegracionVentas.Text = "Integración con Ventas";
+            this.tabIntegracionVentas.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -871,13 +872,13 @@
             this.tabClientes.PerformLayout();
             this.tabServicios.ResumeLayout(false);
             this.tabServicios.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCobertura)).EndInit();
             this.tabRRSS.ResumeLayout(false);
             this.tabRRSS.PerformLayout();
             this.tabCampanasMercadeo.ResumeLayout(false);
             this.tabCampanasMercadeo.PerformLayout();
-            this.tabReportesMkt.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCobertura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCampanna)).EndInit();
+            this.tabReportesMkt.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -896,13 +897,13 @@
         private System.Windows.Forms.Label labelMailCliente;
         private System.Windows.Forms.Label labelPaisCliente;
         private System.Windows.Forms.Label labelCiudadCliente;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxNombreCliente;
+        private System.Windows.Forms.TextBox textBoxPrimerApellidoCliente;
+        private System.Windows.Forms.TextBox textBoxSegundoApellidoCliente;
+        private System.Windows.Forms.TextBox textBoxCiudadCliente;
+        private System.Windows.Forms.TextBox textBoxCorreoElectronicoCliente;
+        private System.Windows.Forms.TextBox textBoxPaisCliente;
+        private System.Windows.Forms.TextBox textBoxCedulaCliente;
         private System.Windows.Forms.Button buttonAsignarServicioCliente;
         private System.Windows.Forms.Label labelAsignarServiciosCliente;
         private System.Windows.Forms.ComboBox comboBoxServiciosCliente;
