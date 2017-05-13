@@ -97,5 +97,20 @@ namespace CRMmercadeoFinal
             MessageBox.Show("Cliente creado correctamente");
         }
 
+        private void buttonConsultaCliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonActualizarCliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonBorrarCliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

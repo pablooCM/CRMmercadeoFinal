@@ -1,4 +1,3 @@
-
 create table Clientes(
 	cedula int not null,
 	CHECK(cedula>=100000000 and cedula<=999999999),
@@ -39,3 +38,7 @@ create table campannasMercadeo(
 	primary key (idCampanna)
 
 )
+
+insert into Servicios values (1234,'luz', 'mensual', 'Costa Rica', 'activo' )
+insert into RedesSociales values('Twitter', 'empresa1', 'empresaclave')
+select * from Clientes

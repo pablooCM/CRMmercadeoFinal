@@ -266,6 +266,7 @@
             this.buttonBorrarCliente.TabIndex = 17;
             this.buttonBorrarCliente.Text = "Borrar Cliente";
             this.buttonBorrarCliente.UseVisualStyleBackColor = true;
+            this.buttonBorrarCliente.Click += new System.EventHandler(this.buttonBorrarCliente_Click);
             // 
             // buttonActualizarCliente
             // 
@@ -275,6 +276,7 @@
             this.buttonActualizarCliente.TabIndex = 16;
             this.buttonActualizarCliente.Text = "Actualizar Cliente";
             this.buttonActualizarCliente.UseVisualStyleBackColor = true;
+            this.buttonActualizarCliente.Click += new System.EventHandler(this.buttonActualizarCliente_Click);
             // 
             // buttonConsultaCliente
             // 
@@ -284,6 +286,7 @@
             this.buttonConsultaCliente.TabIndex = 15;
             this.buttonConsultaCliente.Text = "Consultar Cliente";
             this.buttonConsultaCliente.UseVisualStyleBackColor = true;
+            this.buttonConsultaCliente.Click += new System.EventHandler(this.buttonConsultaCliente_Click);
             // 
             // buttonCrearCliente
             // 
