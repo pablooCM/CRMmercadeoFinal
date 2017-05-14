@@ -305,5 +305,15 @@ namespace CRMmercadeoFinal
             MessageBox.Show("Red social creada correctamente");
         }
 
+        private void buttonAsignarServicioCliente_Click(object sender, EventArgs e)
+        {
+            textBoxServiciosCliente.Text = comboBoxServiciosCliente.Text;
+        }
+
+        private void buttonAsignarRS_Click(object sender, EventArgs e)
+        {
+            textBoxRRSScliente.Text = comboBoxRRSS.Text;
+        }
+
     }
 }

@@ -1,3 +1,5 @@
+--Procedures para realizar diferentes operaciones en la BD
+--CRUD de cliente
 create procedure insertaCliente
 	@cedula int,
 	@nombre varchar(50),
@@ -51,4 +53,15 @@ create procedure eliminaCliente
 		delete Clientes
 		from Clientes
 		where cedula=@cedula
+	end
+
+--Registrar red social de la empresa
+
+create procedure registrarRS
+	@nombreRS varchar(20),
+	@nombreUsuarioRS varchar(20),
+	@claveRS varchar(120)
+	as
+	begin
+		insert into RedesSociales values(@nombreRS, @nombreUsuarioRS, @claveRS)
 	end

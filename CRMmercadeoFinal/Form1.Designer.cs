@@ -174,6 +174,7 @@
             this.buttonAsignarRS.TabIndex = 27;
             this.buttonAsignarRS.Text = "Asignar Red Social";
             this.buttonAsignarRS.UseVisualStyleBackColor = true;
+            this.buttonAsignarRS.Click += new System.EventHandler(this.buttonAsignarRS_Click);
             // 
             // labelRS
             // 
@@ -232,6 +233,7 @@
             this.buttonAsignarServicioCliente.TabIndex = 20;
             this.buttonAsignarServicioCliente.Text = "Asignar Servicio";
             this.buttonAsignarServicioCliente.UseVisualStyleBackColor = true;
+            this.buttonAsignarServicioCliente.Click += new System.EventHandler(this.buttonAsignarServicioCliente_Click);
             // 
             // labelAsignarServiciosCliente
             // 

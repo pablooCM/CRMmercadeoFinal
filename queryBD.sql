@@ -39,6 +39,6 @@ create table campannasMercadeo(
 
 )
 
-insert into Servicios values (1234,'luz', 'mensual', 'Costa Rica', 'activo' )
+insert into Servicios values (1111,'agua', 'mensual', 'Costa Rica', 'activo' )
 insert into RedesSociales values('Twitter', 'empresa1', 'empresaclave')
-select * from Clientes
+select * from RedesSociales
