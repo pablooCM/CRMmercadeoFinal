@@ -187,14 +187,6 @@
             // comboBoxRRSS
             // 
             this.comboBoxRRSS.FormattingEnabled = true;
-            this.comboBoxRRSS.Items.AddRange(new object[] {
-            "Twitter",
-            "Facebook",
-            "Google+",
-            "LinkedIn",
-            "Hi5",
-            "Snapchat",
-            "Instagram"});
             this.comboBoxRRSS.Location = new System.Drawing.Point(192, 373);
             this.comboBoxRRSS.Name = "comboBoxRRSS";
             this.comboBoxRRSS.Size = new System.Drawing.Size(254, 21);
@@ -257,6 +249,7 @@
             this.comboBoxServiciosCliente.Name = "comboBoxServiciosCliente";
             this.comboBoxServiciosCliente.Size = new System.Drawing.Size(254, 21);
             this.comboBoxServiciosCliente.TabIndex = 18;
+            this.comboBoxServiciosCliente.SelectedIndexChanged += new System.EventHandler(this.comboBoxServiciosCliente_SelectedIndexChanged);
             // 
             // buttonBorrarCliente
             // 
@@ -586,6 +579,7 @@
             this.buttonRegistrarRS.TabIndex = 29;
             this.buttonRegistrarRS.Text = "Registrar Red Social";
             this.buttonRegistrarRS.UseVisualStyleBackColor = true;
+            this.buttonRegistrarRS.Click += new System.EventHandler(this.buttonRegistrarRS_Click);
             // 
             // textBoxClaveRS
             // 

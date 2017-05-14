@@ -17,6 +17,42 @@ namespace CRMmercadeoFinal
         public Form1()
         {
             InitializeComponent();
+            jalaDatosComboBoxServClientes();
+            jalaDatosComboBoxRRSSclientes();
+        }
+
+        private void jalaDatosComboBoxServClientes()
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            String consulta = "Select descripcionServicio from Servicios";
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+
+            SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
+
+            while (leerDatos.Read())
+            {
+                comboBoxServiciosCliente.Items.Add(leerDatos[0].ToString());
+            }
+        }
+
+        private void jalaDatosComboBoxRRSSclientes()
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            String consulta = "Select nombreRedSocial from RedesSociales";
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+
+            SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
+
+            while (leerDatos.Read())
+            {
+                comboBoxRRSS.Items.Add(leerDatos[0].ToString());
+            }
         }
 
 
@@ -93,7 +129,6 @@ namespace CRMmercadeoFinal
 
             cmd.ExecuteNonQuery();
             conexion.Close();
-
             MessageBox.Show("Cliente creado correctamente");
         }
 
@@ -228,6 +263,46 @@ namespace CRMmercadeoFinal
                 MessageBox.Show(ex.ToString());
 
             }
+        }
+
+        private void comboBoxServiciosCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void buttonRegistrarRS_Click(object sender, EventArgs e)
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            SqlCommand cmd = new SqlCommand("dbo.registrarRS", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            var param1 = new SqlParameter("@nombreRS", SqlDbType.VarChar);
+            param1.Direction = ParameterDirection.Input;
+            param1.Value = comboBoxRRSSempresa.Text;
+            param1.Size = 20;
+            cmd.Parameters.Add(param1);
+
+            var param2 = new SqlParameter("@nombreUsuarioRS", SqlDbType.VarChar);
+            param2.Direction = ParameterDirection.Input;
+            param2.Value = textBoxNombreUsuarioRS.Text;
+            param2.Size = 20;
+            cmd.Parameters.Add(param2);
+
+
+            var param3 = new SqlParameter("@claveRS", SqlDbType.VarChar);
+            param3.Direction = ParameterDirection.Input;
+            param3.Value = textBoxClaveRS.Text;
+            param3.Size = 120;
+            cmd.Parameters.Add(param3);
+
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+            MessageBox.Show("Red social creada correctamente");
         }
 
     }
