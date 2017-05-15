@@ -1,5 +1,5 @@
---Procedures para realizar diferentes operaciones en la BD
---CRUD de cliente
+-- Procedures para realizar diferentes operaciones en la BD
+-- CRUD de cliente
 create procedure insertaCliente
 	@cedula int,
 	@nombre varchar(50),
@@ -68,19 +68,19 @@ create procedure registrarRS
 --CRUD Servicios
 create procedure insertarServicios
 	@ID int,
-	@Descripci�n varchar(140),
+	@Descripción varchar(140),
 	@FormaDePago varchar(10),
 	@Cobertura varchar(20),
 	@estadoServicio varchar(20)
 	as
 	begin
-		insert into Servicios values(@ID,@Descripci�n,@FormaDePago,@Cobertura,@estadoServicio)
+		insert into Servicios values(@ID,@Descripción,@FormaDePago,@Cobertura,@estadoServicio)
 	end
 
 
 create procedure actualizarServicios
 	@ID int,
-	@Descripci�n varchar(140),
+	@Descripción varchar(140),
 	@FormaDePago varchar(10),
 	@Cobertura varchar(20),
 	@estadoServicio varchar(20)
@@ -91,7 +91,7 @@ BEGIN
 
       UPDATE Servicios
       SET 
-			descripcionServicio = @Descripci�n,
+			descripcionServicio = @Descripción,
 			formaDePago = @FormaDePago,
 			coberturaServicio = @Cobertura,
 			estadoServicio = @estadoServicio
@@ -107,6 +107,54 @@ create procedure eliminarServicios
 		delete Servicios
 		from Servicios
 		where idServicio = @ID
+	end
+
+-- CRUD de CampañaMercadeo
+create procedure insertaCampañaMercadeo
+	@ID int,
+	@nombre varchar(30),
+	@fechaInicio date,
+	@fechaFinal date,
+	@paisesCampaña list,
+	@costoCampaña float
+	as
+	begin
+		insert into CampañaMercadeo values(@ID, @nombre, @fechaInicio, @fechaFinal, @paisesCampaña, @costoCampaña)
+	end
+
+
+create procedure actualizaCampañaMercadeo
+	@ID int,
+	@nombre varchar(30),
+	@fechaInicio date,
+	@fechaFinal date,
+	@paisesCampaña list,
+	@costoCampaña float
+
+AS
+BEGIN 
+      SET NOCOUNT ON 
+
+      UPDATE CampañaMercadeo
+      SET 
+			IDCampaña= @ID,
+			nombreCampaña = @nombre,
+			fechaInicio = @fechaInicio,
+			fechaFinal = @fechaFinal,
+			paisesCampaña = @paisesCampaña,
+			costoCampaña = @costoCampaña
+			FROM   CampañaMercadeo
+			where
+			idCampaña = @ID
+END
+
+create procedure eliminarCampañaMercadeo
+	@ID int
+	as
+	begin
+		delete CampañaMercadeo
+		from CampañaMercadeo
+		where idCampaña=@ID
 	end
 
  
