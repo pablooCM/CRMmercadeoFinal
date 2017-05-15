@@ -100,6 +100,10 @@
             this.labelNombreCampanna = new System.Windows.Forms.Label();
             this.labelIdCampanna = new System.Windows.Forms.Label();
             this.tabReportesMkt = new System.Windows.Forms.TabPage();
+            this.textBoxIdServiciosReportes = new System.Windows.Forms.TextBox();
+            this.textBoxCedulaClienteReportes = new System.Windows.Forms.TextBox();
+            this.comboBoxFormaPagoReportes = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerReporteCampannas = new System.Windows.Forms.DateTimePicker();
             this.dataGridViewReportes = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -109,10 +113,10 @@
             this.bDMercadeoDataSet = new CRMmercadeoFinal.BDMercadeoDataSet();
             this.campannasMercadeoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.campannasMercadeoTableAdapter = new CRMmercadeoFinal.BDMercadeoDataSetTableAdapters.campannasMercadeoTableAdapter();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBoxIdClienteReportes = new System.Windows.Forms.TextBox();
-            this.textBoxIdServiciosReportes = new System.Windows.Forms.TextBox();
-            this.dateTimePickerReporteCampannas = new System.Windows.Forms.DateTimePicker();
+            this.labelCedulaReportes = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.CRMmktTab.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabServicios.SuspendLayout();
@@ -137,7 +141,7 @@
             this.CRMmktTab.Location = new System.Drawing.Point(12, 12);
             this.CRMmktTab.Name = "CRMmktTab";
             this.CRMmktTab.SelectedIndex = 0;
-            this.CRMmktTab.Size = new System.Drawing.Size(719, 428);
+            this.CRMmktTab.Size = new System.Drawing.Size(1070, 552);
             this.CRMmktTab.TabIndex = 0;
             // 
             // tabClientes
@@ -173,14 +177,14 @@
             this.tabClientes.Location = new System.Drawing.Point(4, 22);
             this.tabClientes.Name = "tabClientes";
             this.tabClientes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClientes.Size = new System.Drawing.Size(711, 402);
+            this.tabClientes.Size = new System.Drawing.Size(1062, 526);
             this.tabClientes.TabIndex = 0;
             this.tabClientes.Text = "Clientes";
             this.tabClientes.UseVisualStyleBackColor = true;
             // 
             // buttonAsignarRS
             // 
-            this.buttonAsignarRS.Location = new System.Drawing.Point(511, 354);
+            this.buttonAsignarRS.Location = new System.Drawing.Point(703, 345);
             this.buttonAsignarRS.Name = "buttonAsignarRS";
             this.buttonAsignarRS.Size = new System.Drawing.Size(153, 23);
             this.buttonAsignarRS.TabIndex = 27;
@@ -239,7 +243,7 @@
             // 
             // buttonAsignarServicioCliente
             // 
-            this.buttonAsignarServicioCliente.Location = new System.Drawing.Point(511, 284);
+            this.buttonAsignarServicioCliente.Location = new System.Drawing.Point(703, 284);
             this.buttonAsignarServicioCliente.Name = "buttonAsignarServicioCliente";
             this.buttonAsignarServicioCliente.Size = new System.Drawing.Size(153, 23);
             this.buttonAsignarServicioCliente.TabIndex = 20;
@@ -267,7 +271,7 @@
             // 
             // buttonBorrarCliente
             // 
-            this.buttonBorrarCliente.Location = new System.Drawing.Point(511, 167);
+            this.buttonBorrarCliente.Location = new System.Drawing.Point(703, 190);
             this.buttonBorrarCliente.Name = "buttonBorrarCliente";
             this.buttonBorrarCliente.Size = new System.Drawing.Size(153, 23);
             this.buttonBorrarCliente.TabIndex = 17;
@@ -277,7 +281,7 @@
             // 
             // buttonActualizarCliente
             // 
-            this.buttonActualizarCliente.Location = new System.Drawing.Point(511, 132);
+            this.buttonActualizarCliente.Location = new System.Drawing.Point(703, 142);
             this.buttonActualizarCliente.Name = "buttonActualizarCliente";
             this.buttonActualizarCliente.Size = new System.Drawing.Size(153, 23);
             this.buttonActualizarCliente.TabIndex = 16;
@@ -287,7 +291,7 @@
             // 
             // buttonConsultaCliente
             // 
-            this.buttonConsultaCliente.Location = new System.Drawing.Point(511, 95);
+            this.buttonConsultaCliente.Location = new System.Drawing.Point(703, 95);
             this.buttonConsultaCliente.Name = "buttonConsultaCliente";
             this.buttonConsultaCliente.Size = new System.Drawing.Size(153, 23);
             this.buttonConsultaCliente.TabIndex = 15;
@@ -297,7 +301,7 @@
             // 
             // buttonCrearCliente
             // 
-            this.buttonCrearCliente.Location = new System.Drawing.Point(511, 60);
+            this.buttonCrearCliente.Location = new System.Drawing.Point(703, 47);
             this.buttonCrearCliente.Name = "buttonCrearCliente";
             this.buttonCrearCliente.Size = new System.Drawing.Size(153, 23);
             this.buttonCrearCliente.TabIndex = 14;
@@ -437,7 +441,7 @@
             this.tabServicios.Location = new System.Drawing.Point(4, 22);
             this.tabServicios.Name = "tabServicios";
             this.tabServicios.Padding = new System.Windows.Forms.Padding(3);
-            this.tabServicios.Size = new System.Drawing.Size(711, 402);
+            this.tabServicios.Size = new System.Drawing.Size(1062, 526);
             this.tabServicios.TabIndex = 1;
             this.tabServicios.Text = "Servicios";
             this.tabServicios.UseVisualStyleBackColor = true;
@@ -452,7 +456,7 @@
             // 
             // buttonCrearServicio
             // 
-            this.buttonCrearServicio.Location = new System.Drawing.Point(532, 64);
+            this.buttonCrearServicio.Location = new System.Drawing.Point(746, 64);
             this.buttonCrearServicio.Name = "buttonCrearServicio";
             this.buttonCrearServicio.Size = new System.Drawing.Size(153, 23);
             this.buttonCrearServicio.TabIndex = 18;
@@ -461,7 +465,7 @@
             // 
             // buttonConsultarServicio
             // 
-            this.buttonConsultarServicio.Location = new System.Drawing.Point(532, 104);
+            this.buttonConsultarServicio.Location = new System.Drawing.Point(746, 109);
             this.buttonConsultarServicio.Name = "buttonConsultarServicio";
             this.buttonConsultarServicio.Size = new System.Drawing.Size(153, 23);
             this.buttonConsultarServicio.TabIndex = 17;
@@ -470,7 +474,7 @@
             // 
             // buttonActualizarServicio
             // 
-            this.buttonActualizarServicio.Location = new System.Drawing.Point(532, 141);
+            this.buttonActualizarServicio.Location = new System.Drawing.Point(746, 151);
             this.buttonActualizarServicio.Name = "buttonActualizarServicio";
             this.buttonActualizarServicio.Size = new System.Drawing.Size(153, 23);
             this.buttonActualizarServicio.TabIndex = 16;
@@ -479,7 +483,7 @@
             // 
             // buttonBorrarServicio
             // 
-            this.buttonBorrarServicio.Location = new System.Drawing.Point(532, 181);
+            this.buttonBorrarServicio.Location = new System.Drawing.Point(746, 194);
             this.buttonBorrarServicio.Name = "buttonBorrarServicio";
             this.buttonBorrarServicio.Size = new System.Drawing.Size(153, 23);
             this.buttonBorrarServicio.TabIndex = 15;
@@ -580,14 +584,14 @@
             this.tabRRSS.Controls.Add(this.labelRedSocial);
             this.tabRRSS.Location = new System.Drawing.Point(4, 22);
             this.tabRRSS.Name = "tabRRSS";
-            this.tabRRSS.Size = new System.Drawing.Size(711, 402);
+            this.tabRRSS.Size = new System.Drawing.Size(1062, 526);
             this.tabRRSS.TabIndex = 2;
             this.tabRRSS.Text = "Redes Sociales";
             this.tabRRSS.UseVisualStyleBackColor = true;
             // 
             // buttonRegistrarRS
             // 
-            this.buttonRegistrarRS.Location = new System.Drawing.Point(377, 234);
+            this.buttonRegistrarRS.Location = new System.Drawing.Point(460, 246);
             this.buttonRegistrarRS.Name = "buttonRegistrarRS";
             this.buttonRegistrarRS.Size = new System.Drawing.Size(173, 23);
             this.buttonRegistrarRS.TabIndex = 29;
@@ -673,14 +677,14 @@
             this.tabCampanasMercadeo.Controls.Add(this.labelIdCampanna);
             this.tabCampanasMercadeo.Location = new System.Drawing.Point(4, 22);
             this.tabCampanasMercadeo.Name = "tabCampanasMercadeo";
-            this.tabCampanasMercadeo.Size = new System.Drawing.Size(711, 402);
+            this.tabCampanasMercadeo.Size = new System.Drawing.Size(1062, 526);
             this.tabCampanasMercadeo.TabIndex = 3;
             this.tabCampanasMercadeo.Text = "Campañas de Mercadeo";
             this.tabCampanasMercadeo.UseVisualStyleBackColor = true;
             // 
             // buttonBorrarCampanna
             // 
-            this.buttonBorrarCampanna.Location = new System.Drawing.Point(511, 228);
+            this.buttonBorrarCampanna.Location = new System.Drawing.Point(717, 230);
             this.buttonBorrarCampanna.Name = "buttonBorrarCampanna";
             this.buttonBorrarCampanna.Size = new System.Drawing.Size(153, 23);
             this.buttonBorrarCampanna.TabIndex = 37;
@@ -689,7 +693,7 @@
             // 
             // buttonActualizarCampanna
             // 
-            this.buttonActualizarCampanna.Location = new System.Drawing.Point(511, 186);
+            this.buttonActualizarCampanna.Location = new System.Drawing.Point(717, 186);
             this.buttonActualizarCampanna.Name = "buttonActualizarCampanna";
             this.buttonActualizarCampanna.Size = new System.Drawing.Size(153, 23);
             this.buttonActualizarCampanna.TabIndex = 36;
@@ -698,7 +702,7 @@
             // 
             // buttonConsultarCampanna
             // 
-            this.buttonConsultarCampanna.Location = new System.Drawing.Point(511, 143);
+            this.buttonConsultarCampanna.Location = new System.Drawing.Point(717, 143);
             this.buttonConsultarCampanna.Name = "buttonConsultarCampanna";
             this.buttonConsultarCampanna.Size = new System.Drawing.Size(153, 23);
             this.buttonConsultarCampanna.TabIndex = 35;
@@ -707,7 +711,7 @@
             // 
             // buttonCrearCampanna
             // 
-            this.buttonCrearCampanna.Location = new System.Drawing.Point(511, 101);
+            this.buttonCrearCampanna.Location = new System.Drawing.Point(717, 101);
             this.buttonCrearCampanna.Name = "buttonCrearCampanna";
             this.buttonCrearCampanna.Size = new System.Drawing.Size(153, 23);
             this.buttonCrearCampanna.TabIndex = 34;
@@ -814,9 +818,13 @@
             // 
             // tabReportesMkt
             // 
+            this.tabReportesMkt.Controls.Add(this.label3);
+            this.tabReportesMkt.Controls.Add(this.label2);
+            this.tabReportesMkt.Controls.Add(this.label1);
+            this.tabReportesMkt.Controls.Add(this.labelCedulaReportes);
             this.tabReportesMkt.Controls.Add(this.textBoxIdServiciosReportes);
-            this.tabReportesMkt.Controls.Add(this.textBoxIdClienteReportes);
-            this.tabReportesMkt.Controls.Add(this.comboBox1);
+            this.tabReportesMkt.Controls.Add(this.textBoxCedulaClienteReportes);
+            this.tabReportesMkt.Controls.Add(this.comboBoxFormaPagoReportes);
             this.tabReportesMkt.Controls.Add(this.dateTimePickerReporteCampannas);
             this.tabReportesMkt.Controls.Add(this.dataGridViewReportes);
             this.tabReportesMkt.Controls.Add(this.button2);
@@ -825,22 +833,58 @@
             this.tabReportesMkt.Controls.Add(this.buttonReporteCampanna);
             this.tabReportesMkt.Location = new System.Drawing.Point(4, 22);
             this.tabReportesMkt.Name = "tabReportesMkt";
-            this.tabReportesMkt.Size = new System.Drawing.Size(711, 402);
+            this.tabReportesMkt.Size = new System.Drawing.Size(1062, 526);
             this.tabReportesMkt.TabIndex = 4;
             this.tabReportesMkt.Text = "Reportes";
             this.tabReportesMkt.UseVisualStyleBackColor = true;
             // 
+            // textBoxIdServiciosReportes
+            // 
+            this.textBoxIdServiciosReportes.Location = new System.Drawing.Point(296, 72);
+            this.textBoxIdServiciosReportes.Name = "textBoxIdServiciosReportes";
+            this.textBoxIdServiciosReportes.Size = new System.Drawing.Size(100, 20);
+            this.textBoxIdServiciosReportes.TabIndex = 45;
+            // 
+            // textBoxCedulaClienteReportes
+            // 
+            this.textBoxCedulaClienteReportes.Location = new System.Drawing.Point(190, 72);
+            this.textBoxCedulaClienteReportes.Name = "textBoxCedulaClienteReportes";
+            this.textBoxCedulaClienteReportes.Size = new System.Drawing.Size(100, 20);
+            this.textBoxCedulaClienteReportes.TabIndex = 44;
+            // 
+            // comboBoxFormaPagoReportes
+            // 
+            this.comboBoxFormaPagoReportes.FormattingEnabled = true;
+            this.comboBoxFormaPagoReportes.Items.AddRange(new object[] {
+            "mensual",
+            "quincenal",
+            "anual"});
+            this.comboBoxFormaPagoReportes.Location = new System.Drawing.Point(402, 72);
+            this.comboBoxFormaPagoReportes.Name = "comboBoxFormaPagoReportes";
+            this.comboBoxFormaPagoReportes.Size = new System.Drawing.Size(110, 21);
+            this.comboBoxFormaPagoReportes.TabIndex = 43;
+            // 
+            // dateTimePickerReporteCampannas
+            // 
+            this.dateTimePickerReporteCampannas.CausesValidation = false;
+            this.dateTimePickerReporteCampannas.CustomFormat = "YYYY-MM-DD";
+            this.dateTimePickerReporteCampannas.Location = new System.Drawing.Point(26, 73);
+            this.dateTimePickerReporteCampannas.Name = "dateTimePickerReporteCampannas";
+            this.dateTimePickerReporteCampannas.Size = new System.Drawing.Size(127, 20);
+            this.dateTimePickerReporteCampannas.TabIndex = 42;
+            this.dateTimePickerReporteCampannas.Value = new System.DateTime(2017, 5, 10, 0, 0, 0, 0);
+            // 
             // dataGridViewReportes
             // 
             this.dataGridViewReportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewReportes.Location = new System.Drawing.Point(-4, 108);
+            this.dataGridViewReportes.Location = new System.Drawing.Point(26, 133);
             this.dataGridViewReportes.Name = "dataGridViewReportes";
-            this.dataGridViewReportes.Size = new System.Drawing.Size(719, 263);
+            this.dataGridViewReportes.Size = new System.Drawing.Size(1012, 338);
             this.dataGridViewReportes.TabIndex = 41;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(537, 28);
+            this.button2.Location = new System.Drawing.Point(866, 28);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(172, 23);
             this.button2.TabIndex = 38;
@@ -849,7 +893,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(359, 28);
+            this.button1.Location = new System.Drawing.Point(605, 28);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(172, 23);
             this.button1.TabIndex = 37;
@@ -858,7 +902,7 @@
             // 
             // buttonReporteClientesyServicios
             // 
-            this.buttonReporteClientesyServicios.Location = new System.Drawing.Point(181, 28);
+            this.buttonReporteClientesyServicios.Location = new System.Drawing.Point(265, 28);
             this.buttonReporteClientesyServicios.Name = "buttonReporteClientesyServicios";
             this.buttonReporteClientesyServicios.Size = new System.Drawing.Size(172, 23);
             this.buttonReporteClientesyServicios.TabIndex = 36;
@@ -899,47 +943,47 @@
             // 
             this.campannasMercadeoTableAdapter.ClearBeforeFill = true;
             // 
-            // comboBox1
+            // labelCedulaReportes
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "mensual",
-            "quincenal",
-            "anual"});
-            this.comboBox1.Location = new System.Drawing.Point(359, 83);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(110, 21);
-            this.comboBox1.TabIndex = 43;
+            this.labelCedulaReportes.AutoSize = true;
+            this.labelCedulaReportes.Location = new System.Drawing.Point(218, 56);
+            this.labelCedulaReportes.Name = "labelCedulaReportes";
+            this.labelCedulaReportes.Size = new System.Drawing.Size(40, 13);
+            this.labelCedulaReportes.TabIndex = 46;
+            this.labelCedulaReportes.Text = "Cédula";
             // 
-            // textBoxIdClienteReportes
+            // label1
             // 
-            this.textBoxIdClienteReportes.Location = new System.Drawing.Point(150, 83);
-            this.textBoxIdClienteReportes.Name = "textBoxIdClienteReportes";
-            this.textBoxIdClienteReportes.Size = new System.Drawing.Size(100, 20);
-            this.textBoxIdClienteReportes.TabIndex = 44;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(312, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.TabIndex = 47;
+            this.label1.Text = "ID de Servicio";
             // 
-            // textBoxIdServiciosReportes
+            // label2
             // 
-            this.textBoxIdServiciosReportes.Location = new System.Drawing.Point(253, 82);
-            this.textBoxIdServiciosReportes.Name = "textBoxIdServiciosReportes";
-            this.textBoxIdServiciosReportes.Size = new System.Drawing.Size(100, 20);
-            this.textBoxIdServiciosReportes.TabIndex = 45;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(418, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 48;
+            this.label2.Text = "Forma de Pago";
             // 
-            // dateTimePickerReporteCampannas
+            // label3
             // 
-            this.dateTimePickerReporteCampannas.CausesValidation = false;
-            this.dateTimePickerReporteCampannas.CustomFormat = "YYYY-MM-DD";
-            this.dateTimePickerReporteCampannas.Location = new System.Drawing.Point(-15, 57);
-            this.dateTimePickerReporteCampannas.Name = "dateTimePickerReporteCampannas";
-            this.dateTimePickerReporteCampannas.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerReporteCampannas.TabIndex = 42;
-            this.dateTimePickerReporteCampannas.Value = new System.DateTime(2017, 5, 10, 0, 0, 0, 0);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 57);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(156, 13);
+            this.label3.TabIndex = 49;
+            this.label3.Text = "Seleccione Fecha de Campaña";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 443);
+            this.ClientSize = new System.Drawing.Size(1094, 529);
             this.Controls.Add(this.CRMmktTab);
             this.Name = "Form1";
             this.Text = "CRM Mercadeo";
@@ -1047,9 +1091,13 @@
         private BDMercadeoDataSetTableAdapters.campannasMercadeoTableAdapter campannasMercadeoTableAdapter;
         private System.Windows.Forms.DataGridView dataGridViewReportes;
         private System.Windows.Forms.TextBox textBoxIdServiciosReportes;
-        private System.Windows.Forms.TextBox textBoxIdClienteReportes;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBoxCedulaClienteReportes;
+        private System.Windows.Forms.ComboBox comboBoxFormaPagoReportes;
         public System.Windows.Forms.DateTimePicker dateTimePickerReporteCampannas;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelCedulaReportes;
+        private System.Windows.Forms.Label label3;
     }
 }
 
