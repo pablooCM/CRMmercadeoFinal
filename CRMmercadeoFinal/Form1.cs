@@ -22,6 +22,8 @@ namespace CRMmercadeoFinal
             InitializeComponent();
             jalaDatosComboBoxServClientes();
             jalaDatosComboBoxRRSSclientes();
+            jalaPaisesComboBox();
+            jalaCiudadesComboBox();
         }
 
         private void jalaDatosComboBoxServClientes()
@@ -37,7 +39,38 @@ namespace CRMmercadeoFinal
 
             while (leerDatos.Read())
             {
-                comboBoxServiciosCliente.Items.Add(leerDatos[0].ToString());
+                    comboBoxServiciosCliente.Items.Add(leerDatos[0].ToString());
+            }
+        }
+        private void jalaPaisesComboBox()
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            String consulta = "Select pais from Clientes";
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+
+            SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
+            while (leerDatos.Read())
+            {
+                comboBoxPaisReportes.Items.Add(leerDatos[0].ToString());
+            }
+        }
+
+        private void jalaCiudadesComboBox()
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            String consulta = "Select ciudad from Clientes";
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+
+            SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
+            while (leerDatos.Read())
+            {
+                comboBoxCiudadesReporteClientes.Items.Add(leerDatos[0].ToString());
             }
         }
 
@@ -378,6 +411,23 @@ namespace CRMmercadeoFinal
             dataGridViewReportes.DataSource = dataSet.Tables[0];
 
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            String consulta = "select cedula, nombreCliente, apellido1Cliente, apellido2Cliente, ciudad, pais, correoElectronico, serviciosCliente, redesSociales from Clientes where pais ='" + comboBoxPaisReportes.Text + "' and apellido1Cliente='" + textBoxApellidoReporteClientes.Text + "' or apellido2Cliente='" + textBoxApellidoReporteClientes.Text + "' and ciudad= '" + comboBoxCiudadesReporteClientes.Text+"'";
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+            var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+            var commandBuilder = new SqlCommandBuilder(dataAdapter);
+            var dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridViewReportes.ReadOnly = true;
+            dataGridViewReportes.DataSource = dataSet.Tables[0];
         }
 
     }

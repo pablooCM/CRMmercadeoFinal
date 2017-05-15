@@ -105,8 +105,8 @@
             this.comboBoxFormaPagoReportes = new System.Windows.Forms.ComboBox();
             this.dateTimePickerReporteCampannas = new System.Windows.Forms.DateTimePicker();
             this.dataGridViewReportes = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonReporteClientes = new System.Windows.Forms.Button();
+            this.buttonReporteRRSS = new System.Windows.Forms.Button();
             this.buttonReporteClientesyServicios = new System.Windows.Forms.Button();
             this.buttonReporteCampanna = new System.Windows.Forms.Button();
             this.tabIntegracionVentas = new System.Windows.Forms.TabPage();
@@ -118,6 +118,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxRedSocialReportes = new System.Windows.Forms.ComboBox();
+            this.comboBoxPaisReportes = new System.Windows.Forms.ComboBox();
+            this.textBoxApellidoReporteClientes = new System.Windows.Forms.TextBox();
+            this.comboBoxCiudadesReporteClientes = new System.Windows.Forms.ComboBox();
             this.CRMmktTab.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabServicios.SuspendLayout();
@@ -142,7 +145,7 @@
             this.CRMmktTab.Location = new System.Drawing.Point(12, 12);
             this.CRMmktTab.Name = "CRMmktTab";
             this.CRMmktTab.SelectedIndex = 0;
-            this.CRMmktTab.Size = new System.Drawing.Size(1070, 552);
+            this.CRMmktTab.Size = new System.Drawing.Size(1083, 552);
             this.CRMmktTab.TabIndex = 0;
             // 
             // tabClientes
@@ -819,6 +822,9 @@
             // 
             // tabReportesMkt
             // 
+            this.tabReportesMkt.Controls.Add(this.comboBoxCiudadesReporteClientes);
+            this.tabReportesMkt.Controls.Add(this.textBoxApellidoReporteClientes);
+            this.tabReportesMkt.Controls.Add(this.comboBoxPaisReportes);
             this.tabReportesMkt.Controls.Add(this.comboBoxRedSocialReportes);
             this.tabReportesMkt.Controls.Add(this.label3);
             this.tabReportesMkt.Controls.Add(this.label2);
@@ -829,13 +835,13 @@
             this.tabReportesMkt.Controls.Add(this.comboBoxFormaPagoReportes);
             this.tabReportesMkt.Controls.Add(this.dateTimePickerReporteCampannas);
             this.tabReportesMkt.Controls.Add(this.dataGridViewReportes);
-            this.tabReportesMkt.Controls.Add(this.button2);
-            this.tabReportesMkt.Controls.Add(this.button1);
+            this.tabReportesMkt.Controls.Add(this.buttonReporteClientes);
+            this.tabReportesMkt.Controls.Add(this.buttonReporteRRSS);
             this.tabReportesMkt.Controls.Add(this.buttonReporteClientesyServicios);
             this.tabReportesMkt.Controls.Add(this.buttonReporteCampanna);
             this.tabReportesMkt.Location = new System.Drawing.Point(4, 22);
             this.tabReportesMkt.Name = "tabReportesMkt";
-            this.tabReportesMkt.Size = new System.Drawing.Size(1062, 526);
+            this.tabReportesMkt.Size = new System.Drawing.Size(1075, 526);
             this.tabReportesMkt.TabIndex = 4;
             this.tabReportesMkt.Text = "Reportes";
             this.tabReportesMkt.UseVisualStyleBackColor = true;
@@ -884,24 +890,25 @@
             this.dataGridViewReportes.Size = new System.Drawing.Size(1012, 338);
             this.dataGridViewReportes.TabIndex = 41;
             // 
-            // button2
+            // buttonReporteClientes
             // 
-            this.button2.Location = new System.Drawing.Point(866, 28);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(172, 23);
-            this.button2.TabIndex = 38;
-            this.button2.Text = "Reporte de Clientes";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonReporteClientes.Location = new System.Drawing.Point(866, 28);
+            this.buttonReporteClientes.Name = "buttonReporteClientes";
+            this.buttonReporteClientes.Size = new System.Drawing.Size(172, 23);
+            this.buttonReporteClientes.TabIndex = 38;
+            this.buttonReporteClientes.Text = "Reporte de Clientes";
+            this.buttonReporteClientes.UseVisualStyleBackColor = true;
+            this.buttonReporteClientes.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // buttonReporteRRSS
             // 
-            this.button1.Location = new System.Drawing.Point(605, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(172, 23);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "Reporte de Redes Sociales";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonReporteRRSS.Location = new System.Drawing.Point(605, 28);
+            this.buttonReporteRRSS.Name = "buttonReporteRRSS";
+            this.buttonReporteRRSS.Size = new System.Drawing.Size(172, 23);
+            this.buttonReporteRRSS.TabIndex = 37;
+            this.buttonReporteRRSS.Text = "Reporte de Redes Sociales";
+            this.buttonReporteRRSS.UseVisualStyleBackColor = true;
+            this.buttonReporteRRSS.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonReporteClientesyServicios
             // 
@@ -997,6 +1004,29 @@
             this.comboBoxRedSocialReportes.Name = "comboBoxRedSocialReportes";
             this.comboBoxRedSocialReportes.Size = new System.Drawing.Size(111, 21);
             this.comboBoxRedSocialReportes.TabIndex = 50;
+            // 
+            // comboBoxPaisReportes
+            // 
+            this.comboBoxPaisReportes.FormattingEnabled = true;
+            this.comboBoxPaisReportes.Location = new System.Drawing.Point(798, 71);
+            this.comboBoxPaisReportes.Name = "comboBoxPaisReportes";
+            this.comboBoxPaisReportes.Size = new System.Drawing.Size(89, 21);
+            this.comboBoxPaisReportes.TabIndex = 51;
+            // 
+            // textBoxApellidoReporteClientes
+            // 
+            this.textBoxApellidoReporteClientes.Location = new System.Drawing.Point(893, 71);
+            this.textBoxApellidoReporteClientes.Name = "textBoxApellidoReporteClientes";
+            this.textBoxApellidoReporteClientes.Size = new System.Drawing.Size(89, 20);
+            this.textBoxApellidoReporteClientes.TabIndex = 52;
+            // 
+            // comboBoxCiudadesReporteClientes
+            // 
+            this.comboBoxCiudadesReporteClientes.FormattingEnabled = true;
+            this.comboBoxCiudadesReporteClientes.Location = new System.Drawing.Point(988, 71);
+            this.comboBoxCiudadesReporteClientes.Name = "comboBoxCiudadesReporteClientes";
+            this.comboBoxCiudadesReporteClientes.Size = new System.Drawing.Size(89, 21);
+            this.comboBoxCiudadesReporteClientes.TabIndex = 53;
             // 
             // Form1
             // 
@@ -1101,8 +1131,8 @@
         private System.Windows.Forms.Button buttonBorrarCampanna;
         private System.Windows.Forms.Button buttonActualizarCampanna;
         private System.Windows.Forms.Button buttonConsultarCampanna;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonReporteClientes;
+        private System.Windows.Forms.Button buttonReporteRRSS;
         private System.Windows.Forms.Button buttonReporteClientesyServicios;
         private System.Windows.Forms.Button buttonReporteCampanna;
         private BDMercadeoDataSet bDMercadeoDataSet;
@@ -1118,6 +1148,9 @@
         private System.Windows.Forms.Label labelCedulaReportes;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBoxRedSocialReportes;
+        private System.Windows.Forms.ComboBox comboBoxPaisReportes;
+        private System.Windows.Forms.TextBox textBoxApellidoReporteClientes;
+        private System.Windows.Forms.ComboBox comboBoxCiudadesReporteClientes;
     }
 }
 
