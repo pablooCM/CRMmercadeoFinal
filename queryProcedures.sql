@@ -1,5 +1,5 @@
--- Procedures para realizar diferentes operaciones en la BD
--- CRUD de cliente
+--Procedures para realizar diferentes operaciones en la BD
+--CRUD de cliente
 create procedure insertaCliente
 	@cedula int,
 	@nombre varchar(50),
@@ -68,19 +68,19 @@ create procedure registrarRS
 --CRUD Servicios
 create procedure insertarServicios
 	@ID int,
-	@Descripción varchar(140),
+	@Descripci�n varchar(140),
 	@FormaDePago varchar(10),
 	@Cobertura varchar(20),
 	@estadoServicio varchar(20)
 	as
 	begin
-		insert into Servicios values(@ID,@Descripción,@FormaDePago,@Cobertura,@estadoServicio)
+		insert into Servicios values(@ID,@Descripci�n,@FormaDePago,@Cobertura,@estadoServicio)
 	end
 
 
 create procedure actualizarServicios
 	@ID int,
-	@Descripción varchar(140),
+	@Descripci�n varchar(140),
 	@FormaDePago varchar(10),
 	@Cobertura varchar(20),
 	@estadoServicio varchar(20)
@@ -91,7 +91,7 @@ BEGIN
 
       UPDATE Servicios
       SET 
-			descripcionServicio = @Descripción,
+			descripcionServicio = @Descripci�n,
 			formaDePago = @FormaDePago,
 			coberturaServicio = @Cobertura,
 			estadoServicio = @estadoServicio
@@ -109,52 +109,48 @@ create procedure eliminarServicios
 		where idServicio = @ID
 	end
 
--- CRUD de CampañaMercadeo
-create procedure insertaCampañaMercadeo
+ -- CRUD de Campa�aMercadeo
+create procedure insertaCampannaMercadeo
 	@ID int,
 	@nombre varchar(30),
 	@fechaInicio date,
 	@fechaFinal date,
-	@paisesCampaña list,
-	@costoCampaña float
+	@paisesCampanna varchar(50),
+	@costoCampanna float
 	as
 	begin
-		insert into CampañaMercadeo values(@ID, @nombre, @fechaInicio, @fechaFinal, @paisesCampaña, @costoCampaña)
+		insert into campannasMercadeo values(@ID, @nombre, @fechaInicio, @fechaFinal, @paisesCampanna, @costoCampanna)
 	end
 
-
-create procedure actualizaCampañaMercadeo
+create procedure actualizaCampannaMercadeo
 	@ID int,
 	@nombre varchar(30),
 	@fechaInicio date,
 	@fechaFinal date,
-	@paisesCampaña list,
-	@costoCampaña float
+	@paisesCampa�a varchar(50),
+	@costoCampa�a float
 
 AS
 BEGIN 
       SET NOCOUNT ON 
 
-      UPDATE CampañaMercadeo
+      UPDATE campannasMercadeo
       SET 
-			IDCampaña= @ID,
-			nombreCampaña = @nombre,
+			nombreCampanna = @nombre,
 			fechaInicio = @fechaInicio,
 			fechaFinal = @fechaFinal,
-			paisesCampaña = @paisesCampaña,
-			costoCampaña = @costoCampaña
-			FROM   CampañaMercadeo
+			pais = @paisesCampa�a,
+			costoCampanna = @costoCampa�a
+			FROM   campannasMercadeo
 			where
-			idCampaña = @ID
+			idCampanna = @ID
 END
 
-create procedure eliminarCampañaMercadeo
+create procedure eliminarCampannaMercadeo
 	@ID int
 	as
 	begin
-		delete CampañaMercadeo
-		from CampañaMercadeo
-		where idCampaña=@ID
+		delete campannasMercadeo
+		from campannasMercadeo
+		where idCampanna=@ID
 	end
-
- 

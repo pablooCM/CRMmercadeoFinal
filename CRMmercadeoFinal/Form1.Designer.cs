@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.CRMmktTab = new System.Windows.Forms.TabControl();
             this.tabClientes = new System.Windows.Forms.TabPage();
             this.buttonAsignarRS = new System.Windows.Forms.Button();
@@ -99,11 +100,18 @@
             this.labelNombreCampanna = new System.Windows.Forms.Label();
             this.labelIdCampanna = new System.Windows.Forms.Label();
             this.tabReportesMkt = new System.Windows.Forms.TabPage();
+            this.dateTimePickerReporteCampannas = new System.Windows.Forms.DateTimePicker();
+            this.dataGridViewReportes = new System.Windows.Forms.DataGridView();
+            this.labelFechaFiltro = new System.Windows.Forms.Label();
+            this.textBoxFechaReporte = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonReporteClientesyServicios = new System.Windows.Forms.Button();
             this.buttonReporteCampanna = new System.Windows.Forms.Button();
             this.tabIntegracionVentas = new System.Windows.Forms.TabPage();
+            this.bDMercadeoDataSet = new CRMmercadeoFinal.BDMercadeoDataSet();
+            this.campannasMercadeoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.campannasMercadeoTableAdapter = new CRMmercadeoFinal.BDMercadeoDataSetTableAdapters.campannasMercadeoTableAdapter();
             this.CRMmktTab.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabServicios.SuspendLayout();
@@ -112,6 +120,9 @@
             this.tabCampanasMercadeo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCampanna)).BeginInit();
             this.tabReportesMkt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReportes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDMercadeoDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.campannasMercadeoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // CRMmktTab
@@ -802,6 +813,10 @@
             // 
             // tabReportesMkt
             // 
+            this.tabReportesMkt.Controls.Add(this.dateTimePickerReporteCampannas);
+            this.tabReportesMkt.Controls.Add(this.dataGridViewReportes);
+            this.tabReportesMkt.Controls.Add(this.labelFechaFiltro);
+            this.tabReportesMkt.Controls.Add(this.textBoxFechaReporte);
             this.tabReportesMkt.Controls.Add(this.button2);
             this.tabReportesMkt.Controls.Add(this.button1);
             this.tabReportesMkt.Controls.Add(this.buttonReporteClientesyServicios);
@@ -812,6 +827,38 @@
             this.tabReportesMkt.TabIndex = 4;
             this.tabReportesMkt.Text = "Reportes";
             this.tabReportesMkt.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePickerReporteCampannas
+            // 
+            this.dateTimePickerReporteCampannas.CustomFormat = "YYYY-MM-DD";
+            this.dateTimePickerReporteCampannas.Location = new System.Drawing.Point(207, 79);
+            this.dateTimePickerReporteCampannas.Name = "dateTimePickerReporteCampannas";
+            this.dateTimePickerReporteCampannas.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerReporteCampannas.TabIndex = 42;
+            // 
+            // dataGridViewReportes
+            // 
+            this.dataGridViewReportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewReportes.Location = new System.Drawing.Point(-4, 108);
+            this.dataGridViewReportes.Name = "dataGridViewReportes";
+            this.dataGridViewReportes.Size = new System.Drawing.Size(719, 263);
+            this.dataGridViewReportes.TabIndex = 41;
+            // 
+            // labelFechaFiltro
+            // 
+            this.labelFechaFiltro.AutoSize = true;
+            this.labelFechaFiltro.Location = new System.Drawing.Point(3, 66);
+            this.labelFechaFiltro.Name = "labelFechaFiltro";
+            this.labelFechaFiltro.Size = new System.Drawing.Size(158, 13);
+            this.labelFechaFiltro.TabIndex = 40;
+            this.labelFechaFiltro.Text = "Ingrese fecha en YYYY-MM-DD";
+            // 
+            // textBoxFechaReporte
+            // 
+            this.textBoxFechaReporte.Location = new System.Drawing.Point(3, 82);
+            this.textBoxFechaReporte.Name = "textBoxFechaReporte";
+            this.textBoxFechaReporte.Size = new System.Drawing.Size(172, 20);
+            this.textBoxFechaReporte.TabIndex = 39;
             // 
             // button2
             // 
@@ -848,6 +895,7 @@
             this.buttonReporteCampanna.TabIndex = 35;
             this.buttonReporteCampanna.Text = "Reporte de Campañas";
             this.buttonReporteCampanna.UseVisualStyleBackColor = true;
+            this.buttonReporteCampanna.Click += new System.EventHandler(this.buttonReporteCampanna_Click);
             // 
             // tabIntegracionVentas
             // 
@@ -858,6 +906,20 @@
             this.tabIntegracionVentas.Text = "Integración con Ventas";
             this.tabIntegracionVentas.UseVisualStyleBackColor = true;
             // 
+            // bDMercadeoDataSet
+            // 
+            this.bDMercadeoDataSet.DataSetName = "BDMercadeoDataSet";
+            this.bDMercadeoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // campannasMercadeoBindingSource
+            // 
+            this.campannasMercadeoBindingSource.DataMember = "campannasMercadeo";
+            this.campannasMercadeoBindingSource.DataSource = this.bDMercadeoDataSet;
+            // 
+            // campannasMercadeoTableAdapter
+            // 
+            this.campannasMercadeoTableAdapter.ClearBeforeFill = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -866,6 +928,7 @@
             this.Controls.Add(this.CRMmktTab);
             this.Name = "Form1";
             this.Text = "CRM Mercadeo";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.CRMmktTab.ResumeLayout(false);
             this.tabClientes.ResumeLayout(false);
             this.tabClientes.PerformLayout();
@@ -878,6 +941,10 @@
             this.tabCampanasMercadeo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCampanna)).EndInit();
             this.tabReportesMkt.ResumeLayout(false);
+            this.tabReportesMkt.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReportes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDMercadeoDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.campannasMercadeoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -960,6 +1027,13 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonReporteClientesyServicios;
         private System.Windows.Forms.Button buttonReporteCampanna;
+        private BDMercadeoDataSet bDMercadeoDataSet;
+        private System.Windows.Forms.BindingSource campannasMercadeoBindingSource;
+        private BDMercadeoDataSetTableAdapters.campannasMercadeoTableAdapter campannasMercadeoTableAdapter;
+        private System.Windows.Forms.DataGridView dataGridViewReportes;
+        private System.Windows.Forms.Label labelFechaFiltro;
+        private System.Windows.Forms.TextBox textBoxFechaReporte;
+        private System.Windows.Forms.DateTimePicker dateTimePickerReporteCampannas;
     }
 }
 

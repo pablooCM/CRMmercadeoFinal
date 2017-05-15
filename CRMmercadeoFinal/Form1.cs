@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace CRMmercadeoFinal
 {
 
     public partial class Form1 : Form
     {
+        string limpia = "";
         public Form1()
         {
             InitializeComponent();
@@ -314,6 +316,31 @@ namespace CRMmercadeoFinal
         private void buttonAsignarRS_Click(object sender, EventArgs e)
         {
             textBoxRRSScliente.Text = comboBoxRRSS.Text;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'bDMercadeoDataSet.campannasMercadeo' Puede moverla o quitarla según sea necesario.
+            this.campannasMercadeoTableAdapter.Fill(this.bDMercadeoDataSet.campannasMercadeo);
+
+        }
+
+        private void buttonReporteCampanna_Click(object sender, EventArgs e)
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+                 
+            String consulta = "Select * from campannasMercadeo where fechaInicio =" + dateTimePickerFechaInicioCampanna;
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+            var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+            var commandBuilder = new SqlCommandBuilder(dataAdapter);
+            var dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridViewReportes.ReadOnly = true;
+            dataGridViewReportes.DataSource = dataSet.Tables[0];
+
         }
 
     }
