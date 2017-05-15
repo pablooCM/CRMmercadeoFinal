@@ -65,3 +65,48 @@ create procedure registrarRS
 	begin
 		insert into RedesSociales values(@nombreRS, @nombreUsuarioRS, @claveRS)
 	end
+--CRUD Servicios
+create procedure insertarServicios
+	@ID int,
+	@Descripción varchar(140),
+	@FormaDePago varchar(10),
+	@Cobertura varchar(20),
+	@estadoServicio varchar(20)
+	as
+	begin
+		insert into Servicios values(@ID,@Descripción,@FormaDePago,@Cobertura,@estadoServicio)
+	end
+
+
+create procedure actualizarServicios
+	@ID int,
+	@Descripción varchar(140),
+	@FormaDePago varchar(10),
+	@Cobertura varchar(20),
+	@estadoServicio varchar(20)
+
+AS
+BEGIN 
+      SET NOCOUNT ON 
+
+      UPDATE Servicios
+      SET 
+			descripcionServicio = @Descripción,
+			formaDePago = @FormaDePago,
+			coberturaServicio = @Cobertura,
+			estadoServicio = @estadoServicio
+			FROM   Servicios
+			where
+			idServicio = @ID
+END
+
+create procedure eliminarServicios
+	@ID int
+	as
+	begin
+		delete Servicios
+		from Servicios
+		where idServicio = @ID
+	end
+
+ 
