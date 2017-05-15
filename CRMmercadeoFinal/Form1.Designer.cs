@@ -117,6 +117,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.comboBoxRedSocialReportes = new System.Windows.Forms.ComboBox();
             this.CRMmktTab.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabServicios.SuspendLayout();
@@ -818,6 +819,7 @@
             // 
             // tabReportesMkt
             // 
+            this.tabReportesMkt.Controls.Add(this.comboBoxRedSocialReportes);
             this.tabReportesMkt.Controls.Add(this.label3);
             this.tabReportesMkt.Controls.Add(this.label2);
             this.tabReportesMkt.Controls.Add(this.label1);
@@ -899,6 +901,7 @@
             this.button1.TabIndex = 37;
             this.button1.Text = "Reporte de Redes Sociales";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonReporteClientesyServicios
             // 
@@ -978,6 +981,22 @@
             this.label3.Size = new System.Drawing.Size(156, 13);
             this.label3.TabIndex = 49;
             this.label3.Text = "Seleccione Fecha de Campaña";
+            // 
+            // comboBoxRedSocialReportes
+            // 
+            this.comboBoxRedSocialReportes.FormattingEnabled = true;
+            this.comboBoxRedSocialReportes.Items.AddRange(new object[] {
+            "Twitter",
+            "Facebook",
+            "Google+",
+            "LinkedIn",
+            "Hi5",
+            "Snapchat",
+            "Instagram"});
+            this.comboBoxRedSocialReportes.Location = new System.Drawing.Point(637, 71);
+            this.comboBoxRedSocialReportes.Name = "comboBoxRedSocialReportes";
+            this.comboBoxRedSocialReportes.Size = new System.Drawing.Size(111, 21);
+            this.comboBoxRedSocialReportes.TabIndex = 50;
             // 
             // Form1
             // 
@@ -1098,6 +1117,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelCedulaReportes;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBoxRedSocialReportes;
     }
 }
 

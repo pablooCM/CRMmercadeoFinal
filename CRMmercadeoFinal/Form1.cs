@@ -362,5 +362,23 @@ namespace CRMmercadeoFinal
             dataGridViewReportes.DataSource = dataSet.Tables[0];
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+            String consulta = "select nombreRedSocial, count (nombreRedSocial) as CantidadClientesPorRedSocial from RedesSociales, Clientes where Clientes.redesSociales = RedesSociales.nombreRedSocial and Clientes.redesSociales= '"+comboBoxRedSocialReportes.Text+"' group by nombreRedSocial";
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+            var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+            var commandBuilder = new SqlCommandBuilder(dataAdapter);
+            var dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridViewReportes.ReadOnly = true;
+            dataGridViewReportes.DataSource = dataSet.Tables[0];
+
+
+        }
+
     }
 }
