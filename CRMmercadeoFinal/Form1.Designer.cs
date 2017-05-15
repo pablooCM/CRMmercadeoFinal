@@ -100,10 +100,7 @@
             this.labelNombreCampanna = new System.Windows.Forms.Label();
             this.labelIdCampanna = new System.Windows.Forms.Label();
             this.tabReportesMkt = new System.Windows.Forms.TabPage();
-            this.dateTimePickerReporteCampannas = new System.Windows.Forms.DateTimePicker();
             this.dataGridViewReportes = new System.Windows.Forms.DataGridView();
-            this.labelFechaFiltro = new System.Windows.Forms.Label();
-            this.textBoxFechaReporte = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonReporteClientesyServicios = new System.Windows.Forms.Button();
@@ -112,6 +109,10 @@
             this.bDMercadeoDataSet = new CRMmercadeoFinal.BDMercadeoDataSet();
             this.campannasMercadeoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.campannasMercadeoTableAdapter = new CRMmercadeoFinal.BDMercadeoDataSetTableAdapters.campannasMercadeoTableAdapter();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBoxIdClienteReportes = new System.Windows.Forms.TextBox();
+            this.textBoxIdServiciosReportes = new System.Windows.Forms.TextBox();
+            this.dateTimePickerReporteCampannas = new System.Windows.Forms.DateTimePicker();
             this.CRMmktTab.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabServicios.SuspendLayout();
@@ -813,10 +814,11 @@
             // 
             // tabReportesMkt
             // 
+            this.tabReportesMkt.Controls.Add(this.textBoxIdServiciosReportes);
+            this.tabReportesMkt.Controls.Add(this.textBoxIdClienteReportes);
+            this.tabReportesMkt.Controls.Add(this.comboBox1);
             this.tabReportesMkt.Controls.Add(this.dateTimePickerReporteCampannas);
             this.tabReportesMkt.Controls.Add(this.dataGridViewReportes);
-            this.tabReportesMkt.Controls.Add(this.labelFechaFiltro);
-            this.tabReportesMkt.Controls.Add(this.textBoxFechaReporte);
             this.tabReportesMkt.Controls.Add(this.button2);
             this.tabReportesMkt.Controls.Add(this.button1);
             this.tabReportesMkt.Controls.Add(this.buttonReporteClientesyServicios);
@@ -828,14 +830,6 @@
             this.tabReportesMkt.Text = "Reportes";
             this.tabReportesMkt.UseVisualStyleBackColor = true;
             // 
-            // dateTimePickerReporteCampannas
-            // 
-            this.dateTimePickerReporteCampannas.CustomFormat = "YYYY-MM-DD";
-            this.dateTimePickerReporteCampannas.Location = new System.Drawing.Point(207, 79);
-            this.dateTimePickerReporteCampannas.Name = "dateTimePickerReporteCampannas";
-            this.dateTimePickerReporteCampannas.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerReporteCampannas.TabIndex = 42;
-            // 
             // dataGridViewReportes
             // 
             this.dataGridViewReportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -843,22 +837,6 @@
             this.dataGridViewReportes.Name = "dataGridViewReportes";
             this.dataGridViewReportes.Size = new System.Drawing.Size(719, 263);
             this.dataGridViewReportes.TabIndex = 41;
-            // 
-            // labelFechaFiltro
-            // 
-            this.labelFechaFiltro.AutoSize = true;
-            this.labelFechaFiltro.Location = new System.Drawing.Point(3, 66);
-            this.labelFechaFiltro.Name = "labelFechaFiltro";
-            this.labelFechaFiltro.Size = new System.Drawing.Size(158, 13);
-            this.labelFechaFiltro.TabIndex = 40;
-            this.labelFechaFiltro.Text = "Ingrese fecha en YYYY-MM-DD";
-            // 
-            // textBoxFechaReporte
-            // 
-            this.textBoxFechaReporte.Location = new System.Drawing.Point(3, 82);
-            this.textBoxFechaReporte.Name = "textBoxFechaReporte";
-            this.textBoxFechaReporte.Size = new System.Drawing.Size(172, 20);
-            this.textBoxFechaReporte.TabIndex = 39;
             // 
             // button2
             // 
@@ -886,6 +864,7 @@
             this.buttonReporteClientesyServicios.TabIndex = 36;
             this.buttonReporteClientesyServicios.Text = "Reporte de Clientes y Servicios";
             this.buttonReporteClientesyServicios.UseVisualStyleBackColor = true;
+            this.buttonReporteClientesyServicios.Click += new System.EventHandler(this.buttonReporteClientesyServicios_Click);
             // 
             // buttonReporteCampanna
             // 
@@ -919,6 +898,42 @@
             // campannasMercadeoTableAdapter
             // 
             this.campannasMercadeoTableAdapter.ClearBeforeFill = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "mensual",
+            "quincenal",
+            "anual"});
+            this.comboBox1.Location = new System.Drawing.Point(359, 83);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(110, 21);
+            this.comboBox1.TabIndex = 43;
+            // 
+            // textBoxIdClienteReportes
+            // 
+            this.textBoxIdClienteReportes.Location = new System.Drawing.Point(150, 83);
+            this.textBoxIdClienteReportes.Name = "textBoxIdClienteReportes";
+            this.textBoxIdClienteReportes.Size = new System.Drawing.Size(100, 20);
+            this.textBoxIdClienteReportes.TabIndex = 44;
+            // 
+            // textBoxIdServiciosReportes
+            // 
+            this.textBoxIdServiciosReportes.Location = new System.Drawing.Point(253, 82);
+            this.textBoxIdServiciosReportes.Name = "textBoxIdServiciosReportes";
+            this.textBoxIdServiciosReportes.Size = new System.Drawing.Size(100, 20);
+            this.textBoxIdServiciosReportes.TabIndex = 45;
+            // 
+            // dateTimePickerReporteCampannas
+            // 
+            this.dateTimePickerReporteCampannas.CausesValidation = false;
+            this.dateTimePickerReporteCampannas.CustomFormat = "YYYY-MM-DD";
+            this.dateTimePickerReporteCampannas.Location = new System.Drawing.Point(-15, 57);
+            this.dateTimePickerReporteCampannas.Name = "dateTimePickerReporteCampannas";
+            this.dateTimePickerReporteCampannas.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerReporteCampannas.TabIndex = 42;
+            this.dateTimePickerReporteCampannas.Value = new System.DateTime(2017, 5, 10, 0, 0, 0, 0);
             // 
             // Form1
             // 
@@ -1031,9 +1046,10 @@
         private System.Windows.Forms.BindingSource campannasMercadeoBindingSource;
         private BDMercadeoDataSetTableAdapters.campannasMercadeoTableAdapter campannasMercadeoTableAdapter;
         private System.Windows.Forms.DataGridView dataGridViewReportes;
-        private System.Windows.Forms.Label labelFechaFiltro;
-        private System.Windows.Forms.TextBox textBoxFechaReporte;
-        private System.Windows.Forms.DateTimePicker dateTimePickerReporteCampannas;
+        private System.Windows.Forms.TextBox textBoxIdServiciosReportes;
+        private System.Windows.Forms.TextBox textBoxIdClienteReportes;
+        private System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.DateTimePicker dateTimePickerReporteCampannas;
     }
 }
 

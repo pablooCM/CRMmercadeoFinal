@@ -330,8 +330,11 @@ namespace CRMmercadeoFinal
             System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
             conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
             conexion.Open();
+
+            var formateoFecha = dateTimePickerReporteCampannas.Value.ToString("yyyy/MM/dd");
+            MessageBox.Show(formateoFecha);
                  
-            String consulta = "Select * from campannasMercadeo where fechaInicio =" + dateTimePickerFechaInicioCampanna;
+            String consulta = "Select pais, nombreCampanna, fechaInicio from campannasMercadeo where fechaInicio ='"+formateoFecha+"'";
             SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
             var dataAdapter = new SqlDataAdapter(consulta, conexion);
 
@@ -340,6 +343,11 @@ namespace CRMmercadeoFinal
             dataAdapter.Fill(dataSet);
             dataGridViewReportes.ReadOnly = true;
             dataGridViewReportes.DataSource = dataSet.Tables[0];
+
+        }
+
+        private void buttonReporteClientesyServicios_Click(object sender, EventArgs e)
+        {
 
         }
 
