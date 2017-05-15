@@ -332,9 +332,8 @@ namespace CRMmercadeoFinal
             conexion.Open();
 
             var formateoFecha = dateTimePickerReporteCampannas.Value.ToString("yyyy/MM/dd");
-            MessageBox.Show(formateoFecha);
                  
-            String consulta = "Select pais, nombreCampanna, fechaInicio from campannasMercadeo where fechaInicio ='"+formateoFecha+"'";
+            String consulta = "Select * from campannasMercadeo where fechaInicio ='"+formateoFecha+"' order by pais";
             SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
             var dataAdapter = new SqlDataAdapter(consulta, conexion);
 
