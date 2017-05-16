@@ -121,6 +121,10 @@
             this.comboBoxPaisReportes = new System.Windows.Forms.ComboBox();
             this.textBoxApellidoReporteClientes = new System.Windows.Forms.TextBox();
             this.comboBoxCiudadesReporteClientes = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.CRMmktTab.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabServicios.SuspendLayout();
@@ -822,6 +826,10 @@
             // 
             // tabReportesMkt
             // 
+            this.tabReportesMkt.Controls.Add(this.label7);
+            this.tabReportesMkt.Controls.Add(this.label6);
+            this.tabReportesMkt.Controls.Add(this.label5);
+            this.tabReportesMkt.Controls.Add(this.label4);
             this.tabReportesMkt.Controls.Add(this.comboBoxCiudadesReporteClientes);
             this.tabReportesMkt.Controls.Add(this.textBoxApellidoReporteClientes);
             this.tabReportesMkt.Controls.Add(this.comboBoxPaisReportes);
@@ -1028,6 +1036,42 @@
             this.comboBoxCiudadesReporteClientes.Size = new System.Drawing.Size(89, 21);
             this.comboBoxCiudadesReporteClientes.TabIndex = 53;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(634, 54);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(115, 13);
+            this.label4.TabIndex = 54;
+            this.label4.Text = "Seleccione Red Social";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(802, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 13);
+            this.label5.TabIndex = 55;
+            this.label5.Text = "Seleccione País";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(985, 54);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 13);
+            this.label6.TabIndex = 56;
+            this.label6.Text = "Seleccione Ciudad";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(900, 54);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 13);
+            this.label7.TabIndex = 57;
+            this.label7.Text = "Ingrese Apellido";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1151,6 +1195,10 @@
         private System.Windows.Forms.ComboBox comboBoxPaisReportes;
         private System.Windows.Forms.TextBox textBoxApellidoReporteClientes;
         private System.Windows.Forms.ComboBox comboBoxCiudadesReporteClientes;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }
 
