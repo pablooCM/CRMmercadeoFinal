@@ -49,6 +49,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BDMercadeoDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Conexion.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

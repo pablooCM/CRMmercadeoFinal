@@ -11,12 +11,12 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
 
+
 namespace CRMmercadeoFinal
 {
 
     public partial class Form1 : Form
     {
-        string limpia = "";
         public Form1()
         {
             InitializeComponent();
@@ -24,6 +24,7 @@ namespace CRMmercadeoFinal
             jalaDatosComboBoxRRSSclientes();
             jalaPaisesComboBox();
             jalaCiudadesComboBox();
+
         }
 
         private void jalaDatosComboBoxServClientes()
@@ -384,15 +385,32 @@ namespace CRMmercadeoFinal
             conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
             conexion.Open();
 
-            String consulta = "Select idServicio, descripcionServicio, nombreCliente, apellido1Cliente, apellido2Cliente, formaDePago from Servicios, Clientes where Servicios.idServicio ="+textBoxIdServiciosReportes.Text+ " and Clientes.cedula="+ textBoxCedulaClienteReportes.Text + " and Servicios.formaDePago='"+ comboBoxFormaPagoReportes.Text+"'";
-            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
-            var dataAdapter = new SqlDataAdapter(consulta, conexion);
+            if (String.IsNullOrEmpty(textBoxCedulaClienteReportes.Text) | String.IsNullOrEmpty(textBoxIdServiciosReportes.Text) | String.IsNullOrEmpty(comboBoxFormaPagoReportes.Text))
+            {
+                String consulta= "Select idServicio, descripcionServicio, nombreCliente, apellido1Cliente, apellido2Cliente, formaDePago from Servicios, Clientes";
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
 
-            var commandBuilder = new SqlCommandBuilder(dataAdapter);
-            var dataSet = new DataSet();
-            dataAdapter.Fill(dataSet);
-            dataGridViewReportes.ReadOnly = true;
-            dataGridViewReportes.DataSource = dataSet.Tables[0];
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }
+            else
+            {
+                String consulta = "Select idServicio, descripcionServicio, nombreCliente, apellido1Cliente, apellido2Cliente, formaDePago from Servicios, Clientes where Servicios.idServicio =" + textBoxIdServiciosReportes.Text + " or Clientes.cedula=" + textBoxCedulaClienteReportes.Text + " or Servicios.formaDePago='" + comboBoxFormaPagoReportes.Text + "'";
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }
+           
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -419,7 +437,7 @@ namespace CRMmercadeoFinal
             conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
             conexion.Open();
 
-            String consulta = "select cedula, nombreCliente, apellido1Cliente, apellido2Cliente, ciudad, pais, correoElectronico, serviciosCliente, redesSociales from Clientes where pais ='" + comboBoxPaisReportes.Text + "' and apellido1Cliente='" + textBoxApellidoReporteClientes.Text + "' or apellido2Cliente='" + textBoxApellidoReporteClientes.Text + "' and ciudad= '" + comboBoxCiudadesReporteClientes.Text+"'";
+            String consulta = "select cedula, nombreCliente, apellido1Cliente, apellido2Cliente, ciudad, pais, correoElectronico, serviciosCliente, redesSociales from Clientes where pais ='" + comboBoxPaisReportes.Text + "' and apellido1Cliente='" + textBoxApellidoReporteClientes.Text + "' or apellido2Cliente='" + textBoxApellidoReporteClientes.Text + "' and ciudad= '" + comboBoxCiudadesReporteClientes.Text + "'";
             SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
             var dataAdapter = new SqlDataAdapter(consulta, conexion);
 
