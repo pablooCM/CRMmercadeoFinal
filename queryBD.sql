@@ -1,93 +1,123 @@
---Tabla Cliente
-create table Cliente(
-	cedula int not null,
-	CHECK(cedula>=100000000 and cedula<=999999999),
-	nombreCliente varchar(50),
-	apellido1Cliente varchar(50),
-	apellido2Cliente varchar(50),
-	ciudad varchar(50),
-	pais varchar(50),
-	correoElectronico varchar(50)
-	primary key (cedula)
-)
---Tabla Redes Sociales
-create table RedesSociales(
+--Tabla de redes sociales de la empresa
+create table RRSS(
+	idRedSocial int,
 	nombreRedSocial varchar(20),
-	nombreUsuario varchar(20),
-	claveRedSocial varchar(120),
-	primary key (nombreRedSocial)
+	nombreUsuarioRS varchar (20),
+	claveRS varchar(120)
+	primary key (idRedSocial)
 )
---Tabla intermedia entre RRSS y Cliente
-create table IntermediaRRSSyCliente(
-	cedula int not null,
-	CHECK(cedula>=100000000 and cedula<=999999999),
-	nombreRedSocial varchar(20)
-	primary key(cedula, nombreRedSocial),
-	foreign key (cedula) references Cliente(cedula)
-		on delete cascade
-		on update cascade,
-	foreign key (nombreRedSocial) references RedesSociales(nombreRedSocial)
+
+--Tabla Pais
+create table Pais(
+	idPais int,
+	nombrePais varchar(30)
+	primary key(idPais)
+)
+--Tabla de Cliente
+create table Cliente(
+	cedula int,
+	nombre varchar (30),
+	apellido1 varchar (30),
+	apellido2 varchar(30),
+	ciudad varchar(30),
+	pais int, 
+	correoElectronico varchar(30)
+	primary key (cedula),
+	foreign key (pais) references Pais(idPais)
 		on delete cascade
 		on update cascade
 )
 
---Tabla Servicios
-
-create table Servicios(
-	idServicio int not null,
-	CHECK(idServicio >= 1000 and idServicio <= 9999),
-	descripcionServicio varchar(60),
-	formaDePago varchar (20),
-	coberturaServicio varchar(220),
-	estadoServicio varchar(40)
+--Tabla Servicio
+create table Servicio(
+	idServicio int,
+	descripcion varchar(30),
+	formaDePago varchar(30),
+	estadoServicio varchar(30)
 	primary key (idServicio)
 )
 
---Tabla de Campanas de Mercadeo
-create table CampannasMercadeo(
-	idCampanna int,
+--Tabla RedSocialCliente
+create table RedSocialCliente(
+	idRedSocial int,
+	nombreRedSocial varchar(30)
+	primary key (idRedSocial)
+)
+
+--Tabla CampannaMercadeo
+create table CampannaMercadeo(
+	idCampannaMercadeo int,
 	nombreCampanna varchar(40),
 	fechaInicio date,
 	fechaFinal date,
-	pais varchar(50),
+	pais int,
 	costoCampanna int
-	primary key (idCampanna)
-
+	primary key (idCampannaMercadeo)
 )
 
+--Tabla intermedia entre las redes sociales del cliente y cliente
+create table IntermediaRSClienteyCliente(
+	cedula int,
+	idRedSocial int,
+	primary key(cedula, idRedSocial),
+	foreign key (cedula) references Cliente(cedula)
+		 on delete cascade
+		 on update cascade,
+	foreign key (idRedSocial) references RedSocialCliente(idRedSocial)
+		on delete cascade
+		on update cascade
+)
+--Tabla intermedia entre Servicio y Pais
+create table IntermediaServicioyPais(
+	idServicio int,
+	idPais int,
+	primary key(idServicio, idPais),
+	foreign key (idServicio) references Servicio(idServicio)
+		on delete cascade
+		on update cascade,
+	foreign key (idPais) references Pais(idPais)
+		on delete cascade
+		on update cascade
+
+)
 
 --Tabla intermedia entre Cliente y Servicio
 create table IntermediaClienteyServicio(
-	cedula int not null,
-	CHECK(cedula>=100000000 and cedula<=999999999),
-	nombreCliente varchar(50),
-	idServicio int not null,
-	CHECK(idServicio >= 1000 and idServicio <= 9999),
-	primary key(cedula, idServicio),
+	idServicio int,
+	cedula int,
+	estadoServicio varchar(30),
+	idPais int,
+	primary key(idServicio, cedula),
+	foreign key (idServicio) references Servicio(idServicio)
+		on delete cascade
+		on update cascade,
 	foreign key (cedula) references Cliente(cedula)
 		on delete cascade
 		on update cascade,
-	foreign key (idServicio) references Servicios(idServicio)
-		on delete cascade
-		on update cascade
-
 )
 
---Tabla intermedia entre CampannaMercadeo y Cliente
+--Tabla intermedia entre Pais y CampannaMercadeo
+create table IntermediaPaisyCampannaMercadeo(
+	idCampannaMercadeo int,
+	idPais int,
+	primary key(idCampannaMercadeo, idPais),
+	foreign key (idCampannaMercadeo) references CampannaMercadeo(idCampannaMercadeo)
+		on delete cascade
+		on update cascade,
+	foreign key (idPais) references Pais(idPais)
+		on delete cascade
+		on update cascade
+)
+
+--Tabla intermedia entre Cliente y CampannaMercadeo
 create table IntermediaCampannaMercadeoyCliente(
-	cedula int not null,
-	CHECK(cedula>=100000000 and cedula<=999999999),
-	nombreCliente varchar(50),
-	idCampanna int,
-	primary key(cedula, idCampanna),
+	cedula int,
+	idCampannaMercadeo int
+	primary key(cedula, idCampannaMercadeo)
 	foreign key (cedula) references Cliente(cedula)
 		on delete cascade
 		on update cascade,
-	foreign key (idCampanna) references CampannasMercadeo(idCampanna)
+	foreign key (idCampannaMercadeo) references CampannaMercadeo(idCampannaMercadeo)
 		on delete cascade
 		on update cascade
 )
-insert into Cliente values(115440647, 'Pablo', 'Corrales', 'Mora', 'San Jose','Costa Rica', 'jopablo13@gmail.com')
-insert into Servicios values (1111,'agua', 'mensual', 'Costa Rica', 'activo' )
-insert into RedesSociales values('Twitter', 'empresa1', 'empresaclave')
-insert into CampannasMercadeo values(100,'Conquistando al cacheton','2016-01-01','2016-06-01','Costa Rica',2000)

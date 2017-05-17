@@ -9,14 +9,23 @@ namespace CRMmercadeoFinal
 {
     class ConexionBD
     {
-        
-        public static SqlConnection establecerConexion()
-        {
-            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
-            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
-            conexion.Open();
-        }
+        private static ConexionBD instance = new ConexionBD();
+        private static SqlConnection conection = new System.Data.SqlClient.SqlConnection();
+   
+       public ConexionBD()
+       {
+           conection.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+           conection.Open();
+       }
 
-        public static string conexion { get; set; }
+       public static ConexionBD getInstance()
+       {
+             return instance; 
+       }
+
+       public static SqlConnection getConection()
+       {
+           return conection;
+       } 
     }
 }

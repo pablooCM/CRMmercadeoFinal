@@ -100,6 +100,18 @@
             this.labelNombreCampanna = new System.Windows.Forms.Label();
             this.labelIdCampanna = new System.Windows.Forms.Label();
             this.tabReportesMkt = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxCiudadesReporteClientes = new System.Windows.Forms.ComboBox();
+            this.textBoxApellidoReporteClientes = new System.Windows.Forms.TextBox();
+            this.comboBoxPaisReportes = new System.Windows.Forms.ComboBox();
+            this.comboBoxRedSocialReportes = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelCedulaReportes = new System.Windows.Forms.Label();
             this.textBoxIdServiciosReportes = new System.Windows.Forms.TextBox();
             this.textBoxCedulaClienteReportes = new System.Windows.Forms.TextBox();
             this.comboBoxFormaPagoReportes = new System.Windows.Forms.ComboBox();
@@ -113,18 +125,7 @@
             this.bDMercadeoDataSet = new CRMmercadeoFinal.BDMercadeoDataSet();
             this.campannasMercadeoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.campannasMercadeoTableAdapter = new CRMmercadeoFinal.BDMercadeoDataSetTableAdapters.campannasMercadeoTableAdapter();
-            this.labelCedulaReportes = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBoxRedSocialReportes = new System.Windows.Forms.ComboBox();
-            this.comboBoxPaisReportes = new System.Windows.Forms.ComboBox();
-            this.textBoxApellidoReporteClientes = new System.Windows.Forms.TextBox();
-            this.comboBoxCiudadesReporteClientes = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.CRMmktTab.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabServicios.SuspendLayout();
@@ -185,7 +186,7 @@
             this.tabClientes.Location = new System.Drawing.Point(4, 22);
             this.tabClientes.Name = "tabClientes";
             this.tabClientes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClientes.Size = new System.Drawing.Size(1062, 526);
+            this.tabClientes.Size = new System.Drawing.Size(1075, 526);
             this.tabClientes.TabIndex = 0;
             this.tabClientes.Text = "Clientes";
             this.tabClientes.UseVisualStyleBackColor = true;
@@ -449,7 +450,7 @@
             this.tabServicios.Location = new System.Drawing.Point(4, 22);
             this.tabServicios.Name = "tabServicios";
             this.tabServicios.Padding = new System.Windows.Forms.Padding(3);
-            this.tabServicios.Size = new System.Drawing.Size(1062, 526);
+            this.tabServicios.Size = new System.Drawing.Size(1075, 526);
             this.tabServicios.TabIndex = 1;
             this.tabServicios.Text = "Servicios";
             this.tabServicios.UseVisualStyleBackColor = true;
@@ -592,7 +593,7 @@
             this.tabRRSS.Controls.Add(this.labelRedSocial);
             this.tabRRSS.Location = new System.Drawing.Point(4, 22);
             this.tabRRSS.Name = "tabRRSS";
-            this.tabRRSS.Size = new System.Drawing.Size(1062, 526);
+            this.tabRRSS.Size = new System.Drawing.Size(1075, 526);
             this.tabRRSS.TabIndex = 2;
             this.tabRRSS.Text = "Redes Sociales";
             this.tabRRSS.UseVisualStyleBackColor = true;
@@ -685,7 +686,7 @@
             this.tabCampanasMercadeo.Controls.Add(this.labelIdCampanna);
             this.tabCampanasMercadeo.Location = new System.Drawing.Point(4, 22);
             this.tabCampanasMercadeo.Name = "tabCampanasMercadeo";
-            this.tabCampanasMercadeo.Size = new System.Drawing.Size(1062, 526);
+            this.tabCampanasMercadeo.Size = new System.Drawing.Size(1075, 526);
             this.tabCampanasMercadeo.TabIndex = 3;
             this.tabCampanasMercadeo.Text = "Campañas de Mercadeo";
             this.tabCampanasMercadeo.UseVisualStyleBackColor = true;
@@ -826,6 +827,7 @@
             // 
             // tabReportesMkt
             // 
+            this.tabReportesMkt.Controls.Add(this.button1);
             this.tabReportesMkt.Controls.Add(this.label7);
             this.tabReportesMkt.Controls.Add(this.label6);
             this.tabReportesMkt.Controls.Add(this.label5);
@@ -853,6 +855,117 @@
             this.tabReportesMkt.TabIndex = 4;
             this.tabReportesMkt.Text = "Reportes";
             this.tabReportesMkt.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(900, 54);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 13);
+            this.label7.TabIndex = 57;
+            this.label7.Text = "Ingrese Apellido";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(985, 54);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 13);
+            this.label6.TabIndex = 56;
+            this.label6.Text = "Seleccione Ciudad";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(802, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 13);
+            this.label5.TabIndex = 55;
+            this.label5.Text = "Seleccione País";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(634, 54);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(115, 13);
+            this.label4.TabIndex = 54;
+            this.label4.Text = "Seleccione Red Social";
+            // 
+            // comboBoxCiudadesReporteClientes
+            // 
+            this.comboBoxCiudadesReporteClientes.FormattingEnabled = true;
+            this.comboBoxCiudadesReporteClientes.Location = new System.Drawing.Point(988, 71);
+            this.comboBoxCiudadesReporteClientes.Name = "comboBoxCiudadesReporteClientes";
+            this.comboBoxCiudadesReporteClientes.Size = new System.Drawing.Size(89, 21);
+            this.comboBoxCiudadesReporteClientes.TabIndex = 53;
+            // 
+            // textBoxApellidoReporteClientes
+            // 
+            this.textBoxApellidoReporteClientes.Location = new System.Drawing.Point(893, 71);
+            this.textBoxApellidoReporteClientes.Name = "textBoxApellidoReporteClientes";
+            this.textBoxApellidoReporteClientes.Size = new System.Drawing.Size(89, 20);
+            this.textBoxApellidoReporteClientes.TabIndex = 52;
+            // 
+            // comboBoxPaisReportes
+            // 
+            this.comboBoxPaisReportes.FormattingEnabled = true;
+            this.comboBoxPaisReportes.Location = new System.Drawing.Point(798, 71);
+            this.comboBoxPaisReportes.Name = "comboBoxPaisReportes";
+            this.comboBoxPaisReportes.Size = new System.Drawing.Size(89, 21);
+            this.comboBoxPaisReportes.TabIndex = 51;
+            // 
+            // comboBoxRedSocialReportes
+            // 
+            this.comboBoxRedSocialReportes.FormattingEnabled = true;
+            this.comboBoxRedSocialReportes.Items.AddRange(new object[] {
+            "Twitter",
+            "Facebook",
+            "Google+",
+            "LinkedIn",
+            "Hi5",
+            "Snapchat",
+            "Instagram"});
+            this.comboBoxRedSocialReportes.Location = new System.Drawing.Point(637, 71);
+            this.comboBoxRedSocialReportes.Name = "comboBoxRedSocialReportes";
+            this.comboBoxRedSocialReportes.Size = new System.Drawing.Size(111, 21);
+            this.comboBoxRedSocialReportes.TabIndex = 50;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 57);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(156, 13);
+            this.label3.TabIndex = 49;
+            this.label3.Text = "Seleccione Fecha de Campaña";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(418, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 48;
+            this.label2.Text = "Forma de Pago";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(312, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.TabIndex = 47;
+            this.label1.Text = "ID de Servicio";
+            // 
+            // labelCedulaReportes
+            // 
+            this.labelCedulaReportes.AutoSize = true;
+            this.labelCedulaReportes.Location = new System.Drawing.Point(218, 56);
+            this.labelCedulaReportes.Name = "labelCedulaReportes";
+            this.labelCedulaReportes.Size = new System.Drawing.Size(40, 13);
+            this.labelCedulaReportes.TabIndex = 46;
+            this.labelCedulaReportes.Text = "Cédula";
             // 
             // textBoxIdServiciosReportes
             // 
@@ -942,7 +1055,7 @@
             // 
             this.tabIntegracionVentas.Location = new System.Drawing.Point(4, 22);
             this.tabIntegracionVentas.Name = "tabIntegracionVentas";
-            this.tabIntegracionVentas.Size = new System.Drawing.Size(711, 402);
+            this.tabIntegracionVentas.Size = new System.Drawing.Size(1075, 526);
             this.tabIntegracionVentas.TabIndex = 5;
             this.tabIntegracionVentas.Text = "Integración con Ventas";
             this.tabIntegracionVentas.UseVisualStyleBackColor = true;
@@ -961,116 +1074,15 @@
             // 
             this.campannasMercadeoTableAdapter.ClearBeforeFill = true;
             // 
-            // labelCedulaReportes
+            // button1
             // 
-            this.labelCedulaReportes.AutoSize = true;
-            this.labelCedulaReportes.Location = new System.Drawing.Point(218, 56);
-            this.labelCedulaReportes.Name = "labelCedulaReportes";
-            this.labelCedulaReportes.Size = new System.Drawing.Size(40, 13);
-            this.labelCedulaReportes.TabIndex = 46;
-            this.labelCedulaReportes.Text = "Cédula";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(312, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
-            this.label1.TabIndex = 47;
-            this.label1.Text = "ID de Servicio";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(418, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 13);
-            this.label2.TabIndex = 48;
-            this.label2.Text = "Forma de Pago";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 57);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(156, 13);
-            this.label3.TabIndex = 49;
-            this.label3.Text = "Seleccione Fecha de Campaña";
-            // 
-            // comboBoxRedSocialReportes
-            // 
-            this.comboBoxRedSocialReportes.FormattingEnabled = true;
-            this.comboBoxRedSocialReportes.Items.AddRange(new object[] {
-            "Twitter",
-            "Facebook",
-            "Google+",
-            "LinkedIn",
-            "Hi5",
-            "Snapchat",
-            "Instagram"});
-            this.comboBoxRedSocialReportes.Location = new System.Drawing.Point(637, 71);
-            this.comboBoxRedSocialReportes.Name = "comboBoxRedSocialReportes";
-            this.comboBoxRedSocialReportes.Size = new System.Drawing.Size(111, 21);
-            this.comboBoxRedSocialReportes.TabIndex = 50;
-            // 
-            // comboBoxPaisReportes
-            // 
-            this.comboBoxPaisReportes.FormattingEnabled = true;
-            this.comboBoxPaisReportes.Location = new System.Drawing.Point(798, 71);
-            this.comboBoxPaisReportes.Name = "comboBoxPaisReportes";
-            this.comboBoxPaisReportes.Size = new System.Drawing.Size(89, 21);
-            this.comboBoxPaisReportes.TabIndex = 51;
-            // 
-            // textBoxApellidoReporteClientes
-            // 
-            this.textBoxApellidoReporteClientes.Location = new System.Drawing.Point(893, 71);
-            this.textBoxApellidoReporteClientes.Name = "textBoxApellidoReporteClientes";
-            this.textBoxApellidoReporteClientes.Size = new System.Drawing.Size(89, 20);
-            this.textBoxApellidoReporteClientes.TabIndex = 52;
-            // 
-            // comboBoxCiudadesReporteClientes
-            // 
-            this.comboBoxCiudadesReporteClientes.FormattingEnabled = true;
-            this.comboBoxCiudadesReporteClientes.Location = new System.Drawing.Point(988, 71);
-            this.comboBoxCiudadesReporteClientes.Name = "comboBoxCiudadesReporteClientes";
-            this.comboBoxCiudadesReporteClientes.Size = new System.Drawing.Size(89, 21);
-            this.comboBoxCiudadesReporteClientes.TabIndex = 53;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(634, 54);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 13);
-            this.label4.TabIndex = 54;
-            this.label4.Text = "Seleccione Red Social";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(802, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 13);
-            this.label5.TabIndex = 55;
-            this.label5.Text = "Seleccione País";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(985, 54);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 13);
-            this.label6.TabIndex = 56;
-            this.label6.Text = "Seleccione Ciudad";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(900, 54);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 13);
-            this.label7.TabIndex = 57;
-            this.label7.Text = "Ingrese Apellido";
+            this.button1.Location = new System.Drawing.Point(524, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 58;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Form1
             // 
@@ -1199,6 +1211,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
     }
 }
 
