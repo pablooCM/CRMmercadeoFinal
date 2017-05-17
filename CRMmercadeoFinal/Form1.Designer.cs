@@ -31,13 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.CRMmktTab = new System.Windows.Forms.TabControl();
             this.tabClientes = new System.Windows.Forms.TabPage();
+            this.comboBoxEstadoServicioClienteCliente = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.buttonAsignarRS = new System.Windows.Forms.Button();
             this.labelRS = new System.Windows.Forms.Label();
             this.comboBoxRRSS = new System.Windows.Forms.ComboBox();
-            this.textBoxRRSScliente = new System.Windows.Forms.TextBox();
-            this.labelRRSS = new System.Windows.Forms.Label();
-            this.labelServiciosCliente = new System.Windows.Forms.Label();
-            this.textBoxServiciosCliente = new System.Windows.Forms.TextBox();
             this.buttonAsignarServicioCliente = new System.Windows.Forms.Button();
             this.labelAsignarServiciosCliente = new System.Windows.Forms.Label();
             this.comboBoxServiciosCliente = new System.Windows.Forms.ComboBox();
@@ -125,7 +123,8 @@
             this.bDMercadeoDataSet = new CRMmercadeoFinal.BDMercadeoDataSet();
             this.campannasMercadeoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.campannasMercadeoTableAdapter = new CRMmercadeoFinal.BDMercadeoDataSetTableAdapters.campannasMercadeoTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxGeneraIdServicio = new System.Windows.Forms.TextBox();
+            this.textBoxGeneraIdRedSocial = new System.Windows.Forms.TextBox();
             this.CRMmktTab.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabServicios.SuspendLayout();
@@ -155,13 +154,13 @@
             // 
             // tabClientes
             // 
+            this.tabClientes.Controls.Add(this.textBoxGeneraIdRedSocial);
+            this.tabClientes.Controls.Add(this.textBoxGeneraIdServicio);
+            this.tabClientes.Controls.Add(this.comboBoxEstadoServicioClienteCliente);
+            this.tabClientes.Controls.Add(this.label8);
             this.tabClientes.Controls.Add(this.buttonAsignarRS);
             this.tabClientes.Controls.Add(this.labelRS);
             this.tabClientes.Controls.Add(this.comboBoxRRSS);
-            this.tabClientes.Controls.Add(this.textBoxRRSScliente);
-            this.tabClientes.Controls.Add(this.labelRRSS);
-            this.tabClientes.Controls.Add(this.labelServiciosCliente);
-            this.tabClientes.Controls.Add(this.textBoxServiciosCliente);
             this.tabClientes.Controls.Add(this.buttonAsignarServicioCliente);
             this.tabClientes.Controls.Add(this.labelAsignarServiciosCliente);
             this.tabClientes.Controls.Add(this.comboBoxServiciosCliente);
@@ -191,9 +190,29 @@
             this.tabClientes.Text = "Clientes";
             this.tabClientes.UseVisualStyleBackColor = true;
             // 
+            // comboBoxEstadoServicioClienteCliente
+            // 
+            this.comboBoxEstadoServicioClienteCliente.FormattingEnabled = true;
+            this.comboBoxEstadoServicioClienteCliente.Items.AddRange(new object[] {
+            "activo",
+            "inactivo"});
+            this.comboBoxEstadoServicioClienteCliente.Location = new System.Drawing.Point(192, 341);
+            this.comboBoxEstadoServicioClienteCliente.Name = "comboBoxEstadoServicioClienteCliente";
+            this.comboBoxEstadoServicioClienteCliente.Size = new System.Drawing.Size(254, 21);
+            this.comboBoxEstadoServicioClienteCliente.TabIndex = 29;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 345);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(99, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Estado del servicio:";
+            // 
             // buttonAsignarRS
             // 
-            this.buttonAsignarRS.Location = new System.Drawing.Point(703, 345);
+            this.buttonAsignarRS.Location = new System.Drawing.Point(703, 395);
             this.buttonAsignarRS.Name = "buttonAsignarRS";
             this.buttonAsignarRS.Size = new System.Drawing.Size(153, 23);
             this.buttonAsignarRS.TabIndex = 27;
@@ -204,7 +223,7 @@
             // labelRS
             // 
             this.labelRS.AutoSize = true;
-            this.labelRS.Location = new System.Drawing.Point(8, 381);
+            this.labelRS.Location = new System.Drawing.Point(8, 406);
             this.labelRS.Name = "labelRS";
             this.labelRS.Size = new System.Drawing.Size(111, 13);
             this.labelRS.TabIndex = 26;
@@ -213,46 +232,22 @@
             // comboBoxRRSS
             // 
             this.comboBoxRRSS.FormattingEnabled = true;
-            this.comboBoxRRSS.Location = new System.Drawing.Point(192, 373);
+            this.comboBoxRRSS.Items.AddRange(new object[] {
+            "Twitter",
+            "Facebook",
+            "Google+",
+            "LinkedIn",
+            "Hi5",
+            "Snapchat",
+            "Instagram"});
+            this.comboBoxRRSS.Location = new System.Drawing.Point(192, 398);
             this.comboBoxRRSS.Name = "comboBoxRRSS";
             this.comboBoxRRSS.Size = new System.Drawing.Size(254, 21);
             this.comboBoxRRSS.TabIndex = 25;
             // 
-            // textBoxRRSScliente
-            // 
-            this.textBoxRRSScliente.Location = new System.Drawing.Point(192, 347);
-            this.textBoxRRSScliente.Name = "textBoxRRSScliente";
-            this.textBoxRRSScliente.Size = new System.Drawing.Size(254, 20);
-            this.textBoxRRSScliente.TabIndex = 24;
-            // 
-            // labelRRSS
-            // 
-            this.labelRRSS.AutoSize = true;
-            this.labelRRSS.Location = new System.Drawing.Point(8, 354);
-            this.labelRRSS.Name = "labelRRSS";
-            this.labelRRSS.Size = new System.Drawing.Size(133, 13);
-            this.labelRRSS.TabIndex = 23;
-            this.labelRRSS.Text = "Redes sociales del cliente:";
-            // 
-            // labelServiciosCliente
-            // 
-            this.labelServiciosCliente.AutoSize = true;
-            this.labelServiciosCliente.Location = new System.Drawing.Point(8, 284);
-            this.labelServiciosCliente.Name = "labelServiciosCliente";
-            this.labelServiciosCliente.Size = new System.Drawing.Size(167, 13);
-            this.labelServiciosCliente.TabIndex = 22;
-            this.labelServiciosCliente.Text = "Servicios adquiridos por el cliente:";
-            // 
-            // textBoxServiciosCliente
-            // 
-            this.textBoxServiciosCliente.Location = new System.Drawing.Point(192, 277);
-            this.textBoxServiciosCliente.Name = "textBoxServiciosCliente";
-            this.textBoxServiciosCliente.Size = new System.Drawing.Size(254, 20);
-            this.textBoxServiciosCliente.TabIndex = 21;
-            // 
             // buttonAsignarServicioCliente
             // 
-            this.buttonAsignarServicioCliente.Location = new System.Drawing.Point(703, 284);
+            this.buttonAsignarServicioCliente.Location = new System.Drawing.Point(703, 322);
             this.buttonAsignarServicioCliente.Name = "buttonAsignarServicioCliente";
             this.buttonAsignarServicioCliente.Size = new System.Drawing.Size(153, 23);
             this.buttonAsignarServicioCliente.TabIndex = 20;
@@ -827,7 +822,6 @@
             // 
             // tabReportesMkt
             // 
-            this.tabReportesMkt.Controls.Add(this.button1);
             this.tabReportesMkt.Controls.Add(this.label7);
             this.tabReportesMkt.Controls.Add(this.label6);
             this.tabReportesMkt.Controls.Add(this.label5);
@@ -1074,15 +1068,19 @@
             // 
             this.campannasMercadeoTableAdapter.ClearBeforeFill = true;
             // 
-            // button1
+            // textBoxGeneraIdServicio
             // 
-            this.button1.Location = new System.Drawing.Point(524, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 58;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.textBoxGeneraIdServicio.Location = new System.Drawing.Point(463, 322);
+            this.textBoxGeneraIdServicio.Name = "textBoxGeneraIdServicio";
+            this.textBoxGeneraIdServicio.Size = new System.Drawing.Size(100, 20);
+            this.textBoxGeneraIdServicio.TabIndex = 30;
+            // 
+            // textBoxGeneraIdRedSocial
+            // 
+            this.textBoxGeneraIdRedSocial.Location = new System.Drawing.Point(463, 398);
+            this.textBoxGeneraIdRedSocial.Name = "textBoxGeneraIdRedSocial";
+            this.textBoxGeneraIdRedSocial.Size = new System.Drawing.Size(100, 20);
+            this.textBoxGeneraIdRedSocial.TabIndex = 31;
             // 
             // Form1
             // 
@@ -1132,11 +1130,7 @@
         private System.Windows.Forms.TextBox textBoxSegundoApellidoCliente;
         private System.Windows.Forms.TextBox textBoxCiudadCliente;
         private System.Windows.Forms.TextBox textBoxCorreoElectronicoCliente;
-        private System.Windows.Forms.TextBox textBoxPaisCliente;
         private System.Windows.Forms.TextBox textBoxCedulaCliente;
-        private System.Windows.Forms.Button buttonAsignarServicioCliente;
-        private System.Windows.Forms.Label labelAsignarServiciosCliente;
-        private System.Windows.Forms.ComboBox comboBoxServiciosCliente;
         private System.Windows.Forms.Button buttonBorrarCliente;
         private System.Windows.Forms.Button buttonActualizarCliente;
         private System.Windows.Forms.Button buttonConsultaCliente;
@@ -1154,15 +1148,8 @@
         private System.Windows.Forms.Button buttonConsultarServicio;
         private System.Windows.Forms.Button buttonActualizarServicio;
         private System.Windows.Forms.Button buttonBorrarServicio;
-        private System.Windows.Forms.Label labelServiciosCliente;
-        private System.Windows.Forms.TextBox textBoxServiciosCliente;
         private System.Windows.Forms.TabPage tabReportesMkt;
         private System.Windows.Forms.TabPage tabIntegracionVentas;
-        private System.Windows.Forms.Button buttonAsignarRS;
-        private System.Windows.Forms.Label labelRS;
-        private System.Windows.Forms.ComboBox comboBoxRRSS;
-        private System.Windows.Forms.TextBox textBoxRRSScliente;
-        private System.Windows.Forms.Label labelRRSS;
         private System.Windows.Forms.Label labelClaveRS;
         private System.Windows.Forms.Label labelNombreUsuario;
         private System.Windows.Forms.Label labelRedSocial;
@@ -1211,7 +1198,17 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonAsignarRS;
+        private System.Windows.Forms.Label labelRS;
+        private System.Windows.Forms.ComboBox comboBoxRRSS;
+        private System.Windows.Forms.Button buttonAsignarServicioCliente;
+        private System.Windows.Forms.Label labelAsignarServiciosCliente;
+        private System.Windows.Forms.ComboBox comboBoxServiciosCliente;
+        private System.Windows.Forms.TextBox textBoxPaisCliente;
+        private System.Windows.Forms.ComboBox comboBoxEstadoServicioClienteCliente;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxGeneraIdServicio;
+        private System.Windows.Forms.TextBox textBoxGeneraIdRedSocial;
     }
 }
 

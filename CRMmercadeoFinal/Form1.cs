@@ -17,37 +17,27 @@ namespace CRMmercadeoFinal
 
     public partial class Form1 : Form
     {
-        ConexionBD conexionBD = new ConexionBD();
-        SqlConnection conexion = ConexionBD.getConection();
         
         public Form1()
         {
             InitializeComponent();
-            jalaDatosComboBoxServClientes();
-            jalaDatosComboBoxRRSSclientes();
             jalaPaisesComboBox();
             jalaCiudadesComboBox();
+            jalaServiciosComboBox();
 
         }
+        
 
-        private void jalaDatosComboBoxServClientes()
-        {
-            conexion.Open();
-            String consulta = "Select descripcionServicio from Servicios";
-            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
 
-            SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
 
-            while (leerDatos.Read())
-            {
-                    comboBoxServiciosCliente.Items.Add(leerDatos[0].ToString());
-            }
-        }
+      
         private void jalaPaisesComboBox()
         {
-            //ConexionBD.getInstance();
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
 
-            String consulta = "Select pais from Clientes";
+            String consulta = "Select nombrePais from Pais";
             SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
 
             SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
@@ -56,12 +46,28 @@ namespace CRMmercadeoFinal
                 comboBoxPaisReportes.Items.Add(leerDatos[0].ToString());
             }
         }
+        private void jalaServiciosComboBox()
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
 
+            String consulta = "select descripcion from Servicio";
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+
+            SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
+            while (leerDatos.Read())
+            {
+                comboBoxServiciosCliente.Items.Add(leerDatos[0].ToString());
+            }
+        }
         private void jalaCiudadesComboBox()
         {
-            //ConexionBD.getInstance();
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
 
-            String consulta = "Select ciudad from Clientes";
+            String consulta = "Select ciudad from Cliente";
             SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
 
             SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
@@ -71,20 +77,7 @@ namespace CRMmercadeoFinal
             }
         }
 
-        private void jalaDatosComboBoxRRSSclientes()
-        {
-            //ConexionBD.getInstance();
 
-            String consulta = "Select nombreRedSocial from RedesSociales";
-            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
-
-            SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
-
-            while (leerDatos.Read())
-            {
-                comboBoxRRSS.Items.Add(leerDatos[0].ToString());
-            }
-        }
 
 
         private void label1_Click(object sender, EventArgs e)
@@ -99,7 +92,9 @@ namespace CRMmercadeoFinal
 
         private void buttonCrearCliente_Click(object sender, EventArgs e)
         {
-            //ConexionBD.getInstance();
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
             
             SqlCommand cmd = new SqlCommand("dbo.insertaCliente", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -145,17 +140,6 @@ namespace CRMmercadeoFinal
             param7.Size = 50;
             cmd.Parameters.Add(param7);
 
-            var param8 = new SqlParameter("@serviciosCliente", SqlDbType.Int);
-            param8.Direction = ParameterDirection.Input;
-            param8.Value = textBoxServiciosCliente.Text;
-            cmd.Parameters.Add(param8);
-
-            var param9 = new SqlParameter("@redesSociales", SqlDbType.VarChar);
-            param9.Direction = ParameterDirection.Input;
-            param9.Value = textBoxRRSScliente.Text;
-            param9.Size = 220;
-            cmd.Parameters.Add(param9);
-
             cmd.ExecuteNonQuery();
             conexion.Close();
             MessageBox.Show("Cliente creado correctamente");
@@ -163,27 +147,27 @@ namespace CRMmercadeoFinal
 
         private void buttonConsultaCliente_Click(object sender, EventArgs e)
         {
-            //ConexionBD.getInstance();
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
 
-            String consulta = "Select * from Clientes where cedula=" + textBoxCedulaCliente.Text;
+            String consulta = "Select * from Cliente where cedula=" + textBoxCedulaCliente.Text;
             SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
 
             SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
             if (leerDatos.Read() == true)
             {
-                textBoxNombreCliente.Text = leerDatos["nombreCliente"].ToString();
-                textBoxPrimerApellidoCliente.Text = leerDatos["apellido1Cliente"].ToString();
-                textBoxSegundoApellidoCliente.Text = leerDatos["apellido2Cliente"].ToString();
+                textBoxNombreCliente.Text = leerDatos["nombre"].ToString();
+                textBoxPrimerApellidoCliente.Text = leerDatos["apellido1"].ToString();
+                textBoxSegundoApellidoCliente.Text = leerDatos["apellido2"].ToString();
                 textBoxCiudadCliente.Text = leerDatos["ciudad"].ToString();
                 textBoxPaisCliente.Text = leerDatos["pais"].ToString();
                 textBoxCorreoElectronicoCliente.Text = leerDatos["correoElectronico"].ToString();
-                textBoxServiciosCliente.Text = leerDatos["serviciosCliente"].ToString();
-                textBoxRRSScliente.Text = leerDatos["redesSociales"].ToString();
 
             }
             else
             {
-                MessageBox.Show("No existe el registro");
+                MessageBox.Show("No existe el cliente");
             }
         }
 
@@ -192,7 +176,7 @@ namespace CRMmercadeoFinal
             try
             {
                 System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
-                conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+                conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
                 conexion.Open();
 
                 SqlCommand cmd = new SqlCommand("dbo.actualizaCliente", conexion);
@@ -206,49 +190,38 @@ namespace CRMmercadeoFinal
                 var param2 = new SqlParameter("@nombre", SqlDbType.VarChar);
                 param2.Direction = ParameterDirection.Input;
                 param2.Value = textBoxNombreCliente.Text;
-                param2.Size = 50;
+                param2.Size = 30;
                 cmd.Parameters.Add(param2);
 
                 var param3 = new SqlParameter("@apellido1", SqlDbType.VarChar);
                 param3.Direction = ParameterDirection.Input;
                 param3.Value = textBoxPrimerApellidoCliente.Text;
-                param3.Size = 50;
+                param3.Size = 30;
                 cmd.Parameters.Add(param3);
 
                 var param4 = new SqlParameter("@apellido2", SqlDbType.VarChar);
                 param4.Direction = ParameterDirection.Input;
                 param4.Value = textBoxSegundoApellidoCliente.Text;
-                param4.Size = 50;
+                param4.Size = 30;
                 cmd.Parameters.Add(param4);
 
                 var param5 = new SqlParameter("@ciudad", SqlDbType.VarChar);
                 param5.Direction = ParameterDirection.Input;
                 param5.Value = textBoxCiudadCliente.Text;
-                param5.Size = 50;
+                param5.Size = 30;
                 cmd.Parameters.Add(param5);
 
                 var param6 = new SqlParameter("@pais", SqlDbType.VarChar);
                 param6.Direction = ParameterDirection.Input;
                 param6.Value = textBoxPaisCliente.Text;
-                param6.Size = 50;
+                param6.Size = 30;
                 cmd.Parameters.Add(param6);
 
                 var param7 = new SqlParameter("@correoElectronico", SqlDbType.VarChar);
                 param7.Direction = ParameterDirection.Input;
                 param7.Value = textBoxCorreoElectronicoCliente.Text;
-                param7.Size = 50;
+                param7.Size = 30;
                 cmd.Parameters.Add(param7);
-
-                var param8 = new SqlParameter("@serviciosCliente", SqlDbType.Int);
-                param8.Direction = ParameterDirection.Input;
-                param8.Value = textBoxServiciosCliente.Text;
-                cmd.Parameters.Add(param8);
-
-                var param9 = new SqlParameter("@redesSociales", SqlDbType.VarChar);
-                param9.Direction = ParameterDirection.Input;
-                param9.Value = textBoxRRSScliente.Text;
-                param9.Size = 220;
-                cmd.Parameters.Add(param9);
 
                 cmd.ExecuteNonQuery();
                 conexion.Close();
@@ -268,7 +241,7 @@ namespace CRMmercadeoFinal
             try
             {
                 System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
-                conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+                conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
                 conexion.Open();
 
                 SqlCommand cmd = new SqlCommand("dbo.eliminaCliente", conexion);
@@ -302,7 +275,7 @@ namespace CRMmercadeoFinal
         private void buttonRegistrarRS_Click(object sender, EventArgs e)
         {
             System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
-            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
             conexion.Open();
 
             SqlCommand cmd = new SqlCommand("dbo.registrarRS", conexion);
@@ -329,17 +302,99 @@ namespace CRMmercadeoFinal
 
             cmd.ExecuteNonQuery();
             conexion.Close();
-            MessageBox.Show("Red social creada correctamente");
+            MessageBox.Show("Red social registrada correctamente");
         }
 
         private void buttonAsignarServicioCliente_Click(object sender, EventArgs e)
         {
-            textBoxServiciosCliente.Text = comboBoxServiciosCliente.Text;
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            String consulta = "select idServicio from Servicio where descripcion='"+ comboBoxServiciosCliente.Text+"'";
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+
+            SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
+
+            if (leerDatos.Read() == true)
+            {
+                textBoxGeneraIdServicio.Text = leerDatos["idServicio"].ToString();
+
+            }
+            else
+            {
+                MessageBox.Show("No existe el servicio");
+            }
+            leerDatos.Close();
+
+            SqlCommand cmd = new SqlCommand("dbo.asignarServicioCliente", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            var param1 = new SqlParameter("@idServicio", SqlDbType.Int);
+            param1.Direction = ParameterDirection.Input;
+            param1.Value = textBoxGeneraIdServicio.Text;
+            cmd.Parameters.Add(param1);
+
+            var param2 = new SqlParameter("@cedula", SqlDbType.Int);
+            param2.Direction = ParameterDirection.Input;
+            param2.Value = textBoxCedulaCliente.Text;
+            cmd.Parameters.Add(param2);
+
+            var param3 = new SqlParameter("@estadoServicio", SqlDbType.VarChar);
+            param3.Direction = ParameterDirection.Input;
+            param3.Value = comboBoxEstadoServicioClienteCliente.Text;
+            param3.Size = 30;
+            cmd.Parameters.Add(param3);
+
+            var param4 = new SqlParameter("@idPais", SqlDbType.Int);
+            param4.Direction = ParameterDirection.Input;
+            param4.Value = textBoxPaisCliente.Text;
+            cmd.Parameters.Add(param4);
+
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+            MessageBox.Show("Servicio asignado correctamente");
+
         }
 
         private void buttonAsignarRS_Click(object sender, EventArgs e)
         {
-            textBoxRRSScliente.Text = comboBoxRRSS.Text;
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            String consulta = "select idRedSocial from RedSocialCliente where nombreRedSocial='" + comboBoxRRSS.Text + "'";
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+
+            SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
+
+            if (leerDatos.Read() == true)
+            {
+                textBoxGeneraIdRedSocial.Text = leerDatos["idRedSocial"].ToString();
+
+            }
+            else
+            {
+                MessageBox.Show("No existe red social");
+            }
+            leerDatos.Close();
+
+            SqlCommand cmd = new SqlCommand("dbo.asignarRedSocialCliente", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            var param1 = new SqlParameter("@idRedSocial", SqlDbType.Int);
+            param1.Direction = ParameterDirection.Input;
+            param1.Value = textBoxGeneraIdRedSocial.Text;
+            cmd.Parameters.Add(param1);
+
+            var param2 = new SqlParameter("@cedula", SqlDbType.Int);
+            param2.Direction = ParameterDirection.Input;
+            param2.Value = textBoxCedulaCliente.Text;
+            cmd.Parameters.Add(param2);
+
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+            MessageBox.Show("Red Social asignada correctamente");
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -352,7 +407,7 @@ namespace CRMmercadeoFinal
         private void buttonReporteCampanna_Click(object sender, EventArgs e)
         {
             System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
-            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
             conexion.Open();
 
             var formateoFecha = dateTimePickerReporteCampannas.Value.ToString("yyyy/MM/dd");
@@ -372,7 +427,7 @@ namespace CRMmercadeoFinal
         private void buttonReporteClientesyServicios_Click(object sender, EventArgs e)
         {
             System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
-            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
             conexion.Open();
 
             if (String.IsNullOrEmpty(textBoxCedulaClienteReportes.Text) | String.IsNullOrEmpty(textBoxIdServiciosReportes.Text) | String.IsNullOrEmpty(comboBoxFormaPagoReportes.Text))
@@ -406,7 +461,7 @@ namespace CRMmercadeoFinal
         private void button1_Click(object sender, EventArgs e)
         {
             System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
-            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
             conexion.Open();
             String consulta = "select nombreRedSocial, count (nombreRedSocial) as CantidadClientesPorRedSocial from RedesSociales, Clientes where Clientes.redesSociales = RedesSociales.nombreRedSocial and Clientes.redesSociales= '"+comboBoxRedSocialReportes.Text+"' group by nombreRedSocial";
             SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
@@ -424,7 +479,7 @@ namespace CRMmercadeoFinal
         private void button2_Click(object sender, EventArgs e)
         {
             System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
-            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeo;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
             conexion.Open();
 
             String consulta = "select cedula, nombreCliente, apellido1Cliente, apellido2Cliente, ciudad, pais, correoElectronico, serviciosCliente, redesSociales from Clientes where pais ='" + comboBoxPaisReportes.Text + "' and apellido1Cliente='" + textBoxApellidoReporteClientes.Text + "' or apellido2Cliente='" + textBoxApellidoReporteClientes.Text + "' and ciudad= '" + comboBoxCiudadesReporteClientes.Text+"'";
@@ -438,19 +493,7 @@ namespace CRMmercadeoFinal
             dataGridViewReportes.DataSource = dataSet.Tables[0];
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                //ConexionBD.getInstance();
-                MessageBox.Show("Entro");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No entro");
-                MessageBox.Show(ex.ToString());
-            }
-        }
+
 
     }
 }

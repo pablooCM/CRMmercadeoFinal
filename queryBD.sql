@@ -1,10 +1,9 @@
 --Tabla de redes sociales de la empresa
 create table RRSS(
-	idRedSocial int,
 	nombreRedSocial varchar(20),
 	nombreUsuarioRS varchar (20),
 	claveRS varchar(120)
-	primary key (idRedSocial)
+	primary key (nombreRedSocial)
 )
 
 --Tabla Pais
@@ -121,3 +120,21 @@ create table IntermediaCampannaMercadeoyCliente(
 		on delete cascade
 		on update cascade
 )
+
+--Tabla intermedia entre intermediaRRSSyCliente y RRSS de la empresa
+
+insert into RRSS values('Twitter', '@CableMio', 'sacudimeElCable2017!')
+select * from RRSS
+insert into Pais values(506, 'Costa Rica')
+select * from Pais
+insert into Cliente values(1, 'Pablo', 'Corrales', 'Mora','San Jose',506, 'pablo@pabloocm.xyz')
+select * from Cliente
+insert into Servicio values(2, 'Fibra','quincenal','inactivo')
+select * from Servicio
+insert into RedSocialCliente values(2, 'Facebook')
+select * from RedSocialCliente
+insert into CampannaMercadeo values(1, 'Conquistando al cacheton', '2017-02-01', '2017-06-01', 506, 3000)
+select * from CampannaMercadeo
+
+select Cliente.cedula, Servicio.idServicio, descripcion from Cliente, IntermediaClienteyServicio, Servicio where Cliente.cedula = IntermediaClienteyServicio.cedula and Servicio.idServicio = IntermediaClienteyServicio.idServicio
+select nombreRedSocial from RRSS
