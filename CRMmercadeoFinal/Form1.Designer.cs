@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.CRMmktTab = new System.Windows.Forms.TabControl();
             this.tabClientes = new System.Windows.Forms.TabPage();
+            this.textBoxGeneraIdRedSocial = new System.Windows.Forms.TextBox();
+            this.textBoxGeneraIdServicio = new System.Windows.Forms.TextBox();
             this.comboBoxEstadoServicioClienteCliente = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.buttonAsignarRS = new System.Windows.Forms.Button();
@@ -58,7 +60,11 @@
             this.labelNombreCliente = new System.Windows.Forms.Label();
             this.labelCedulaCliente = new System.Windows.Forms.Label();
             this.tabServicios = new System.Windows.Forms.TabPage();
-            this.dataGridViewPaisesCobertura = new System.Windows.Forms.DataGridView();
+            this.textBoxGeneraIdPais = new System.Windows.Forms.TextBox();
+            this.buttonQuitarPais = new System.Windows.Forms.Button();
+            this.buttonAgregarPais = new System.Windows.Forms.Button();
+            this.listBoxPaisesServicio = new System.Windows.Forms.ListBox();
+            this.listBoxPaises = new System.Windows.Forms.ListBox();
             this.buttonCrearServicio = new System.Windows.Forms.Button();
             this.buttonConsultarServicio = new System.Windows.Forms.Button();
             this.buttonActualizarServicio = new System.Windows.Forms.Button();
@@ -123,12 +129,9 @@
             this.bDMercadeoDataSet = new CRMmercadeoFinal.BDMercadeoDataSet();
             this.campannasMercadeoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.campannasMercadeoTableAdapter = new CRMmercadeoFinal.BDMercadeoDataSetTableAdapters.campannasMercadeoTableAdapter();
-            this.textBoxGeneraIdServicio = new System.Windows.Forms.TextBox();
-            this.textBoxGeneraIdRedSocial = new System.Windows.Forms.TextBox();
             this.CRMmktTab.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabServicios.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCobertura)).BeginInit();
             this.tabRRSS.SuspendLayout();
             this.tabCampanasMercadeo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCampanna)).BeginInit();
@@ -189,6 +192,22 @@
             this.tabClientes.TabIndex = 0;
             this.tabClientes.Text = "Clientes";
             this.tabClientes.UseVisualStyleBackColor = true;
+            // 
+            // textBoxGeneraIdRedSocial
+            // 
+            this.textBoxGeneraIdRedSocial.Location = new System.Drawing.Point(463, 398);
+            this.textBoxGeneraIdRedSocial.Name = "textBoxGeneraIdRedSocial";
+            this.textBoxGeneraIdRedSocial.ReadOnly = true;
+            this.textBoxGeneraIdRedSocial.Size = new System.Drawing.Size(100, 20);
+            this.textBoxGeneraIdRedSocial.TabIndex = 31;
+            // 
+            // textBoxGeneraIdServicio
+            // 
+            this.textBoxGeneraIdServicio.Location = new System.Drawing.Point(463, 322);
+            this.textBoxGeneraIdServicio.Name = "textBoxGeneraIdServicio";
+            this.textBoxGeneraIdServicio.ReadOnly = true;
+            this.textBoxGeneraIdServicio.Size = new System.Drawing.Size(100, 20);
+            this.textBoxGeneraIdServicio.TabIndex = 30;
             // 
             // comboBoxEstadoServicioClienteCliente
             // 
@@ -428,7 +447,11 @@
             // 
             // tabServicios
             // 
-            this.tabServicios.Controls.Add(this.dataGridViewPaisesCobertura);
+            this.tabServicios.Controls.Add(this.textBoxGeneraIdPais);
+            this.tabServicios.Controls.Add(this.buttonQuitarPais);
+            this.tabServicios.Controls.Add(this.buttonAgregarPais);
+            this.tabServicios.Controls.Add(this.listBoxPaisesServicio);
+            this.tabServicios.Controls.Add(this.listBoxPaises);
             this.tabServicios.Controls.Add(this.buttonCrearServicio);
             this.tabServicios.Controls.Add(this.buttonConsultarServicio);
             this.tabServicios.Controls.Add(this.buttonActualizarServicio);
@@ -450,13 +473,49 @@
             this.tabServicios.Text = "Servicios";
             this.tabServicios.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewPaisesCobertura
+            // textBoxGeneraIdPais
             // 
-            this.dataGridViewPaisesCobertura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPaisesCobertura.Location = new System.Drawing.Point(213, 151);
-            this.dataGridViewPaisesCobertura.Name = "dataGridViewPaisesCobertura";
-            this.dataGridViewPaisesCobertura.Size = new System.Drawing.Size(254, 53);
-            this.dataGridViewPaisesCobertura.TabIndex = 19;
+            this.textBoxGeneraIdPais.Location = new System.Drawing.Point(1056, 6);
+            this.textBoxGeneraIdPais.Name = "textBoxGeneraIdPais";
+            this.textBoxGeneraIdPais.ReadOnly = true;
+            this.textBoxGeneraIdPais.Size = new System.Drawing.Size(10, 20);
+            this.textBoxGeneraIdPais.TabIndex = 23;
+            // 
+            // buttonQuitarPais
+            // 
+            this.buttonQuitarPais.Location = new System.Drawing.Point(367, 247);
+            this.buttonQuitarPais.Name = "buttonQuitarPais";
+            this.buttonQuitarPais.Size = new System.Drawing.Size(75, 23);
+            this.buttonQuitarPais.TabIndex = 22;
+            this.buttonQuitarPais.Text = "<< Quitar";
+            this.buttonQuitarPais.UseVisualStyleBackColor = true;
+            this.buttonQuitarPais.Click += new System.EventHandler(this.buttonQuitarPais_Click);
+            // 
+            // buttonAgregarPais
+            // 
+            this.buttonAgregarPais.Location = new System.Drawing.Point(234, 247);
+            this.buttonAgregarPais.Name = "buttonAgregarPais";
+            this.buttonAgregarPais.Size = new System.Drawing.Size(75, 23);
+            this.buttonAgregarPais.TabIndex = 21;
+            this.buttonAgregarPais.Text = "Agregar >>";
+            this.buttonAgregarPais.UseVisualStyleBackColor = true;
+            this.buttonAgregarPais.Click += new System.EventHandler(this.buttonAgregarPais_Click);
+            // 
+            // listBoxPaisesServicio
+            // 
+            this.listBoxPaisesServicio.FormattingEnabled = true;
+            this.listBoxPaisesServicio.Location = new System.Drawing.Point(347, 146);
+            this.listBoxPaisesServicio.Name = "listBoxPaisesServicio";
+            this.listBoxPaisesServicio.Size = new System.Drawing.Size(120, 95);
+            this.listBoxPaisesServicio.TabIndex = 20;
+            // 
+            // listBoxPaises
+            // 
+            this.listBoxPaises.FormattingEnabled = true;
+            this.listBoxPaises.Location = new System.Drawing.Point(213, 146);
+            this.listBoxPaises.Name = "listBoxPaises";
+            this.listBoxPaises.Size = new System.Drawing.Size(120, 95);
+            this.listBoxPaises.TabIndex = 19;
             // 
             // buttonCrearServicio
             // 
@@ -466,6 +525,7 @@
             this.buttonCrearServicio.TabIndex = 18;
             this.buttonCrearServicio.Text = "Crear Servicio";
             this.buttonCrearServicio.UseVisualStyleBackColor = true;
+            this.buttonCrearServicio.Click += new System.EventHandler(this.buttonCrearServicio_Click);
             // 
             // buttonConsultarServicio
             // 
@@ -475,6 +535,7 @@
             this.buttonConsultarServicio.TabIndex = 17;
             this.buttonConsultarServicio.Text = "Consultar Servicio";
             this.buttonConsultarServicio.UseVisualStyleBackColor = true;
+            this.buttonConsultarServicio.Click += new System.EventHandler(this.buttonConsultarServicio_Click);
             // 
             // buttonActualizarServicio
             // 
@@ -501,7 +562,7 @@
             "activo",
             "inactivo",
             "por implementar"});
-            this.comboBoxEstadoServicio.Location = new System.Drawing.Point(213, 220);
+            this.comboBoxEstadoServicio.Location = new System.Drawing.Point(213, 280);
             this.comboBoxEstadoServicio.Name = "comboBoxEstadoServicio";
             this.comboBoxEstadoServicio.Size = new System.Drawing.Size(254, 21);
             this.comboBoxEstadoServicio.TabIndex = 13;
@@ -535,7 +596,7 @@
             // labelEstadoDelServicio
             // 
             this.labelEstadoDelServicio.AutoSize = true;
-            this.labelEstadoDelServicio.Location = new System.Drawing.Point(27, 228);
+            this.labelEstadoDelServicio.Location = new System.Drawing.Point(27, 288);
             this.labelEstadoDelServicio.Name = "labelEstadoDelServicio";
             this.labelEstadoDelServicio.Size = new System.Drawing.Size(99, 13);
             this.labelEstadoDelServicio.TabIndex = 4;
@@ -1068,20 +1129,6 @@
             // 
             this.campannasMercadeoTableAdapter.ClearBeforeFill = true;
             // 
-            // textBoxGeneraIdServicio
-            // 
-            this.textBoxGeneraIdServicio.Location = new System.Drawing.Point(463, 322);
-            this.textBoxGeneraIdServicio.Name = "textBoxGeneraIdServicio";
-            this.textBoxGeneraIdServicio.Size = new System.Drawing.Size(100, 20);
-            this.textBoxGeneraIdServicio.TabIndex = 30;
-            // 
-            // textBoxGeneraIdRedSocial
-            // 
-            this.textBoxGeneraIdRedSocial.Location = new System.Drawing.Point(463, 398);
-            this.textBoxGeneraIdRedSocial.Name = "textBoxGeneraIdRedSocial";
-            this.textBoxGeneraIdRedSocial.Size = new System.Drawing.Size(100, 20);
-            this.textBoxGeneraIdRedSocial.TabIndex = 31;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1096,7 +1143,6 @@
             this.tabClientes.PerformLayout();
             this.tabServicios.ResumeLayout(false);
             this.tabServicios.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCobertura)).EndInit();
             this.tabRRSS.ResumeLayout(false);
             this.tabRRSS.PerformLayout();
             this.tabCampanasMercadeo.ResumeLayout(false);
@@ -1156,7 +1202,6 @@
         private System.Windows.Forms.TextBox textBoxClaveRS;
         private System.Windows.Forms.TextBox textBoxNombreUsuarioRS;
         private System.Windows.Forms.ComboBox comboBoxRRSSempresa;
-        private System.Windows.Forms.DataGridView dataGridViewPaisesCobertura;
         private System.Windows.Forms.Button buttonRegistrarRS;
         private System.Windows.Forms.DataGridView dataGridViewPaisesCampanna;
         private System.Windows.Forms.DateTimePicker dateTimePickerfFechaFinalizacionCampanna;
@@ -1209,6 +1254,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxGeneraIdServicio;
         private System.Windows.Forms.TextBox textBoxGeneraIdRedSocial;
+        private System.Windows.Forms.Button buttonQuitarPais;
+        private System.Windows.Forms.Button buttonAgregarPais;
+        private System.Windows.Forms.ListBox listBoxPaisesServicio;
+        private System.Windows.Forms.ListBox listBoxPaises;
+        private System.Windows.Forms.TextBox textBoxGeneraIdPais;
     }
 }
 

@@ -24,6 +24,7 @@ namespace CRMmercadeoFinal
             jalaPaisesComboBox();
             jalaCiudadesComboBox();
             jalaServiciosComboBox();
+            jalarPaisesListBox();
 
         }
         
@@ -44,6 +45,21 @@ namespace CRMmercadeoFinal
             while (leerDatos.Read())
             {
                 comboBoxPaisReportes.Items.Add(leerDatos[0].ToString());
+            }
+        }
+        private void jalarPaisesListBox()
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            String consulta = "select nombrePais from Pais";
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+
+            SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
+            while (leerDatos.Read())
+            {
+                listBoxPaises.Items.Add(leerDatos[0].ToString());
             }
         }
         private void jalaServiciosComboBox()
@@ -491,6 +507,132 @@ namespace CRMmercadeoFinal
             dataAdapter.Fill(dataSet);
             dataGridViewReportes.ReadOnly = true;
             dataGridViewReportes.DataSource = dataSet.Tables[0];
+        }
+
+        private void buttonCrearServicio_Click(object sender, EventArgs e)
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            SqlCommand cmd = new SqlCommand("dbo.crearServicio", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            var param1 = new SqlParameter("@idServicio", SqlDbType.Int);
+            param1.Direction = ParameterDirection.Input;
+            param1.Value = textBoxIdServicio.Text;
+            cmd.Parameters.Add(param1);
+
+            var param2 = new SqlParameter("@descripcion", SqlDbType.VarChar);
+            param2.Direction = ParameterDirection.Input;
+            param2.Value = textBoxDescripcionServicio.Text;
+            param2.Size = 30;
+            cmd.Parameters.Add(param2);
+
+            var param3 = new SqlParameter("@formaDePago", SqlDbType.VarChar);
+            param3.Direction = ParameterDirection.Input;
+            param3.Value = comboBoxFormaPago.Text;
+            param3.Size = 30;
+            cmd.Parameters.Add(param3);
+
+            var param4 = new SqlParameter("@estadoServicio", SqlDbType.VarChar);
+            param4.Direction = ParameterDirection.Input;
+            param4.Value = comboBoxEstadoServicio.Text;
+            param4.Size = 30;
+            cmd.Parameters.Add(param4);
+
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+            MessageBox.Show("Servicio creado correctamente");
+        }
+
+        private void buttonAgregarPais_Click(object sender, EventArgs e)
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            foreach (var item in listBoxPaises.SelectedItems)
+            {
+                MessageBox.Show(item.ToString());
+                listBoxPaisesServicio.Items.Add(item);
+
+                String consulta = "select idPais from Pais where nombrePais='" +item+"'";
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+
+                SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
+
+                if (leerDatos.Read() == true)
+                {
+                    textBoxGeneraIdPais.Text = leerDatos["idPais"].ToString();
+
+                }
+                else
+                {
+                    MessageBox.Show("No existe el pais");
+                }
+                leerDatos.Close();
+
+
+                SqlCommand cmd = new SqlCommand("dbo.asignarPaisaServicio", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                var param1 = new SqlParameter("@idServicio", SqlDbType.Int);
+                param1.Direction = ParameterDirection.Input;
+                param1.Value = textBoxIdServicio.Text;
+                cmd.Parameters.Add(param1);
+
+                var param2 = new SqlParameter("@idPais", SqlDbType.Int);
+                param2.Direction = ParameterDirection.Input;
+                param2.Value = textBoxGeneraIdPais.Text;
+                cmd.Parameters.Add(param2);
+
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
+
+
+        }
+
+        private void buttonConsultarServicio_Click(object sender, EventArgs e)
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            String consulta = "Select * from Servicio where idServicio=" + textBoxIdServicio.Text;
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+
+            SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
+            if (leerDatos.Read() == true)
+            {
+                textBoxDescripcionServicio.Text = leerDatos["descripcion"].ToString();
+                comboBoxFormaPago.Text = leerDatos["formaDePago"].ToString();
+                comboBoxEstadoServicio.Text = leerDatos["estadoServicio"].ToString();
+            }
+            else
+            {
+                MessageBox.Show("No existe el servicio");
+            }
+            leerDatos.Close();
+            String consulta2 = "select nombrePais from Pais, Servicio, IntermediaServicioyPais where Pais.idPais = IntermediaServicioyPais.idPais and Servicio.idServicio =" + textBoxIdServicio.Text;
+            SqlCommand consultaEnBD2 = new SqlCommand(consulta2, conexion);
+
+
+            SqlDataReader leerDatos2 = consultaEnBD2.ExecuteReader();
+
+            while (leerDatos2.Read())
+            {
+                listBoxPaisesServicio.Items.Add(leerDatos2[0].ToString());
+            }
+
+        }
+
+        private void buttonQuitarPais_Click(object sender, EventArgs e)
+        {
+          
+       
+            
         }
 
 
