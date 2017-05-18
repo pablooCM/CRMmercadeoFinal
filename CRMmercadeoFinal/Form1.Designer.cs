@@ -61,6 +61,7 @@
             this.labelCedulaCliente = new System.Windows.Forms.Label();
             this.tabServicios = new System.Windows.Forms.TabPage();
             this.textBoxGeneraIdPais = new System.Windows.Forms.TextBox();
+            this.buttonQuitarPais = new System.Windows.Forms.Button();
             this.buttonAgregarPais = new System.Windows.Forms.Button();
             this.listBoxPaisesServicio = new System.Windows.Forms.ListBox();
             this.listBoxPaises = new System.Windows.Forms.ListBox();
@@ -90,7 +91,6 @@
             this.buttonActualizarCampanna = new System.Windows.Forms.Button();
             this.buttonConsultarCampanna = new System.Windows.Forms.Button();
             this.buttonCrearCampanna = new System.Windows.Forms.Button();
-            this.dataGridViewPaisesCampanna = new System.Windows.Forms.DataGridView();
             this.dateTimePickerfFechaFinalizacionCampanna = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFechaInicioCampanna = new System.Windows.Forms.DateTimePicker();
             this.textBoxCostoCampanna = new System.Windows.Forms.TextBox();
@@ -128,13 +128,15 @@
             this.bDMercadeoDataSet = new CRMmercadeoFinal.BDMercadeoDataSet();
             this.campannasMercadeoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.campannasMercadeoTableAdapter = new CRMmercadeoFinal.BDMercadeoDataSetTableAdapters.campannasMercadeoTableAdapter();
-            this.buttonQuitarPais = new System.Windows.Forms.Button();
+            this.listBoxPaisesCampanna = new System.Windows.Forms.ListBox();
+            this.listBoxPaisesConCampanna = new System.Windows.Forms.ListBox();
+            this.buttonAgregarPaisCampanna = new System.Windows.Forms.Button();
+            this.buttonQuitarPaisCampanna = new System.Windows.Forms.Button();
             this.CRMmktTab.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabServicios.SuspendLayout();
             this.tabRRSS.SuspendLayout();
             this.tabCampanasMercadeo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCampanna)).BeginInit();
             this.tabReportesMkt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReportes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDMercadeoDataSet)).BeginInit();
@@ -481,6 +483,16 @@
             this.textBoxGeneraIdPais.Size = new System.Drawing.Size(10, 20);
             this.textBoxGeneraIdPais.TabIndex = 23;
             // 
+            // buttonQuitarPais
+            // 
+            this.buttonQuitarPais.Location = new System.Drawing.Point(367, 247);
+            this.buttonQuitarPais.Name = "buttonQuitarPais";
+            this.buttonQuitarPais.Size = new System.Drawing.Size(75, 23);
+            this.buttonQuitarPais.TabIndex = 22;
+            this.buttonQuitarPais.Text = "<< Quitar";
+            this.buttonQuitarPais.UseVisualStyleBackColor = true;
+            this.buttonQuitarPais.Click += new System.EventHandler(this.buttonQuitarPais_Click);
+            // 
             // buttonAgregarPais
             // 
             this.buttonAgregarPais.Location = new System.Drawing.Point(234, 247);
@@ -716,11 +728,14 @@
             // 
             // tabCampanasMercadeo
             // 
+            this.tabCampanasMercadeo.Controls.Add(this.buttonQuitarPaisCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.buttonAgregarPaisCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.listBoxPaisesConCampanna);
+            this.tabCampanasMercadeo.Controls.Add(this.listBoxPaisesCampanna);
             this.tabCampanasMercadeo.Controls.Add(this.buttonBorrarCampanna);
             this.tabCampanasMercadeo.Controls.Add(this.buttonActualizarCampanna);
             this.tabCampanasMercadeo.Controls.Add(this.buttonConsultarCampanna);
             this.tabCampanasMercadeo.Controls.Add(this.buttonCrearCampanna);
-            this.tabCampanasMercadeo.Controls.Add(this.dataGridViewPaisesCampanna);
             this.tabCampanasMercadeo.Controls.Add(this.dateTimePickerfFechaFinalizacionCampanna);
             this.tabCampanasMercadeo.Controls.Add(this.dateTimePickerFechaInicioCampanna);
             this.tabCampanasMercadeo.Controls.Add(this.textBoxCostoCampanna);
@@ -741,79 +756,75 @@
             // 
             // buttonBorrarCampanna
             // 
-            this.buttonBorrarCampanna.Location = new System.Drawing.Point(717, 230);
+            this.buttonBorrarCampanna.Location = new System.Drawing.Point(721, 188);
             this.buttonBorrarCampanna.Name = "buttonBorrarCampanna";
             this.buttonBorrarCampanna.Size = new System.Drawing.Size(153, 23);
             this.buttonBorrarCampanna.TabIndex = 37;
             this.buttonBorrarCampanna.Text = "Borrar Campaña";
             this.buttonBorrarCampanna.UseVisualStyleBackColor = true;
+            this.buttonBorrarCampanna.Click += new System.EventHandler(this.buttonBorrarCampanna_Click);
             // 
             // buttonActualizarCampanna
             // 
-            this.buttonActualizarCampanna.Location = new System.Drawing.Point(717, 186);
+            this.buttonActualizarCampanna.Location = new System.Drawing.Point(721, 144);
             this.buttonActualizarCampanna.Name = "buttonActualizarCampanna";
             this.buttonActualizarCampanna.Size = new System.Drawing.Size(153, 23);
             this.buttonActualizarCampanna.TabIndex = 36;
             this.buttonActualizarCampanna.Text = "Actualizar Campaña";
             this.buttonActualizarCampanna.UseVisualStyleBackColor = true;
+            this.buttonActualizarCampanna.Click += new System.EventHandler(this.buttonActualizarCampanna_Click);
             // 
             // buttonConsultarCampanna
             // 
-            this.buttonConsultarCampanna.Location = new System.Drawing.Point(717, 143);
+            this.buttonConsultarCampanna.Location = new System.Drawing.Point(721, 101);
             this.buttonConsultarCampanna.Name = "buttonConsultarCampanna";
             this.buttonConsultarCampanna.Size = new System.Drawing.Size(153, 23);
             this.buttonConsultarCampanna.TabIndex = 35;
             this.buttonConsultarCampanna.Text = "Consultar Campaña";
             this.buttonConsultarCampanna.UseVisualStyleBackColor = true;
+            this.buttonConsultarCampanna.Click += new System.EventHandler(this.buttonConsultarCampanna_Click);
             // 
             // buttonCrearCampanna
             // 
-            this.buttonCrearCampanna.Location = new System.Drawing.Point(717, 101);
+            this.buttonCrearCampanna.Location = new System.Drawing.Point(721, 59);
             this.buttonCrearCampanna.Name = "buttonCrearCampanna";
             this.buttonCrearCampanna.Size = new System.Drawing.Size(153, 23);
             this.buttonCrearCampanna.TabIndex = 34;
             this.buttonCrearCampanna.Text = "Crear Campaña";
             this.buttonCrearCampanna.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewPaisesCampanna
-            // 
-            this.dataGridViewPaisesCampanna.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPaisesCampanna.Location = new System.Drawing.Point(207, 226);
-            this.dataGridViewPaisesCampanna.Name = "dataGridViewPaisesCampanna";
-            this.dataGridViewPaisesCampanna.Size = new System.Drawing.Size(254, 50);
-            this.dataGridViewPaisesCampanna.TabIndex = 33;
+            this.buttonCrearCampanna.Click += new System.EventHandler(this.buttonCrearCampanna_Click);
             // 
             // dateTimePickerfFechaFinalizacionCampanna
             // 
-            this.dateTimePickerfFechaFinalizacionCampanna.Location = new System.Drawing.Point(207, 179);
+            this.dateTimePickerfFechaFinalizacionCampanna.Location = new System.Drawing.Point(211, 137);
             this.dateTimePickerfFechaFinalizacionCampanna.Name = "dateTimePickerfFechaFinalizacionCampanna";
             this.dateTimePickerfFechaFinalizacionCampanna.Size = new System.Drawing.Size(254, 20);
             this.dateTimePickerfFechaFinalizacionCampanna.TabIndex = 32;
             // 
             // dateTimePickerFechaInicioCampanna
             // 
-            this.dateTimePickerFechaInicioCampanna.Location = new System.Drawing.Point(207, 141);
+            this.dateTimePickerFechaInicioCampanna.Location = new System.Drawing.Point(211, 99);
             this.dateTimePickerFechaInicioCampanna.Name = "dateTimePickerFechaInicioCampanna";
             this.dateTimePickerFechaInicioCampanna.Size = new System.Drawing.Size(254, 20);
             this.dateTimePickerFechaInicioCampanna.TabIndex = 31;
             // 
             // textBoxCostoCampanna
             // 
-            this.textBoxCostoCampanna.Location = new System.Drawing.Point(207, 290);
+            this.textBoxCostoCampanna.Location = new System.Drawing.Point(211, 177);
             this.textBoxCostoCampanna.Name = "textBoxCostoCampanna";
             this.textBoxCostoCampanna.Size = new System.Drawing.Size(254, 20);
             this.textBoxCostoCampanna.TabIndex = 30;
             // 
             // textBoxNombreCampanna
             // 
-            this.textBoxNombreCampanna.Location = new System.Drawing.Point(207, 104);
+            this.textBoxNombreCampanna.Location = new System.Drawing.Point(211, 62);
             this.textBoxNombreCampanna.Name = "textBoxNombreCampanna";
             this.textBoxNombreCampanna.Size = new System.Drawing.Size(254, 20);
             this.textBoxNombreCampanna.TabIndex = 29;
             // 
             // textBoxIdCampanna
             // 
-            this.textBoxIdCampanna.Location = new System.Drawing.Point(207, 68);
+            this.textBoxIdCampanna.Location = new System.Drawing.Point(211, 26);
             this.textBoxIdCampanna.Name = "textBoxIdCampanna";
             this.textBoxIdCampanna.Size = new System.Drawing.Size(254, 20);
             this.textBoxIdCampanna.TabIndex = 28;
@@ -821,7 +832,7 @@
             // labelCostoCampanna
             // 
             this.labelCostoCampanna.AutoSize = true;
-            this.labelCostoCampanna.Location = new System.Drawing.Point(55, 297);
+            this.labelCostoCampanna.Location = new System.Drawing.Point(59, 184);
             this.labelCostoCampanna.Name = "labelCostoCampanna";
             this.labelCostoCampanna.Size = new System.Drawing.Size(99, 13);
             this.labelCostoCampanna.TabIndex = 7;
@@ -830,7 +841,7 @@
             // labelPaisesCampanna
             // 
             this.labelPaisesCampanna.AutoSize = true;
-            this.labelPaisesCampanna.Location = new System.Drawing.Point(55, 226);
+            this.labelPaisesCampanna.Location = new System.Drawing.Point(59, 230);
             this.labelPaisesCampanna.Name = "labelPaisesCampanna";
             this.labelPaisesCampanna.Size = new System.Drawing.Size(109, 13);
             this.labelPaisesCampanna.TabIndex = 6;
@@ -839,7 +850,7 @@
             // labelFechaFinalizacion
             // 
             this.labelFechaFinalizacion.AutoSize = true;
-            this.labelFechaFinalizacion.Location = new System.Drawing.Point(55, 186);
+            this.labelFechaFinalizacion.Location = new System.Drawing.Point(59, 144);
             this.labelFechaFinalizacion.Name = "labelFechaFinalizacion";
             this.labelFechaFinalizacion.Size = new System.Drawing.Size(110, 13);
             this.labelFechaFinalizacion.TabIndex = 5;
@@ -848,7 +859,7 @@
             // labelFechaInicio
             // 
             this.labelFechaInicio.AutoSize = true;
-            this.labelFechaInicio.Location = new System.Drawing.Point(55, 148);
+            this.labelFechaInicio.Location = new System.Drawing.Point(59, 106);
             this.labelFechaInicio.Name = "labelFechaInicio";
             this.labelFechaInicio.Size = new System.Drawing.Size(82, 13);
             this.labelFechaInicio.TabIndex = 4;
@@ -857,7 +868,7 @@
             // labelNombreCampanna
             // 
             this.labelNombreCampanna.AutoSize = true;
-            this.labelNombreCampanna.Location = new System.Drawing.Point(55, 111);
+            this.labelNombreCampanna.Location = new System.Drawing.Point(59, 69);
             this.labelNombreCampanna.Name = "labelNombreCampanna";
             this.labelNombreCampanna.Size = new System.Drawing.Size(109, 13);
             this.labelNombreCampanna.TabIndex = 3;
@@ -866,7 +877,7 @@
             // labelIdCampanna
             // 
             this.labelIdCampanna.AutoSize = true;
-            this.labelIdCampanna.Location = new System.Drawing.Point(55, 75);
+            this.labelIdCampanna.Location = new System.Drawing.Point(59, 33);
             this.labelIdCampanna.Name = "labelIdCampanna";
             this.labelIdCampanna.Size = new System.Drawing.Size(130, 13);
             this.labelIdCampanna.TabIndex = 2;
@@ -1121,15 +1132,41 @@
             // 
             this.campannasMercadeoTableAdapter.ClearBeforeFill = true;
             // 
-            // buttonQuitarPais
+            // listBoxPaisesCampanna
             // 
-            this.buttonQuitarPais.Location = new System.Drawing.Point(367, 247);
-            this.buttonQuitarPais.Name = "buttonQuitarPais";
-            this.buttonQuitarPais.Size = new System.Drawing.Size(75, 23);
-            this.buttonQuitarPais.TabIndex = 22;
-            this.buttonQuitarPais.Text = "<< Quitar";
-            this.buttonQuitarPais.UseVisualStyleBackColor = true;
-            this.buttonQuitarPais.Click += new System.EventHandler(this.buttonQuitarPais_Click);
+            this.listBoxPaisesCampanna.FormattingEnabled = true;
+            this.listBoxPaisesCampanna.Location = new System.Drawing.Point(211, 230);
+            this.listBoxPaisesCampanna.Name = "listBoxPaisesCampanna";
+            this.listBoxPaisesCampanna.Size = new System.Drawing.Size(120, 95);
+            this.listBoxPaisesCampanna.TabIndex = 38;
+            // 
+            // listBoxPaisesConCampanna
+            // 
+            this.listBoxPaisesConCampanna.FormattingEnabled = true;
+            this.listBoxPaisesConCampanna.Location = new System.Drawing.Point(345, 230);
+            this.listBoxPaisesConCampanna.Name = "listBoxPaisesConCampanna";
+            this.listBoxPaisesConCampanna.Size = new System.Drawing.Size(120, 95);
+            this.listBoxPaisesConCampanna.TabIndex = 39;
+            // 
+            // buttonAgregarPaisCampanna
+            // 
+            this.buttonAgregarPaisCampanna.Location = new System.Drawing.Point(230, 331);
+            this.buttonAgregarPaisCampanna.Name = "buttonAgregarPaisCampanna";
+            this.buttonAgregarPaisCampanna.Size = new System.Drawing.Size(75, 23);
+            this.buttonAgregarPaisCampanna.TabIndex = 40;
+            this.buttonAgregarPaisCampanna.Text = "Agregar >>";
+            this.buttonAgregarPaisCampanna.UseVisualStyleBackColor = true;
+            this.buttonAgregarPaisCampanna.Click += new System.EventHandler(this.buttonAgregarPaisCampanna_Click);
+            // 
+            // buttonQuitarPaisCampanna
+            // 
+            this.buttonQuitarPaisCampanna.Location = new System.Drawing.Point(368, 331);
+            this.buttonQuitarPaisCampanna.Name = "buttonQuitarPaisCampanna";
+            this.buttonQuitarPaisCampanna.Size = new System.Drawing.Size(75, 23);
+            this.buttonQuitarPaisCampanna.TabIndex = 41;
+            this.buttonQuitarPaisCampanna.Text = "<< Quitar";
+            this.buttonQuitarPaisCampanna.UseVisualStyleBackColor = true;
+            this.buttonQuitarPaisCampanna.Click += new System.EventHandler(this.buttonQuitarPaisCampanna_Click);
             // 
             // Form1
             // 
@@ -1149,7 +1186,6 @@
             this.tabRRSS.PerformLayout();
             this.tabCampanasMercadeo.ResumeLayout(false);
             this.tabCampanasMercadeo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaisesCampanna)).EndInit();
             this.tabReportesMkt.ResumeLayout(false);
             this.tabReportesMkt.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReportes)).EndInit();
@@ -1205,7 +1241,6 @@
         private System.Windows.Forms.TextBox textBoxNombreUsuarioRS;
         private System.Windows.Forms.ComboBox comboBoxRRSSempresa;
         private System.Windows.Forms.Button buttonRegistrarRS;
-        private System.Windows.Forms.DataGridView dataGridViewPaisesCampanna;
         private System.Windows.Forms.DateTimePicker dateTimePickerfFechaFinalizacionCampanna;
         private System.Windows.Forms.DateTimePicker dateTimePickerFechaInicioCampanna;
         private System.Windows.Forms.TextBox textBoxCostoCampanna;
@@ -1261,6 +1296,10 @@
         private System.Windows.Forms.ListBox listBoxPaises;
         private System.Windows.Forms.TextBox textBoxGeneraIdPais;
         private System.Windows.Forms.Button buttonQuitarPais;
+        private System.Windows.Forms.Button buttonAgregarPaisCampanna;
+        private System.Windows.Forms.ListBox listBoxPaisesConCampanna;
+        private System.Windows.Forms.ListBox listBoxPaisesCampanna;
+        private System.Windows.Forms.Button buttonQuitarPaisCampanna;
     }
 }
 

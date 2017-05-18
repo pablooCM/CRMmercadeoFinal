@@ -68,7 +68,6 @@ create procedure eliminaCliente
 	end
 
 --Registrar red social de la empresa
-
 create procedure registrarRS
 	@nombreRS varchar(20),
 	@nombreUsuarioRS varchar(20),
@@ -78,4 +77,121 @@ create procedure registrarRS
 		insert into RRSS values(@nombreRS, @nombreUsuarioRS, @claveRS)
 	end
 
-	drop procedure registrarRS
+--Crear servicio
+create procedure crearServicio
+	@idServicio int,
+	@descripcion varchar(30),
+	@formaDePago varchar(30),
+	@estadoServicio varchar(30)
+	as
+	begin
+		insert into Servicio values(@idServicio, @descripcion, @formaDePago, @estadoServicio)
+	end
+
+--Asignar un pais a un servicio
+create procedure asignarPaisaServicio
+	@idServicio int,
+	@idPais int
+	as
+	begin
+		insert into IntermediaServicioyPais values(@idServicio, @idPais)
+	end
+
+--Quitar un pais a un servicio
+create procedure quitarPaisServicio
+	@idServicio int,
+	@idPais int
+	as
+	begin
+		delete IntermediaServicioyPais
+		from IntermediaServicioyPais
+		where idServicio = @idServicio and idPais = @idPais
+	end
+
+--Actualizar servicio
+create procedure actualizaServicio
+	@idServicio int,
+	@descripcion varchar(30),
+	@formaDePago varchar(30),
+	@estadoServicio varchar (30)
+	as
+	begin
+		set nocount on
+		update Servicio
+		set
+			descripcion = @descripcion,
+			formaDePago = @formaDePago,
+			estadoServicio = @estadoServicio
+			from Servicio
+			where idServicio = @idServicio
+	end
+
+--Eliminar servicio
+create procedure eliminaServicio
+	@idServicio int
+	as
+	begin
+		delete Servicio
+		from Servicio
+		where idServicio = @idServicio
+	end
+
+--Crear Campanna de mercadeo
+create procedure crearCampanna
+	@idCampannaMercadeo int,
+	@nombreCampanna varchar(40),
+	@fechaInicio date,
+	@fechaFinal date,
+	@costoCampanna int
+	as
+	begin
+		insert into CampannaMercadeo values(@idCampannaMercadeo, @nombreCampanna, @fechaInicio, @fechaFinal, @costoCampanna)
+	end
+--Asignarle pais a Campanna
+create procedure asignarPaisaCampanna
+	@idCampannaMercadeo int,
+	@idPais int
+	as
+	begin
+		insert into IntermediaPaisyCampannaMercadeo values(@idCampannaMercadeo, @idPais)
+	end
+
+--Quitarle pais a Campanna
+create procedure quitarPaisCampanna
+	@idCampannaMercadeo int,
+	@idPais int
+	as
+	begin
+		delete IntermediaPaisyCampannaMercadeo
+		from IntermediaPaisyCampannaMercadeo
+		where idCampannaMercadeo = @idCampannaMercadeo and idPais = @idPais
+	end
+
+--Actualizar Campanna
+create procedure actualizaCampanna
+	@idCampannaMercadeo int,
+	@nombreCampanna varchar (40),
+	@fechaInicio date,
+	@fechaFinal date,
+	@costoCampanna int 
+	as
+	begin
+		set nocount on
+		update CampannaMercadeo
+		set
+			nombreCampanna = @nombreCampanna,
+			fechaInicio = @fechaInicio,
+			fechaFinal = @fechaFinal,
+			costoCampanna = @costoCampanna
+			from CampannaMercadeo
+			where idCampannaMercadeo = @idCampannaMercadeo
+	end
+--Eliminar CampannaMercadeo
+create procedure eliminaCampanna
+	@idCampannaMercadeo int
+	as
+	begin
+		delete CampannaMercadeo
+		from CampannaMercadeo
+		where idCampannaMercadeo = @idCampannaMercadeo
+	end

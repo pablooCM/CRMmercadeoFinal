@@ -25,12 +25,27 @@ namespace CRMmercadeoFinal
             jalaCiudadesComboBox();
             jalaServiciosComboBox();
             jalarPaisesListBox();
+            jalarPaisesListBoxCampanna();
 
         }
-        
 
 
 
+        private void jalarPaisesListBoxCampanna()
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            String consulta = "select nombrePais from Pais";
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+
+            SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
+            while (leerDatos.Read())
+            {
+                listBoxPaisesCampanna.Items.Add(leerDatos[0].ToString());
+            }
+        }
       
         private void jalaPaisesComboBox()
         {
@@ -626,6 +641,7 @@ namespace CRMmercadeoFinal
             {
                 listBoxPaisesServicio.Items.Add(leerDatos2[0].ToString());
             }
+            leerDatos2.Close();
 
         }
 
@@ -763,7 +779,7 @@ namespace CRMmercadeoFinal
 
                 conexion.Close();
 
-                MessageBox.Show("Se ha borrado el cliente");
+                MessageBox.Show("Se ha borrado el servicio");
             }
             catch (Exception ex)
             {
@@ -771,6 +787,261 @@ namespace CRMmercadeoFinal
 
             }
         }
+
+        private void buttonCrearCampanna_Click(object sender, EventArgs e)
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            SqlCommand cmd = new SqlCommand("dbo.crearCampanna", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            var param1 = new SqlParameter("@idCampannaMercadeo", SqlDbType.Int);
+            param1.Direction = ParameterDirection.Input;
+            param1.Value = textBoxIdCampanna.Text;
+            cmd.Parameters.Add(param1);
+
+            var param2 = new SqlParameter("@nombreCampanna", SqlDbType.VarChar);
+            param2.Direction = ParameterDirection.Input;
+            param2.Value = textBoxNombreCampanna.Text;
+            param2.Size = 40;
+            cmd.Parameters.Add(param2);
+
+
+            var formateoFechaIni = dateTimePickerFechaInicioCampanna.Value.ToString("yyyy/MM/dd");
+            var param3 = new SqlParameter("@fechaInicio", SqlDbType.Date);
+            param3.Direction = ParameterDirection.Input;
+            param3.Value = formateoFechaIni;
+            cmd.Parameters.Add(param3);
+
+            var formateoFechaFin = dateTimePickerfFechaFinalizacionCampanna.Value.ToString("yyyy/MM/dd");
+            var param4 = new SqlParameter("@fechaFinal", SqlDbType.Date);
+            param4.Direction = ParameterDirection.Input;
+            param4.Value = formateoFechaFin;
+            cmd.Parameters.Add(param4);
+
+            var param5 = new SqlParameter("@costoCampanna", SqlDbType.Int);
+            param5.Direction = ParameterDirection.Input;
+            param5.Value = textBoxCostoCampanna.Text;
+            cmd.Parameters.Add(param5);
+
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+            MessageBox.Show("Campaña creada correctamente");
+        }
+
+        private void buttonAgregarPaisCampanna_Click(object sender, EventArgs e)
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            foreach (var item in listBoxPaisesCampanna.SelectedItems)
+            {
+                MessageBox.Show(item.ToString());
+                listBoxPaisesConCampanna.Items.Add(item);
+
+                String consulta = "select idPais from Pais where nombrePais='" + item + "'";
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+
+                SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
+
+                if (leerDatos.Read() == true)
+                {
+                    textBoxGeneraIdPais.Text = leerDatos["idPais"].ToString();
+                }
+                else
+                {
+                    MessageBox.Show("No existe el pais");
+                }
+                leerDatos.Close();
+
+
+                SqlCommand cmd = new SqlCommand("dbo.asignarPaisaCampanna", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                var param1 = new SqlParameter("@idCampannaMercadeo", SqlDbType.Int);
+                param1.Direction = ParameterDirection.Input;
+                param1.Value = textBoxIdCampanna.Text;
+                cmd.Parameters.Add(param1);
+
+                var param2 = new SqlParameter("@idPais", SqlDbType.Int);
+                param2.Direction = ParameterDirection.Input;
+                param2.Value = textBoxGeneraIdPais.Text;
+                cmd.Parameters.Add(param2);
+
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
+        }
+
+        private void buttonConsultarCampanna_Click(object sender, EventArgs e)
+        {
+            listBoxPaisesConCampanna.Items.Clear();
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            String consulta = "Select * from CampannaMercadeo where idCampannaMercadeo=" + textBoxIdCampanna.Text;
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+
+            SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
+            if (leerDatos.Read() == true)
+            {
+                textBoxNombreCampanna.Text = leerDatos["nombreCampanna"].ToString();
+                dateTimePickerFechaInicioCampanna.Text = leerDatos["fechaInicio"].ToString();
+                dateTimePickerfFechaFinalizacionCampanna.Text = leerDatos["fechaFinal"].ToString();
+                textBoxCostoCampanna.Text = leerDatos["costoCampanna"].ToString();
+            }
+            else
+            {
+                MessageBox.Show("No existe la campaña");
+            }
+
+            leerDatos.Close();
+            String consulta2 = "select nombrePais from Pais, IntermediaPaisyCampannaMercadeo, CampannaMercadeo where IntermediaPaisyCampannaMercadeo.idPais=Pais.idPais and CampannaMercadeo.idCampannaMercadeo ="+ textBoxIdCampanna.Text;
+            SqlCommand consultaEnBD2 = new SqlCommand(consulta2, conexion);
+
+
+            SqlDataReader leerDatos2 = consultaEnBD2.ExecuteReader();
+
+            while (leerDatos2.Read())
+            {
+                listBoxPaisesConCampanna.Items.Add(leerDatos2[0].ToString());
+            }
+
+        }
+
+        private void buttonQuitarPaisCampanna_Click(object sender, EventArgs e)
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            foreach (var item in listBoxPaisesConCampanna.SelectedItems)
+            {
+                MessageBox.Show(item.ToString());
+
+                String consulta = "select idPais from Pais where nombrePais='" + item + "'";
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+
+                SqlDataReader leerDatos = consultaEnBD.ExecuteReader();
+
+                if (leerDatos.Read() == true)
+                {
+                    textBoxGeneraIdPais.Text = leerDatos["idPais"].ToString();
+
+                }
+                else
+                {
+                    MessageBox.Show("No existe el pais");
+                }
+                leerDatos.Close();
+
+
+                SqlCommand cmd = new SqlCommand("dbo.quitarPaisCampanna", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                var param1 = new SqlParameter("@idCampannaMercadeo", SqlDbType.Int);
+                param1.Direction = ParameterDirection.Input;
+                param1.Value = textBoxIdCampanna.Text;
+                cmd.Parameters.Add(param1);
+
+                var param2 = new SqlParameter("@idPais", SqlDbType.Int);
+                param2.Direction = ParameterDirection.Input;
+                param2.Value = textBoxGeneraIdPais.Text;
+                cmd.Parameters.Add(param2);
+
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+                MessageBox.Show("Pais quitado correctamente");
+
+            }
+        }
+
+        private void buttonActualizarCampanna_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+                conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+                conexion.Open();
+
+                SqlCommand cmd = new SqlCommand("dbo.actualizaCampanna", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                var param1 = new SqlParameter("@idCampannaMercadeo", SqlDbType.Int);
+                param1.Direction = ParameterDirection.Input;
+                param1.Value = textBoxIdCampanna.Text;
+                cmd.Parameters.Add(param1);
+
+                var param2 = new SqlParameter("@nombreCampanna", SqlDbType.VarChar);
+                param2.Direction = ParameterDirection.Input;
+                param2.Value = textBoxNombreCampanna.Text;
+                param2.Size = 40;
+                cmd.Parameters.Add(param2);
+
+                var formateoFechaIni = dateTimePickerFechaInicioCampanna.Value.ToString("yyyy/MM/dd");
+                var param3 = new SqlParameter("@fechaInicio", SqlDbType.Date);
+                param3.Direction = ParameterDirection.Input;
+                param3.Value = formateoFechaIni;
+                cmd.Parameters.Add(param3);
+
+                var formateoFechaFin = dateTimePickerfFechaFinalizacionCampanna.Value.ToString("yyyy/MM/dd");
+                var param4 = new SqlParameter("@fechaFinal", SqlDbType.Date);
+                param4.Direction = ParameterDirection.Input;
+                param4.Value = formateoFechaFin;
+                cmd.Parameters.Add(param4);
+
+                var param5 = new SqlParameter("@costoCampanna", SqlDbType.Int);
+                param5.Direction = ParameterDirection.Input;
+                param5.Value = textBoxCostoCampanna.Text;
+                cmd.Parameters.Add(param5);
+
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+
+                MessageBox.Show("Campaña actualizada correctamente");
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void buttonBorrarCampanna_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+                conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+                conexion.Open();
+
+                SqlCommand cmd = new SqlCommand("dbo.eliminaCampanna", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                var param1 = new SqlParameter("@idCampannaMercadeo", SqlDbType.Int);
+                param1.Direction = ParameterDirection.Input;
+                param1.Value = textBoxIdCampanna.Text;
+                cmd.Parameters.Add(param1);
+
+                cmd.ExecuteNonQuery();
+
+                conexion.Close();
+
+                MessageBox.Show("Se ha borrado la campaña");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+
+            }
+        }
+
+        
 
 
 
