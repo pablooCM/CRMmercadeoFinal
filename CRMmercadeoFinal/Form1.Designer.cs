@@ -61,7 +61,6 @@
             this.labelCedulaCliente = new System.Windows.Forms.Label();
             this.tabServicios = new System.Windows.Forms.TabPage();
             this.textBoxGeneraIdPais = new System.Windows.Forms.TextBox();
-            this.buttonQuitarPais = new System.Windows.Forms.Button();
             this.buttonAgregarPais = new System.Windows.Forms.Button();
             this.listBoxPaisesServicio = new System.Windows.Forms.ListBox();
             this.listBoxPaises = new System.Windows.Forms.ListBox();
@@ -129,6 +128,7 @@
             this.bDMercadeoDataSet = new CRMmercadeoFinal.BDMercadeoDataSet();
             this.campannasMercadeoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.campannasMercadeoTableAdapter = new CRMmercadeoFinal.BDMercadeoDataSetTableAdapters.campannasMercadeoTableAdapter();
+            this.buttonQuitarPais = new System.Windows.Forms.Button();
             this.CRMmktTab.SuspendLayout();
             this.tabClientes.SuspendLayout();
             this.tabServicios.SuspendLayout();
@@ -481,16 +481,6 @@
             this.textBoxGeneraIdPais.Size = new System.Drawing.Size(10, 20);
             this.textBoxGeneraIdPais.TabIndex = 23;
             // 
-            // buttonQuitarPais
-            // 
-            this.buttonQuitarPais.Location = new System.Drawing.Point(367, 247);
-            this.buttonQuitarPais.Name = "buttonQuitarPais";
-            this.buttonQuitarPais.Size = new System.Drawing.Size(75, 23);
-            this.buttonQuitarPais.TabIndex = 22;
-            this.buttonQuitarPais.Text = "<< Quitar";
-            this.buttonQuitarPais.UseVisualStyleBackColor = true;
-            this.buttonQuitarPais.Click += new System.EventHandler(this.buttonQuitarPais_Click);
-            // 
             // buttonAgregarPais
             // 
             this.buttonAgregarPais.Location = new System.Drawing.Point(234, 247);
@@ -545,6 +535,7 @@
             this.buttonActualizarServicio.TabIndex = 16;
             this.buttonActualizarServicio.Text = "Actualizar Servicio";
             this.buttonActualizarServicio.UseVisualStyleBackColor = true;
+            this.buttonActualizarServicio.Click += new System.EventHandler(this.buttonActualizarServicio_Click);
             // 
             // buttonBorrarServicio
             // 
@@ -554,6 +545,7 @@
             this.buttonBorrarServicio.TabIndex = 15;
             this.buttonBorrarServicio.Text = "Borrar Servicio";
             this.buttonBorrarServicio.UseVisualStyleBackColor = true;
+            this.buttonBorrarServicio.Click += new System.EventHandler(this.buttonBorrarServicio_Click);
             // 
             // comboBoxEstadoServicio
             // 
@@ -1129,6 +1121,16 @@
             // 
             this.campannasMercadeoTableAdapter.ClearBeforeFill = true;
             // 
+            // buttonQuitarPais
+            // 
+            this.buttonQuitarPais.Location = new System.Drawing.Point(367, 247);
+            this.buttonQuitarPais.Name = "buttonQuitarPais";
+            this.buttonQuitarPais.Size = new System.Drawing.Size(75, 23);
+            this.buttonQuitarPais.TabIndex = 22;
+            this.buttonQuitarPais.Text = "<< Quitar";
+            this.buttonQuitarPais.UseVisualStyleBackColor = true;
+            this.buttonQuitarPais.Click += new System.EventHandler(this.buttonQuitarPais_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1254,11 +1256,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxGeneraIdServicio;
         private System.Windows.Forms.TextBox textBoxGeneraIdRedSocial;
-        private System.Windows.Forms.Button buttonQuitarPais;
         private System.Windows.Forms.Button buttonAgregarPais;
         private System.Windows.Forms.ListBox listBoxPaisesServicio;
         private System.Windows.Forms.ListBox listBoxPaises;
         private System.Windows.Forms.TextBox textBoxGeneraIdPais;
+        private System.Windows.Forms.Button buttonQuitarPais;
     }
 }
 
