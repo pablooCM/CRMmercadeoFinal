@@ -26,11 +26,29 @@ namespace CRMmercadeoFinal
             jalaServiciosComboBox();
             jalarPaisesListBox();
             jalarPaisesListBoxCampanna();
-
+            jalaClientesDataGridCampanna();
         }
 
 
+        private void jalaClientesDataGridCampanna()
+        {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
 
+            String consulta = "select cedula, nombre from Cliente";
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+            var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+            var commandBuilder = new SqlCommandBuilder(dataAdapter);
+            var dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridViewClientesCampanna.ReadOnly = true;
+            dataGridViewClientesCampanna.DataSource = dataSet.Tables[0];
+
+
+            
+        }
         private void jalarPaisesListBoxCampanna()
         {
             System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
@@ -1041,9 +1059,95 @@ namespace CRMmercadeoFinal
             }
         }
 
+
+        //borrar
+
+        DataTable GetSelectedRows(DataGridView dataGridViewClientesCampanna)
+        {
+            var dt = new DataTable();
+            foreach (DataGridViewColumn column in dataGridViewClientesCampanna.Columns)
+            {
+                if (column.Visible)
+                {
+                    dt.Columns.Add();
+                }
+            }
+
+            object[] cellValues = new object[dataGridViewClientesCampanna.Columns.Count];
+            foreach (DataGridViewRow row in dataGridViewClientesCampanna.Rows)
+            {
+                if (!row.Selected) continue;
+
+                for (int i = 0; i < row.Cells.Count; i++)
+                    cellValues[i] = row.Cells[i].Value;
+
+                dt.Rows.Add(cellValues);
+            }
+
+            return dt;
+        }
+
+        private void buttonAgregarClientesaCamapanna_Click(object sender, EventArgs e)
+        {
+            //dataGridViewClientesBeneficiadosCampanna.DataSource = GetSelectedRows(dataGridViewClientesCampanna);
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
+
+            Int32 selectedCellCount = dataGridViewClientesCampanna.GetCellCount(DataGridViewElementStates.Selected);
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            if (selectedCellCount > 0)
+                {
+                    if (dataGridViewClientesCampanna.AreAllCellsSelected(true))
+                    {
+                        MessageBox.Show("Todas las ids seleccionadas");
+                    }
+                    else
+                    {
+                        for (int i = 0; i < selectedCellCount; i++)
+                        {
+                            sb.Append(dataGridViewClientesCampanna.SelectedCells[i].Value.ToString());
+                            MessageBox.Show(sb.ToString(), "IDs Seleccionados");
+                        }
+                    }
+            }
+
+            SqlCommand cmd = new SqlCommand("dbo.asignarClienteaCampanna", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            int cedulaParseada = int.Parse(sb.ToString());
+            var param1 = new SqlParameter("@cedula", SqlDbType.Int);
+            param1.Direction = ParameterDirection.Input;
+            param1.Value = cedulaParseada;
+            cmd.Parameters.Add(param1);
+
+            var param2 = new SqlParameter("@idCampannaMercadeo", SqlDbType.Int);
+            param2.Direction = ParameterDirection.Input;
+            param2.Value = textBoxIdCampanna.Text;
+            cmd.Parameters.Add(param2);
+
+            cmd.ExecuteNonQuery();
+
+            String consulta = "select Cliente.cedula, nombre from Cliente, IntermediaCampannaMercadeoyCliente, CampannaMercadeo where IntermediaCampannaMercadeoyCliente.cedula =" + cedulaParseada + " and IntermediaCampannaMercadeoyCliente.idCampannaMercadeo =" + textBoxIdCampanna.Text;
+            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+            var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+            var commandBuilder = new SqlCommandBuilder(dataAdapter);
+            var dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
+            dataGridViewClientesBeneficiadosCampanna.ReadOnly = true;
+            dataGridViewClientesBeneficiadosCampanna.DataSource = dataSet.Tables[0];
+
+            conexion.Close();
+        }
+
+        private void buttonQuitarClientesaCampanna_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+
         
 
 
-
-    }
-}
