@@ -582,18 +582,37 @@ namespace CRMmercadeoFinal
 
         private void button1_Click(object sender, EventArgs e)
         {
-            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
-            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
-            conexion.Open();
-            String consulta = "select nombreRedSocial, count (nombreRedSocial) as CantidadClientesPorRedSocial from RedesSociales, Clientes where Clientes.redesSociales = RedesSociales.nombreRedSocial and Clientes.redesSociales= '"+comboBoxRedSocialReportes.Text+"' group by nombreRedSocial";
-            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
-            var dataAdapter = new SqlDataAdapter(consulta, conexion);
+            if (!string.IsNullOrWhiteSpace(comboBoxRedSocialReportes.Text))
+            {
+                System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+                conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+                conexion.Open();
+                String consulta = "select nombreRedSocial, count (IntermediaRSClienteyCliente.idRedSocial) as CantidadClientesPorRedSocial from IntermediaRSClienteyCliente join  RedSocialCliente on RedSocialCliente.idRedSocial = IntermediaRSClienteyCliente.idRedSocial join Cliente on IntermediaRSClienteyCliente.cedula = Cliente.cedula where nombreRedSocial = '" + comboBoxRedSocialReportes.Text + "' group by nombreRedSocial";
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
 
-            var commandBuilder = new SqlCommandBuilder(dataAdapter);
-            var dataSet = new DataSet();
-            dataAdapter.Fill(dataSet);
-            dataGridViewReportes.ReadOnly = true;
-            dataGridViewReportes.DataSource = dataSet.Tables[0];
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }
+            else
+            {
+                System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+                conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+                conexion.Open();
+                String consulta = "select nombreRedSocial, count (IntermediaRSClienteyCliente.idRedSocial) as CantidadClientesPorRedSocial from IntermediaRSClienteyCliente join  RedSocialCliente on RedSocialCliente.idRedSocial = IntermediaRSClienteyCliente.idRedSocial join Cliente on IntermediaRSClienteyCliente.cedula = Cliente.cedula group by nombreRedSocial";
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }
+
 
 
         }
