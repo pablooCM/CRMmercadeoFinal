@@ -49,10 +49,10 @@ create table CampannaMercadeo(
 	nombreCampanna varchar(40),
 	fechaInicio date,
 	fechaFinal date,
-	pais int,
 	costoCampanna int
 	primary key (idCampannaMercadeo)
 )
+
 
 --Tabla intermedia entre las redes sociales del cliente y cliente
 create table IntermediaRSClienteyCliente(
@@ -125,7 +125,7 @@ create table IntermediaCampannaMercadeoyCliente(
 
 insert into RRSS values('Twitter', '@CableMio', 'sacudimeElCable2017!')
 select * from RRSS
-insert into Pais values(506, 'Costa Rica')
+insert into Pais values(47, 'Noruega')
 select * from Pais
 insert into Cliente values(1, 'Pablo', 'Corrales', 'Mora','San Jose',506, 'pablo@pabloocm.xyz')
 select * from Cliente
@@ -133,8 +133,13 @@ insert into Servicio values(2, 'Fibra','quincenal','inactivo')
 select * from Servicio
 insert into RedSocialCliente values(2, 'Facebook')
 select * from RedSocialCliente
-insert into CampannaMercadeo values(1, 'Conquistando al cacheton', '2017-02-01', '2017-06-01', 506, 3000)
+insert into CampannaMercadeo values(1, 'Conquistando al cacheton', '2017-02-01', '2017-06-01', 3000)
 select * from CampannaMercadeo
-
-select Cliente.cedula, Servicio.idServicio, descripcion from Cliente, IntermediaClienteyServicio, Servicio where Cliente.cedula = IntermediaClienteyServicio.cedula and Servicio.idServicio = IntermediaClienteyServicio.idServicio
 select nombreRedSocial from RRSS
+insert IntermediaPaisyCampannaMercadeo values(1, 506)
+
+Select Servicio.idServicio, descripcion, nombre, apellido1, apellido2, formaDePago from Cliente join IntermediaClienteyServicio on IntermediaClienteyServicio.cedula= Cliente.cedula join Servicio on Servicio.idServicio = IntermediaClienteyServicio.idServicio where Servicio.formaDePago='quincenal' and Servicio.idServicio= 1 and Cliente.cedula =1
+Select Servicio.idServicio, descripcion, nombre, apellido1, apellido2, formaDePago from Cliente join IntermediaClienteyServicio on IntermediaClienteyServicio.cedula= Cliente.cedula join Servicio on Servicio.idServicio = IntermediaClienteyServicio.idServicio where Cliente.cedula = 4
+select Cliente.cedula, nombre from Cliente, IntermediaCampannaMercadeoyCliente, CampannaMercadeo where IntermediaCampannaMercadeoyCliente.cedula = 3 and IntermediaCampannaMercadeoyCliente.idCampannaMercadeo = 1
+select nombrePais from Pais, CampannaMercadeo, IntermediaPaisyCampannaMercadeo where IntermediaPaisyCampannaMercadeo.idPais=Pais.idPais and CampannaMercadeo.idCampannaMercadeo = 1
+select nombrePais from Pais, Servicio, IntermediaServicioyPais where Pais.idPais = IntermediaServicioyPais.idPais and Servicio.idServicio = 1

@@ -195,3 +195,11 @@ create procedure eliminaCampanna
 		from CampannaMercadeo
 		where idCampannaMercadeo = @idCampannaMercadeo
 	end
+--Asignar un cliente a una campanna
+create procedure asignarClienteaCampanna
+	@cedula int,
+	@idCampannaMercadeo int
+	as
+	begin
+		insert into IntermediaCampannaMercadeoyCliente values(@cedula, @idCampannaMercadeo)
+	end

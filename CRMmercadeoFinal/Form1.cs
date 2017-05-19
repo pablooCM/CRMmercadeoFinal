@@ -479,9 +479,9 @@ namespace CRMmercadeoFinal
             conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
             conexion.Open();
 
-            if (String.IsNullOrEmpty(textBoxCedulaClienteReportes.Text) | String.IsNullOrEmpty(textBoxIdServiciosReportes.Text) | String.IsNullOrEmpty(comboBoxFormaPagoReportes.Text))
+            if (String.IsNullOrEmpty(textBoxCedulaClienteReportes.Text) && String.IsNullOrEmpty(textBoxIdServiciosReportes.Text) && String.IsNullOrEmpty(comboBoxFormaPagoReportes.Text))
             {
-                String consulta= "Select idServicio, descripcionServicio, nombreCliente, apellido1Cliente, apellido2Cliente, formaDePago from Servicios, Clientes";
+                String consulta= "Select idServicio, descripcion, nombre, apellido1, apellido2, formaDePago from Servicio, Cliente";
                 SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
                 var dataAdapter = new SqlDataAdapter(consulta, conexion);
 
@@ -491,9 +491,10 @@ namespace CRMmercadeoFinal
                 dataGridViewReportes.ReadOnly = true;
                 dataGridViewReportes.DataSource = dataSet.Tables[0];
             }
-            else
+
+            if (!string.IsNullOrWhiteSpace(textBoxCedulaClienteReportes.Text))
             {
-                String consulta = "Select idServicio, descripcionServicio, nombreCliente, apellido1Cliente, apellido2Cliente, formaDePago from Servicios, Clientes where Servicios.idServicio =" + textBoxIdServiciosReportes.Text + " or Clientes.cedula=" + textBoxCedulaClienteReportes.Text + " or Servicios.formaDePago='" + comboBoxFormaPagoReportes.Text + "'";
+                String consulta = "Select Servicio.idServicio, descripcion, nombre, apellido1, apellido2, formaDePago from Cliente join IntermediaClienteyServicio on IntermediaClienteyServicio.cedula= Cliente.cedula join Servicio on Servicio.idServicio = IntermediaClienteyServicio.idServicio where Cliente.cedula =" + textBoxCedulaClienteReportes.Text;
                 SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
                 var dataAdapter = new SqlDataAdapter(consulta, conexion);
 
@@ -503,7 +504,79 @@ namespace CRMmercadeoFinal
                 dataGridViewReportes.ReadOnly = true;
                 dataGridViewReportes.DataSource = dataSet.Tables[0];
             }
-           
+            if (!string.IsNullOrWhiteSpace(textBoxIdServiciosReportes.Text))
+            {
+                String consulta = "Select Servicio.idServicio, descripcion, nombre, apellido1, apellido2, formaDePago from Cliente join IntermediaClienteyServicio on IntermediaClienteyServicio.cedula= Cliente.cedula join Servicio on Servicio.idServicio = IntermediaClienteyServicio.idServicio where Servicio.idServicio =" + textBoxIdServiciosReportes.Text;
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }
+            if (!string.IsNullOrWhiteSpace(comboBoxFormaPagoReportes.Text))
+            {
+                String consulta = "Select Servicio.idServicio, descripcion, nombre, apellido1, apellido2, formaDePago from Cliente join IntermediaClienteyServicio on IntermediaClienteyServicio.cedula= Cliente.cedula join Servicio on Servicio.idServicio = IntermediaClienteyServicio.idServicio where Servicio.formaDePago ='" + comboBoxFormaPagoReportes.Text+"'";
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }
+            if(!string.IsNullOrWhiteSpace(textBoxCedulaClienteReportes.Text) && !string.IsNullOrWhiteSpace(textBoxIdServiciosReportes.Text))
+            {
+                String consulta = "Select Servicio.idServicio, descripcion, nombre, apellido1, apellido2, formaDePago from Cliente join IntermediaClienteyServicio on IntermediaClienteyServicio.cedula= Cliente.cedula join Servicio on Servicio.idServicio = IntermediaClienteyServicio.idServicio where Cliente.cedula ="+textBoxCedulaClienteReportes.Text+" and Servicio.idServicio="+ textBoxIdServiciosReportes.Text;
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }
+            if (!string.IsNullOrWhiteSpace(textBoxCedulaClienteReportes.Text) && !string.IsNullOrWhiteSpace(comboBoxFormaPagoReportes.Text))
+            {
+                String consulta = "Select Servicio.idServicio, descripcion, nombre, apellido1, apellido2, formaDePago from Cliente join IntermediaClienteyServicio on IntermediaClienteyServicio.cedula= Cliente.cedula join Servicio on Servicio.idServicio = IntermediaClienteyServicio.idServicio where Cliente.cedula =" + textBoxCedulaClienteReportes.Text + " and Servicio.formaDePago='" + comboBoxFormaPagoReportes.Text + "'";
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }
+            if (!string.IsNullOrWhiteSpace(textBoxIdServiciosReportes.Text) && !string.IsNullOrWhiteSpace(comboBoxFormaPagoReportes.Text))
+            {
+                String consulta = "Select Servicio.idServicio, descripcion, nombre, apellido1, apellido2, formaDePago from Cliente join IntermediaClienteyServicio on IntermediaClienteyServicio.cedula= Cliente.cedula join Servicio on Servicio.idServicio = IntermediaClienteyServicio.idServicio where Servicio.formaDePago='"+comboBoxFormaPagoReportes.Text+"' and Servicio.idServicio="+textBoxIdServiciosReportes.Text;
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }
+
+            if (!string.IsNullOrWhiteSpace(textBoxCedulaClienteReportes.Text) && !string.IsNullOrWhiteSpace(textBoxIdServiciosReportes.Text) && !string.IsNullOrWhiteSpace(comboBoxFormaPagoReportes.Text))
+            {
+                String consulta = "Select Servicio.idServicio, descripcion, nombre, apellido1, apellido2, formaDePago from Cliente join IntermediaClienteyServicio on IntermediaClienteyServicio.cedula= Cliente.cedula join Servicio on Servicio.idServicio = IntermediaClienteyServicio.idServicio where Servicio.formaDePago='"+comboBoxFormaPagoReportes.Text+"' and Servicio.idServicio="+textBoxIdServiciosReportes.Text+" and Cliente.cedula =" +textBoxCedulaClienteReportes.Text;
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }
 
         }
 
