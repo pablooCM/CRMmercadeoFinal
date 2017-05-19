@@ -587,7 +587,7 @@ namespace CRMmercadeoFinal
             conexion.Open();
             if (!string.IsNullOrWhiteSpace(comboBoxRedSocialReportes.Text))
             {
-                String consulta = "select nombreRedSocial, count (IntermediaRSClienteyCliente.idRedSocial) as CantidadClientesPorRedSocial from IntermediaRSClienteyCliente join  RedSocialCliente on RedSocialCliente.idRedSocial = IntermediaRSClienteyCliente.idRedSocial join Cliente on IntermediaRSClienteyCliente.cedula = Cliente.cedula where nombreRedSocial = '" + comboBoxRedSocialReportes.Text + "' group by nombreRedSocial";
+                String consulta = "select nombreRedSocial, count (IntermediaRSClienteyCliente.idRedSocial) as CantidadClientesPorRedSocial from IntermediaRSClienteyCliente join  RedSocialCliente on RedSocialCliente.idRedSocial = IntermediaRSClienteyCliente.idRedSocial join Cliente on IntermediaRSClienteyCliente.cedula = Cliente.cedula where nombreRedSocial = '" + comboBoxRedSocialReportes.Text + "' group by CantidadClientesPorRedSocial";
                 SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
                 var dataAdapter = new SqlDataAdapter(consulta, conexion);
 
@@ -620,16 +620,69 @@ namespace CRMmercadeoFinal
             conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
             conexion.Open();
 
-            String consulta = "select cedula, nombreCliente, apellido1Cliente, apellido2Cliente, ciudad, pais, correoElectronico, serviciosCliente, redesSociales from Clientes where pais ='" + comboBoxPaisReportes.Text + "' and apellido1Cliente='" + textBoxApellidoReporteClientes.Text + "' or apellido2Cliente='" + textBoxApellidoReporteClientes.Text + "' and ciudad= '" + comboBoxCiudadesReporteClientes.Text+"'";
-            SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
-            var dataAdapter = new SqlDataAdapter(consulta, conexion);
+            if(!string.IsNullOrWhiteSpace(comboBoxPaisReportes.Text))
+            {
+                String consulta = "select Cliente.cedula, nombre, apellido1, apellido2, ciudad, Pais.nombrePais, correoElectronico, Servicio.descripcion, RedSocialCliente.nombreRedSocial from Cliente join IntermediaClienteyServicio on Cliente.cedula = IntermediaClienteyServicio.cedula join Servicio on Servicio.idServicio = IntermediaClienteyServicio.idServicio join IntermediaRSClienteyCliente on IntermediaRSClienteyCliente.cedula = Cliente.cedula join RedSocialCliente on RedSocialCliente.idRedSocial =IntermediaRSClienteyCliente.idRedSocial join Pais on Cliente.pais= Pais.idPais where Pais.nombrePais ='"+comboBoxPaisReportes.Text+"'";
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
 
-            var commandBuilder = new SqlCommandBuilder(dataAdapter);
-            var dataSet = new DataSet();
-            dataAdapter.Fill(dataSet);
-            dataGridViewReportes.ReadOnly = true;
-            dataGridViewReportes.DataSource = dataSet.Tables[0];
-        }
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }
+            if (!string.IsNullOrWhiteSpace(textBoxApellidoReporteClientes.Text))
+            {
+                String consulta = "select Cliente.cedula, nombre, apellido1, apellido2, ciudad, Pais.nombrePais, correoElectronico, Servicio.descripcion, RedSocialCliente.nombreRedSocial from Cliente join IntermediaClienteyServicio on Cliente.cedula = IntermediaClienteyServicio.cedula join Servicio on Servicio.idServicio = IntermediaClienteyServicio.idServicio join IntermediaRSClienteyCliente on IntermediaRSClienteyCliente.cedula = Cliente.cedula join RedSocialCliente on RedSocialCliente.idRedSocial =IntermediaRSClienteyCliente.idRedSocial join Pais on Cliente.pais= Pais.idPais where Cliente.apellido1='" + textBoxApellidoReporteClientes.Text +"'";
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }
+            if (!string.IsNullOrWhiteSpace(comboBoxCiudadesReporteClientes.Text))
+            {
+                String consulta = "select Cliente.cedula, nombre, apellido1, apellido2, ciudad, Pais.nombrePais, correoElectronico, Servicio.descripcion, RedSocialCliente.nombreRedSocial from Cliente join IntermediaClienteyServicio on Cliente.cedula = IntermediaClienteyServicio.cedula join Servicio on Servicio.idServicio = IntermediaClienteyServicio.idServicio join IntermediaRSClienteyCliente on IntermediaRSClienteyCliente.cedula = Cliente.cedula join RedSocialCliente on RedSocialCliente.idRedSocial =IntermediaRSClienteyCliente.idRedSocial join Pais on Cliente.pais= Pais.idPais where Cliente.ciudad='" + comboBoxCiudadesReporteClientes.Text + "'";
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }
+            if (!string.IsNullOrWhiteSpace(comboBoxPaisReportes.Text) && !string.IsNullOrWhiteSpace(textBoxApellidoReporteClientes.Text))
+            {
+                String consulta = "select Cliente.cedula, nombre, apellido1, apellido2, ciudad, Pais.nombrePais, correoElectronico, Servicio.descripcion, RedSocialCliente.nombreRedSocial from Cliente join IntermediaClienteyServicio on Cliente.cedula = IntermediaClienteyServicio.cedula join Servicio on Servicio.idServicio = IntermediaClienteyServicio.idServicio join IntermediaRSClienteyCliente on IntermediaRSClienteyCliente.cedula = Cliente.cedula join RedSocialCliente on RedSocialCliente.idRedSocial =IntermediaRSClienteyCliente.idRedSocial join Pais on Cliente.pais= Pais.idPais where Pais.nombrePais ='" + comboBoxPaisReportes.Text + "' and Cliente.apellido1='"+textBoxApellidoReporteClientes.Text+"' or Cliente.apellido2='"+textBoxApellidoReporteClientes.Text+"'";
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }
+
+
+            else
+            {
+                String consulta = "select Cliente.cedula, nombre, apellido1, apellido2, ciudad, Pais.nombrePais, correoElectronico, Servicio.descripcion, RedSocialCliente.nombreRedSocial from Cliente join IntermediaClienteyServicio on Cliente.cedula = IntermediaClienteyServicio.cedula join Servicio on Servicio.idServicio = IntermediaClienteyServicio.idServicio join IntermediaRSClienteyCliente on IntermediaRSClienteyCliente.cedula = Cliente.cedula join RedSocialCliente on RedSocialCliente.idRedSocial =IntermediaRSClienteyCliente.idRedSocial join Pais on Cliente.pais= Pais.idPais";
+
+                SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
+                var dataAdapter = new SqlDataAdapter(consulta, conexion);
+
+                var commandBuilder = new SqlCommandBuilder(dataAdapter);
+                var dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                dataGridViewReportes.ReadOnly = true;
+                dataGridViewReportes.DataSource = dataSet.Tables[0];
+            }        }
 
         private void buttonCrearServicio_Click(object sender, EventArgs e)
         {
