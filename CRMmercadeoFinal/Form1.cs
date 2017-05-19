@@ -582,11 +582,11 @@ namespace CRMmercadeoFinal
 
         private void button1_Click(object sender, EventArgs e)
         {
+            System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
+            conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
+            conexion.Open();
             if (!string.IsNullOrWhiteSpace(comboBoxRedSocialReportes.Text))
             {
-                System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
-                conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
-                conexion.Open();
                 String consulta = "select nombreRedSocial, count (IntermediaRSClienteyCliente.idRedSocial) as CantidadClientesPorRedSocial from IntermediaRSClienteyCliente join  RedSocialCliente on RedSocialCliente.idRedSocial = IntermediaRSClienteyCliente.idRedSocial join Cliente on IntermediaRSClienteyCliente.cedula = Cliente.cedula where nombreRedSocial = '" + comboBoxRedSocialReportes.Text + "' group by nombreRedSocial";
                 SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
                 var dataAdapter = new SqlDataAdapter(consulta, conexion);
@@ -599,9 +599,6 @@ namespace CRMmercadeoFinal
             }
             else
             {
-                System.Data.SqlClient.SqlConnection conexion = new System.Data.SqlClient.SqlConnection();
-                conexion.ConnectionString = "Data Source=WIN-1SDP8NVLN2A\\SA;Initial Catalog=BDMercadeoFinal;Persist Security Info=True;User ID=sa;Password=claveParaAvanzadas2016!";
-                conexion.Open();
                 String consulta = "select nombreRedSocial, count (IntermediaRSClienteyCliente.idRedSocial) as CantidadClientesPorRedSocial from IntermediaRSClienteyCliente join  RedSocialCliente on RedSocialCliente.idRedSocial = IntermediaRSClienteyCliente.idRedSocial join Cliente on IntermediaRSClienteyCliente.cedula = Cliente.cedula group by nombreRedSocial";
                 SqlCommand consultaEnBD = new SqlCommand(consulta, conexion);
                 var dataAdapter = new SqlDataAdapter(consulta, conexion);
